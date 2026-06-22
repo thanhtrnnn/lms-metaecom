@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đào tạo Doanh nghiệp - META ECOM UNI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+        <img src="images/logo-meu-ngang.png" alt="META ECOM UNI" style="height: 48px; width: auto;">
+      </a>
+
+      <div class="nav-menu">
+        <div class="nav-item">
+          <div class="nav-link">Khóa học
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="nav-drop" style="left:0;transform:none">
+            <div class="nav-drop-2col">
+              <div class="drop-col-links">
+                <a href="courses.html?filter=all" class="drop-text-link">Tất cả khóa học</a>
+                <a href="courses.html?filter=livestream" class="drop-text-link">Chiến lược Livestream</a>
+                <a href="courses.html?filter=content-ai" class="drop-text-link">Tối ưu Content AI</a>
+                <a href="courses.html?filter=tiktok" class="drop-text-link">Xây kênh TikTok</a>
+                <a href="courses.html?filter=shopee" class="drop-text-link">Shopee & Lazada</a>
+                <a href="courses.html?filter=combo" class="drop-text-link">Combo ưu đãi</a>
+                <a href="#" class="drop-text-link special">+ Tạo bộ khóa học</a>
+              </div>
+              <a href="course-detail.html" class="drop-featured" style="text-decoration:none;">
+                <div class="drop-feat-img">🤖</div>
+                <div class="drop-feat-body">
+                  <div class="drop-feat-tag">Nổi bật</div>
+                  <div class="drop-feat-title">Gen AI Studio: Ứng dụng AI vào Marketing thực chiến</div>
+                  <div class="drop-feat-cta">Xem khóa học →</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="enterprise-training.html" class="nav-link">Doanh nghiệp</a>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">Thư viện
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="nav-drop" style="min-width:360px;left:0;transform:none">
+            <div class="nav-drop-grid" style="grid-template-columns:1fr 1fr">
+              <a href="blog.html" class="drop-item">
+                <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+                <div><div class="drop-label">Blog & Kiến thức</div><div class="drop-desc">Bài viết chuyên sâu mỗi tuần</div></div>
+              </a>
+              <a href="trial.html" class="drop-item">
+                <div class="drop-icon"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 9.36l-7.1 7.1a1 1 0 0 1-1.4 0l-2.8-2.8a1 1 0 0 1 0-1.4l7.1-7.1a6 6 0 0 1 9.36-7.94l-3.77 3.77a1 1 0 0 0 0 1.4z"/></svg></div>
+                <div><div class="drop-label">Đăng kí học thử</div><div class="drop-desc">Trải nghiệm bài giảng miễn phí</div></div>
+              </a>
+              <a href="webinar.html" class="drop-item">
+                <div class="drop-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+                <div><div class="drop-label">Webinar miễn phí</div><div class="drop-desc">Học trực tiếp với chuyên gia</div></div>
+              </a>
+              <a href="ebook.html" class="drop-item">
+                <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div><div class="drop-label">E-book & Template</div><div class="drop-desc">Tải về miễn phí</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a href="contact.html" class="nav-link">Liên hệ</a></div>
+        <div class="nav-item"><a href="about.html" class="nav-link">Về chúng tôi</a></div>
+      </div>
+
+      <div class="nav-right">
+        <div class="nav-icon-btn">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <div class="nav-icon-btn">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <div class="nav-cart-badge">0</div>
+        </div>
+        <a href="login.html" class="nav-btn-login">Đăng nhập</a>
+        <a href="signup.html" class="nav-btn-enroll">Đăng ký khóa học</a>
+      </div>
+
+      <div class="hamburger" id="hamburger" onclick="openMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-hdr" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+    <a href="index.html" class="nav-logo" style="background:var(--navy); padding:8px 12px; border-radius:8px; display:flex; align-items:center;">
+      <div class="nav-logo-mark" style="width:24px;height:24px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="24" height="24"><path d="M3 18V8l9-5 9 5v10"/><path d="M9 18V12h6v6"/></svg>
+      </div>
+      <span style="color:white; font-weight:800; margin-left:8px; font-size:14px;">META ECOM UNI</span>
+    </a>
+    <div class="m-close" onclick="closeMenu()" style="cursor:pointer; background:var(--gray100); padding:8px; border-radius:50%;"><svg viewBox="0 0 24 24" width="20" height="20" stroke="var(--navy)" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
+  </div>
+  <a class="m-link" href="courses.html">Khóa học</a>
+  <a class="m-link-sub" href="courses.html?filter=livestream">Chiến lược Livestream</a>
+  <a class="m-link-sub" href="courses.html?filter=content-ai">Tối ưu Content AI</a>
+  <a class="m-link-sub" href="courses.html?filter=tiktok">Xây kênh TikTok</a>
+  <a class="m-link-sub" href="courses.html?filter=shopee">Shopee & Lazada</a>
+  <a class="m-link-sub" href="courses.html?filter=combo">Combo ưu đãi</a>
+  <a class="m-link" href="enterprise-training.html">Doanh nghiệp</a>
+  <a class="m-link" href="blog.html">Thư viện</a>
+  <a class="m-link" href="contact.html">Liên hệ</a>
+  <a class="m-link" href="about.html">Về chúng tôi</a>
+  <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px;padding-top:20px;">
+    <a href="login.html" style="display:flex;align-items:center;justify-content:center;padding:12px;border:1.5px solid var(--gray200);border-radius:6px;font-weight:600;color:var(--navy);font-size:.9rem">Đăng nhập</a>
+    <a href="signup.html" style="display:flex;align-items:center;justify-content:center;padding:12px;background:var(--red);border-radius:6px;font-weight:700;color:#fff;font-size:.9rem">Đăng ký khóa học</a>
+  </div>
+</div>
+
+<!-- COMPACT HERO & FEATURED SECTION -->
+<div style="background: linear-gradient(135deg, #0b0726 0%, #1a1040 100%); position: relative; overflow: hidden; padding: 70px 0;">
+  <!-- Abstract Glow Background -->
+  <div style="position: absolute; top: -30%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(247, 148, 29, 0.15) 0%, rgba(11, 7, 38, 0) 70%); border-radius: 50%; z-index: 1;"></div>
+  <div style="position: absolute; bottom: -50%; right: 10%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(147, 51, 234, 0.2) 0%, rgba(11, 7, 38, 0) 70%); border-radius: 50%; z-index: 1;"></div>
+  
+  <div class="container-wide" style="position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+    
+    <!-- Left: Main Title -->
+    <div>
+      <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900; color: #fff; line-height: 1.25; margin-bottom: 20px; letter-spacing: -0.02em;">
+        Giải Pháp Đào Tạo <br/>
+        <span style="background: linear-gradient(to right, #F7941D, #ff4e50); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">Nâng Tầm Đội Ngũ</span> <span style="white-space: nowrap;">Doanh Nghiệp</span>
+      </h1>
+      <p style="font-size: 1.15rem; color: #cbd5e1; max-width: 90%; line-height: 1.6; font-weight: 300;">
+        Nâng cao năng lực cạnh tranh cho tổ chức với các khóa đào tạo inhouse thiết kế riêng. Ứng dụng E-Commerce và AI vào quy trình làm việc thực tế.
+      </p>
+
+      <!-- Social Proof element to fill space & add trust -->
+      <div style="margin-top: 32px; display: flex; gap: 16px; align-items: center;">
+        <div style="display: flex;">
+          <img src="images/avt1.jpg" onerror="this.src='https://i.pravatar.cc/100?img=68'" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #1a1040; z-index: 3; position: relative;">
+          <img src="images/avt2.jpg" onerror="this.src='https://i.pravatar.cc/100?img=32'" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #1a1040; z-index: 2; position: relative; margin-left: -14px;">
+          <img src="images/avt3.jpg" onerror="this.src='https://i.pravatar.cc/100?img=47'" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #1a1040; z-index: 1; position: relative; margin-left: -14px;">
+          <div style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #1a1040; background: var(--gray800); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: #fff; z-index: 0; position: relative; margin-left: -14px; background: #334155;">
+            99+
+          </div>
+        </div>
+        <div style="font-size: 0.95rem; color: #cbd5e1; font-weight: 500; line-height: 1.4;">
+          <span style="color: #F7941D; font-weight: 800;">+20.000</span> Học viên <br/> đã tham gia
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Enterprise Lead Form -->
+    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 32px; position: relative;">
+      <h3 style="color: #fff; font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">Nhận Tư Vấn Cấp Cao</h3>
+      <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 24px;">Chuyên gia của chúng tôi sẽ thiết kế lộ trình riêng cho đội ngũ của bạn.</p>
+      
+      <form style="display: flex; flex-direction: column; gap: 16px;">
+        <input type="text" placeholder="Tên doanh nghiệp" style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; font-size: 0.95rem; outline: none;">
+        <input type="text" placeholder="Số điện thoại liên hệ" style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; font-size: 0.95rem; outline: none;">
+        <select style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; font-size: 0.95rem; outline: none; appearance: none;">
+          <option style="color:#000;">Quy mô nhân sự</option>
+          <option style="color:#000;">Dưới 20 người</option>
+          <option style="color:#000;">20 - 50 người</option>
+          <option style="color:#000;">Trên 50 người</option>
+        </select>
+        <button type="button" style="width: 100%; padding: 14px; background: linear-gradient(135deg, var(--brand), #ff4e50); color: #fff; border: none; border-radius: 8px; font-weight: 800; font-size: 1.05rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(247,148,29,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">Gửi Yêu Cầu</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST LOGOS -->
+<section style="padding: 40px 0; background: #fff; border-bottom: 1px solid #e2e8f0;">
+  <div class="container-wide" style="text-align: center;">
+    <p style="font-size: 0.95rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px;">Hơn 500+ doanh nghiệp đã tin tưởng đồng hành</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; opacity: 0.6; filter: grayscale(100%);">
+      <img src="images/logo-viettel.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Viettel_logo_2021.svg/512px-Viettel_logo_2021.svg.png'" style="height: 32px; object-fit: contain;">
+      <img src="images/logo-fpt.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/FPT_logo_2010.svg/512px-FPT_logo_2010.svg.png'" style="height: 32px; object-fit: contain;">
+      <img src="images/logo-shopee.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Shopee.svg/512px-Shopee.svg.png'" style="height: 32px; object-fit: contain;">
+      <img src="images/logo-tiktok.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/TikTok_logo.svg/512px-TikTok_logo.svg.png'" style="height: 32px; object-fit: contain;">
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE SOLUTIONS -->
+<section style="padding: 80px 0; background: #f8fafc;">
+  <div class="container-wide">
+    <div style="text-align: center; max-width: 700px; margin: 0 auto 60px;">
+      <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--navy); margin-bottom: 16px;">Giải Pháp Đào Tạo Toàn Diện</h2>
+      <p style="font-size: 1.1rem; color: #475569;">Chúng tôi cung cấp các gói giải pháp linh hoạt, phù hợp với từng giai đoạn phát triển và quy mô của doanh nghiệp bạn.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
+      <!-- Solution 1 -->
+      <div style="background: #fff; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="width: 64px; height: 64px; border-radius: 16px; background: rgba(247, 148, 29, 0.1); display: flex; align-items: center; justify-content: center; color: var(--brand); margin-bottom: 24px;">
+          <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--navy); margin-bottom: 16px;">Inhouse Training</h3>
+        <p style="color: #64748b; line-height: 1.6; margin-bottom: 24px;">Đào tạo trực tiếp tại doanh nghiệp. Giáo trình được tinh chỉnh 100% dựa trên sản phẩm và vấn đề thực tế của đội ngũ.</p>
+        <ul style="list-style: none; padding: 0; margin: 0; color: #475569; display: flex; flex-direction: column; gap: 12px;">
+          <li style="display: flex; align-items: center; gap: 8px;"><svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--brand)" fill="none" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Phân tích Case Study nội bộ</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--brand)" fill="none" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Thực hành ra kết quả ngay</li>
+        </ul>
+      </div>
+
+      <!-- Solution 2 -->
+      <div style="background: #fff; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; transition: transform 0.3s; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="position: absolute; top: 16px; right: -30px; background: var(--red); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 6px 32px; transform: rotate(45deg);">Phổ biến nhất</div>
+        <div style="width: 64px; height: 64px; border-radius: 16px; background: rgba(147, 51, 234, 0.1); display: flex; align-items: center; justify-content: center; color: #9333ea; margin-bottom: 24px;">
+          <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--navy); margin-bottom: 16px;">Gói E-Learning Team</h3>
+        <p style="color: #64748b; line-height: 1.6; margin-bottom: 24px;">Cấp tài khoản VIP truy cập toàn bộ thư viện khóa học cho toàn bộ nhân sự. Tối ưu chi phí đào tạo quy mô lớn.</p>
+        <ul style="list-style: none; padding: 0; margin: 0; color: #475569; display: flex; flex-direction: column; gap: 12px;">
+          <li style="display: flex; align-items: center; gap: 8px;"><svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--brand)" fill="none" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Quản lý tiến độ học tập</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--brand)" fill="none" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Cập nhật kiến thức liên tục</li>
+        </ul>
+      </div>
+
+      <!-- Solution 3 -->
+      <div style="background: #fff; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="width: 64px; height: 64px; border-radius: 16px; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; color: #3b82f6; margin-bottom: 24px;">
+          <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--navy); margin-bottom: 16px;">Coaching 1:1 C-Level</h3>
+        <p style="color: #64748b; line-height: 1.6; margin-bottom: 24px;">Tư vấn và đồng hành sát sao cùng cấp quản lý/lãnh đạo để xây dựng chiến lược kinh doanh và Marketing tổng thể.</p>
+        <ul style="list-style: none; padding: 0; margin: 0; color: #475569; display: flex; flex-direction: column; gap: 12px;">
+          <li style="display: flex; align-items: center; gap: 8px;"><svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--brand)" fill="none" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Bảo mật thông tin tuyệt đối</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--brand)" fill="none" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Định hướng chiến lược AI</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE CASE STUDIES -->
+<section style="padding: 80px 0; background: #fff;">
+  <div class="container-wide">
+    <div style="text-align: center; max-width: 700px; margin: 0 auto 60px;">
+      <div style="display: inline-block; background: rgba(247, 148, 29, 0.1); color: var(--brand); font-weight: 800; font-size: 0.85rem; padding: 6px 16px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;">Case Studies</div>
+      <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--navy); margin-bottom: 16px;">Câu Chuyện Doanh Nghiệp</h2>
+      <p style="font-size: 1.1rem; color: #475569;">Khám phá cách Meta Ecom Uni đồng hành cùng các đối tác doanh nghiệp trong hành trình xây dựng đội ngũ E-commerce tinh nhuệ.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
+      <!-- Case 1 -->
+      <a href="#" style="display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #f1f5f9; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';">
+        <div style="height: 200px; background: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop') center/cover; position: relative;">
+          <div style="position: absolute; bottom: 16px; left: 16px; background: #fff; padding: 8px 16px; border-radius: 8px; font-weight: 800; color: var(--navy); font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Shopee VN</div>
+        </div>
+        <div style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--navy); margin-bottom: 12px; line-height: 1.4;">Đào Tạo Kỹ Năng Bán Hàng Shopee Cho Đội Ngũ Seller Cấp Cao</h3>
+          <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">Chương trình Inhouse Training giúp các nhà bán hàng VIP tối ưu quy trình vận hành và tăng trưởng doanh thu x3 trong đợt Mega Sale.</p>
+          <div style="color: var(--brand); font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 4px;">
+            Đọc toàn bộ câu chuyện <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Case 2 -->
+      <a href="#" style="display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #f1f5f9; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';">
+        <div style="height: 200px; background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop') center/cover; position: relative;">
+          <div style="position: absolute; bottom: 16px; left: 16px; background: #fff; padding: 8px 16px; border-radius: 8px; font-weight: 800; color: var(--navy); font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">TikTok Shop</div>
+        </div>
+        <div style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--navy); margin-bottom: 12px; line-height: 1.4;">Xây Dựng Hệ Sinh Thái Livestream AI Chuẩn Hóa</h3>
+          <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">Meta Ecom Uni đồng hành cùng đối tác xây dựng mô hình Livestream đa điểm chạm, ứng dụng công nghệ AI để bứt phá giới hạn hiển thị.</p>
+          <div style="color: var(--brand); font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 4px;">
+            Đọc toàn bộ câu chuyện <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Case 3 -->
+      <a href="#" style="display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #f1f5f9; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';">
+        <div style="height: 200px; background: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop') center/cover; position: relative;">
+          <div style="position: absolute; bottom: 16px; left: 16px; background: #fff; padding: 8px 16px; border-radius: 8px; font-weight: 800; color: var(--navy); font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Vietcombank</div>
+        </div>
+        <div style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--navy); margin-bottom: 12px; line-height: 1.4;">Ứng Dụng Gen AI Tối Ưu Nội Dung Marketing Đa Kênh</h3>
+          <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">Khóa đào tạo Gen AI Studio giúp đội ngũ truyền thông ứng dụng trí tuệ nhân tạo để tăng 300% hiệu suất tạo Content và Design nội bộ.</p>
+          <div style="color: var(--brand); font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 4px;">
+            Đọc toàn bộ câu chuyện <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="#" style="display: inline-block; padding: 14px 32px; background: transparent; color: var(--navy); border: 2px solid var(--gray200); border-radius: 8px; font-weight: 800; font-size: 1rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--navy)'; this.style.background='var(--gray50)';" onmouseout="this.style.borderColor='var(--gray200)'; this.style.background='transparent';">Xem Tất Cả Câu Chuyện</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <style>
+    .site-footer {
+      background-color: #f8fafc;
+      padding: 80px 0 40px;
+      border-top: 1px solid #e2e8f0;
+      color: #475569;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      position: relative;
+      z-index: 10;
+    }
+    .site-footer .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+    }
+    .site-footer h4 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--navy, #0b0726);
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .site-footer .footer-links a {
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+      width: fit-content;
+    }
+    .site-footer .footer-links a:hover {
+      color: var(--brand, #ef4b28);
+      transform: translateX(4px);
+    }
+    .footer-social-btn {
+      width: 40px;
+      height: 40px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+    }
+    .footer-social-btn:hover {
+      background: #fff;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
+    }
+    .footer-social-btn.fb:hover { color: #1877F2; }
+    .footer-social-btn.tt:hover { color: #000; }
+    .footer-social-btn.zl:hover { color: #0068FF; }
+    
+    .footer-contact-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .footer-contact-item:hover {
+      transform: translateX(4px);
+    }
+    .footer-contact-item svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--brand, #ef4b28);
+    }
+    .footer-bottom {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 1024px) {
+      .site-footer .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .site-footer {
+        padding: 60px 0 30px;
+      }
+      .site-footer .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <div class="container-wide">
+    <div class="footer-grid">
+      
+      <!-- Column 1: Logo & Info -->
+      <div>
+        <div style="margin-bottom: 24px;">
+          <img src="images/logo-meu-ngang.png" alt="META ECOM UNI" style="height: 44px; width: auto;">
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.7; margin-bottom: 24px; max-width: 320px; color: #475569;">Nền tảng học trực tuyến hiện đại & chuyên nghiệp hàng đầu. Kiến tạo chuyên gia, bứt phá doanh số.</p>
+        <div style="display: flex; gap: 12px;">
+          <!-- Facebook -->
+          <a href="#" class="footer-social-btn fb">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <!-- TikTok -->
+          <a href="#" class="footer-social-btn tt">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+          </a>
+          <!-- Zalo -->
+          <a href="#" class="footer-social-btn zl">
+            <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M21.1 11.21c0-4.88-4.48-8.84-10-8.84S1.1 6.33 1.1 11.21c0 4.88 4.48 8.84 10 8.84 1.34 0 2.62-.24 3.79-.68 1.4.99 3.03 1.64 4.54 1.8.2.02.39-.07.47-.25.08-.18.04-.4-.1-.53-.94-.88-1.58-2.08-1.84-3.32 1.94-1.55 3.14-3.6 3.14-5.86zM8.34 14.5H5.8c-.3 0-.54-.24-.54-.54s.24-.54.54-.54h1.76v-.65h-1.3c-.3 0-.54-.24-.54-.54V11c0-.3.24-.54.54-.54h2.54c.3 0 .54.24.54.54s-.24.54-.54.54H7.04v.65h1.3c.3 0 .54.24.54.54v1.23c0 .3-.24.54-.54.54zm4.24 0h-2.18c-.3 0-.54-.24-.54-.54v-3.5c0-.3.24-.54.54-.54h2.18c.3 0 .54.24.54.54s-.24.54-.54.54h-1.64v.65h1.36c.3 0 .54.24.54.54s-.24.54-.54.54h-1.36v.65h1.64c.3 0 .54.24.54.54s-.24.54-.54.54zm3.8 0h-.63V11c0-.3-.24-.54-.54-.54s-.54.24-.54.54v3.5c0 .3.24.54.54.54h1.17c.3 0 .54-.24.54-.54s-.24-.54-.54-.54zm3.4-.6c-.57.6-1.55.6-2.12 0-.58-.6-.58-1.58 0-2.18.57-.6 1.55-.6 2.12 0 .58.6.58 1.58 0 2.18zm-.39-1.78c-.35-.37-.93-.37-1.28 0-.35.37-.35.98 0 1.35.35.37.93.37 1.28 0 .35-.37.35-.98 0-1.35z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Khóa học -->
+      <div>
+        <h4>Khóa học</h4>
+        <div class="footer-links">
+          <a href="#">Digital Marketing</a>
+          <a href="#">SEO Content</a>
+          <a href="#">Social Media</a>
+          <a href="#">Video Marketing</a>
+          <a href="#">Email Marketing</a>
+        </div>
+      </div>
+
+      <!-- Column 3: Tài nguyên -->
+      <div>
+        <h4>Tài nguyên</h4>
+        <div class="footer-links">
+          <a href="#">Blog</a>
+          <a href="#">Điều khoản sử dụng</a>
+          <a href="#">Chính sách bảo mật</a>
+          <a href="#">Chính sách hoàn tiền</a>
+        </div>
+      </div>
+
+      <!-- Column 4: Liên hệ -->
+      <div>
+        <h4>Liên hệ</h4>
+        <div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span style="font-size: 0.95rem; color: #64748b; line-height: 1.6;">Tầng 4, Số 111 Cù Chính Lan<br>Thanh Xuân, Hà Nội</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span style="font-size: 0.95rem; color: #64748b;">0929 996 699</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span style="font-size: 0.95rem; color: #64748b;">info@meu.edu.vn</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="footer-bottom">
+      <div>&copy; 2024 META ECOM UNI. All rights reserved.</div>
+      <div style="display: flex; gap: 20px;">
+        <a href="#" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--brand)'" onmouseout="this.style.color='#94a3b8'">Privacy</a>
+        <a href="#" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--brand)'" onmouseout="this.style.color='#94a3b8'">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

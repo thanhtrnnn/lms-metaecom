@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khóa học Gen AI Studio - META ECOM UNI</title>
+<meta name="description" content="Khóa học Gen AI Studio: Hướng dẫn ứng dụng thực chiến Trí tuệ Nhân tạo (ChatGPT, Gemini, Midjourney) vào tối ưu Marketing và E-Commerce.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+
+<!-- BREADCRUMB SCHEMA (SEO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Trang chủ",
+    "item": "https://metaecom.uni/"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Khóa học",
+    "item": "https://metaecom.uni/courses"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Kỹ năng AI",
+    "item": "https://metaecom.uni/courses/ai"
+  },{
+    "@type": "ListItem",
+    "position": 4,
+    "name": "Gen AI Studio"
+  }]
+}
+</script>
+
+<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="course.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+        <img src="images/logo-meu-ngang.png" alt="META ECOM UNI" style="height: 48px; width: auto;">
+      </a>
+
+      <div class="nav-menu">
+        <div class="nav-item">
+          <div class="nav-link">Khóa học
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="nav-drop" style="left:0;transform:none">
+            <div class="nav-drop-2col">
+              <div class="drop-col-links">
+                <a href="courses.html?filter=all" class="drop-text-link">Tất cả khóa học</a>
+                <a href="courses.html?filter=livestream" class="drop-text-link">Chiến lược Livestream</a>
+                <a href="courses.html?filter=content-ai" class="drop-text-link">Tối ưu Content AI</a>
+                <a href="courses.html?filter=tiktok" class="drop-text-link">Xây kênh TikTok</a>
+                <a href="courses.html?filter=shopee" class="drop-text-link">Shopee & Lazada</a>
+                <a href="courses.html?filter=combo" class="drop-text-link">Combo ưu đãi</a>
+                <a href="#" class="drop-text-link special">+ Tạo bộ khóa học</a>
+              </div>
+              <a href="course-detail.html" class="drop-featured" style="text-decoration:none;">
+                <div class="drop-feat-img">🤖</div>
+                <div class="drop-feat-body">
+                  <div class="drop-feat-tag">Nổi bật</div>
+                  <div class="drop-feat-title">Gen AI Studio: Ứng dụng AI vào Marketing thực chiến</div>
+                  <div class="drop-feat-cta">Xem khóa học →</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="enterprise-training.html" class="nav-link">Doanh nghiệp</a>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">Thư viện
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="nav-drop" style="min-width:360px;left:0;transform:none">
+            <div class="nav-drop-grid" style="grid-template-columns:1fr 1fr">
+              <a href="blog.html" class="drop-item">
+                <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+                <div><div class="drop-label">Blog & Kiến thức</div><div class="drop-desc">Bài viết chuyên sâu mỗi tuần</div></div>
+              </a>
+              <a href="trial.html" class="drop-item">
+                <div class="drop-icon"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 9.36l-7.1 7.1a1 1 0 0 1-1.4 0l-2.8-2.8a1 1 0 0 1 0-1.4l7.1-7.1a6 6 0 0 1 9.36-7.94l-3.77 3.77a1 1 0 0 0 0 1.4z"/></svg></div>
+                <div><div class="drop-label">Đăng kí học thử</div><div class="drop-desc">Trải nghiệm bài giảng miễn phí</div></div>
+              </a>
+              <a href="webinar.html" class="drop-item">
+                <div class="drop-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+                <div><div class="drop-label">Webinar miễn phí</div><div class="drop-desc">Học trực tiếp với chuyên gia</div></div>
+              </a>
+              <a href="ebook.html" class="drop-item">
+                <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div><div class="drop-label">E-book & Template</div><div class="drop-desc">Tải về miễn phí</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a href="contact.html" class="nav-link">Liên hệ</a></div>
+        <div class="nav-item"><a href="about.html" class="nav-link">Về chúng tôi</a></div>
+      </div>
+
+      <div class="nav-right">
+        <div class="nav-icon-btn">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <div class="nav-icon-btn">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <div class="nav-cart-badge">0</div>
+        </div>
+        <a href="login.html" class="nav-btn-login">Đăng nhập</a>
+        <a href="signup.html" class="nav-btn-enroll">Đăng ký khóa học</a>
+      </div>
+
+      <div class="hamburger" id="hamburger" onclick="openMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-hdr" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+    <a href="index.html" class="nav-logo" style="background:var(--navy); padding:8px 12px; border-radius:8px; display:flex; align-items:center;">
+      <div class="nav-logo-mark" style="width:24px;height:24px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="24" height="24"><path d="M3 18V8l9-5 9 5v10"/><path d="M9 18V12h6v6"/></svg>
+      </div>
+      <span style="color:white; font-weight:800; margin-left:8px; font-size:14px;">META ECOM UNI</span>
+    </a>
+    <div class="m-close" onclick="closeMenu()" style="cursor:pointer; background:var(--gray100); padding:8px; border-radius:50%;"><svg viewBox="0 0 24 24" width="20" height="20" stroke="var(--navy)" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
+  </div>
+  <a class="m-link" href="courses.html">Khóa học</a>
+  <a class="m-link-sub" href="courses.html?filter=livestream">Chiến lược Livestream</a>
+  <a class="m-link-sub" href="courses.html?filter=content-ai">Tối ưu Content AI</a>
+  <a class="m-link-sub" href="courses.html?filter=tiktok">Xây kênh TikTok</a>
+  <a class="m-link-sub" href="courses.html?filter=shopee">Shopee & Lazada</a>
+  <a class="m-link-sub" href="courses.html?filter=combo">Combo ưu đãi</a>
+  <a class="m-link" href="enterprise-training.html">Doanh nghiệp</a>
+  <a class="m-link" href="blog.html">Thư viện</a>
+  <a class="m-link" href="contact.html">Liên hệ</a>
+  <a class="m-link" href="about.html">Về chúng tôi</a>
+  <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px;padding-top:20px;">
+    <a href="login.html" style="display:flex;align-items:center;justify-content:center;padding:12px;border:1.5px solid var(--gray200);border-radius:6px;font-weight:600;color:var(--navy);font-size:.9rem">Đăng nhập</a>
+    <a href="signup.html" style="display:flex;align-items:center;justify-content:center;padding:12px;background:var(--red);border-radius:6px;font-weight:700;color:#fff;font-size:.9rem">Đăng ký khóa học</a>
+  </div>
+</div>
+
+<!-- HERO SECTION -->
+<header class="course-hero">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="BREADCRUMB">
+      <a href="/">Trang chủ</a>
+      <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      <a href="/courses">Khóa học</a>
+      <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      <a href="/courses/ai">Kỹ năng AI</a>
+      <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      <span>Gen AI Studio</span>
+    </nav>
+    <span class="ch-badge">Mới ra mắt</span>
+    <h1 class="ch-title">Gen AI Studio: Ứng dụng AI (ChatGPT, Midjourney) vào Marketing thực chiến</h1>
+    <p class="ch-desc">Xây dựng quy trình tự động hóa Content, Creative và Tối ưu quảng cáo nhanh gấp 5 lần với bộ công cụ Generative AI tiên tiến nhất dành cho Marketer.</p>
+    
+    <div class="ch-meta">
+      <div class="ch-meta-item ch-rating">
+        <svg viewBox="0 0 24 24" fill="#F59E0B" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        4.9 (428 Đánh giá)
+      </div>
+      <div class="ch-meta-item">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        1.800 Học viên
+      </div>
+      <div class="ch-meta-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Cập nhật: Tháng 6, 2025
+      </div>
+    </div>
+
+    <div class="ch-instructor">
+      <div class="ch-inst-av">VN</div>
+      <div>
+        <div class="ch-inst-name">Việt Nguyễn</div>
+        <div class="ch-inst-role">AI Marketing Lead @ TechBrand</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="container course-layout">
+  <!-- CỘT TRÁI: CHI TIẾT -->
+  <article class="content-area">
+    <nav class="content-nav">
+      <div class="content-nav-item active" onclick="switchTab('curriculum', this)">Nội dung khóa học</div>
+      <div class="content-nav-item" onclick="switchTab('description', this)">Mô tả</div>
+      <div class="content-nav-item">Giảng viên</div>
+      <div class="content-nav-item">Đánh giá</div>
+    </nav>
+
+    <!-- TAB 1: CURRICULUM -->
+    <div id="tab-curriculum" class="tab-pane" style="display: block;">
+      <section>
+        <div class="curriculum-meta" style="margin-bottom: 24px;">
+          <span style="font-weight: 600; color: var(--navy); font-size: .95rem;">0 phần • 0 bài học • 0m</span>
+          <button style="color:var(--red);font-weight:600;font-size:.85rem;">Mở rộng tất cả</button>
+        </div>
+
+        <div class="accordion">
+          <!-- Rendered by JS -->
+        </div>
+      </section>
+    </div>
+
+    <!-- TAB 2: DESCRIPTION -->
+    <div id="tab-description" class="tab-pane" style="display: none;">
+      <!-- WHAT YOU'LL LEARN -->
+      <section class="learning-box">
+        <h2 class="section-title">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Bạn sẽ học được gì?
+        </h2>
+        <div class="learning-grid">
+          <div class="learning-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Làm chủ Prompt Engineering chuyên sâu để giao tiếp hiệu quả với AI.</div>
+          <div class="learning-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Tự động hóa kịch bản nội dung (Content Plan) 30 ngày trong 1 giờ.</div>
+          <div class="learning-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sử dụng Midjourney tạo hình ảnh quảng cáo độc bản, không vi phạm bản quyền.</div>
+          <div class="learning-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Tích hợp AI API vào Google Sheets để tối ưu Data Analytics.</div>
+          <div class="learning-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Xây dựng Chatbot CSKH thông minh (Agentic AI) chốt đơn tự động.</div>
+          <div class="learning-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bảo mật thông tin doanh nghiệp khi sử dụng các công cụ AI public.</div>
+        </div>
+      </section>
+
+      <!-- GIỚI THIỆU KHÓA HỌC -->
+      <section class="text-content" id="courseDescriptionContainer">
+        <h2 class="section-title">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          Giới thiệu khóa học
+        </h2>
+        <div id="courseDescriptionText">
+          <p>Trí tuệ nhân tạo (AI) đang định hình lại toàn bộ quy trình làm Marketing và E-Commerce. Thay vì dùng AI như một công cụ viết bài hời hợt, <strong>Gen AI Studio</strong> mang đến phương pháp tiếp cận có hệ thống: Xây dựng tư duy "AI-First".</p>
+          <p>Khóa học này không tập trung vào lý thuyết viển vông. Mọi bài giảng đều dựa trên các Case Study thực tế đang được áp dụng tại các Agency và Brands lớn. Bạn sẽ được cung cấp sẵn các bộ Template Prompt độc quyền đã được tối ưu qua hàng trăm dự án.</p>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      let currentCourseId = null;
+      
+      function switchTab(tabId, el) {
+        // Update active class on nav
+        document.querySelectorAll('.content-nav-item').forEach(item => item.classList.remove('active'));
+        if(el) el.classList.add('active');
+        
+        // Hide all tabs
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.style.display = 'none');
+        
+        // Show selected tab
+        const targetTab = document.getElementById('tab-' + tabId);
+        if(targetTab) targetTab.style.display = 'block';
+      }
+
+      window.previewLesson = function(lessonId) {
+        if (!currentCourseId) return;
+        localStorage.setItem('learningCourseId', currentCourseId);
+        if (lessonId) {
+          localStorage.setItem('learningPreviewLessonId', lessonId);
+        } else {
+          localStorage.removeItem('learningPreviewLessonId');
+        }
+        window.location.href = 'learning.html';
+      }
+    </script>
+  </article>
+
+  <!-- CỘT PHẢI: STICKY SIDEBAR -->
+  <aside class="sidebar">
+    <div class="video-preview" onclick="previewLesson()">
+      <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      <span style="position:absolute;bottom:10px;font-size:.7rem;font-weight:700;color:#fff;background:rgba(0,0,0,.6);padding:4px 8px;border-radius:4px;">Trailer khóa học</span>
+    </div>
+    
+    <div class="price-box" style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 24px;">
+      <span class="price-new">3.990.000đ</span>
+      <span class="price-old">4.990.000đ</span>
+      <span class="price-badge" style="background: rgba(237, 28, 36, 0.1); color: var(--red); font-size: 0.75rem; font-weight: 700; padding: 2px 6px; border-radius: 4px;">-20%</span>
+    </div>
+
+    <button class="sidebar-cta" onclick="addToCart(event, {name: 'Gen AI Studio: Ứng dụng AI vào Marketing thực chiến', price: 1990000, img: 'images/livestream-ai.avif'})">
+      <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" style="margin-right: 8px;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      Thêm vào giỏ hàng
+    </button>
+    <button class="sidebar-cta-outline" onclick="addToCart(event, {name: 'Gen AI Studio: Ứng dụng AI vào Marketing thực chiến', price: 1990000, img: 'images/livestream-ai.avif'}); setTimeout(()=>alert('Chuyển hướng sang cổng thanh toán...'), 500)">Mua ngay</button>
+
+    <div style="font-size:.8rem;text-align:center;color:var(--gray400);margin-bottom:24px;">Đảm bảo hoàn tiền trong 30 ngày</div>
+
+    <h3 class="includes-title" style="font-size: .95rem; font-weight: 700; text-transform: none; margin-bottom: 16px;">Khóa học bao gồm:</h3>
+    <ul class="includes-list" style="margin-bottom: 24px;">
+      <li class="inc-item"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg> <span class="includes-hours">Giờ video theo yêu cầu</span></li>
+      <li class="inc-item"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> <span class="includes-lessons">23 bài học</span></li>
+      <li class="inc-item"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Tài liệu đính kèm</li>
+    </ul>
+    
+    <div style="display: flex; justify-content: center; gap: 24px; border-top: 1px solid var(--gray200); padding-top: 20px;">
+      <button style="display: flex; align-items: center; gap: 8px; font-size: .85rem; color: var(--gray600); font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--gray600)'">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Lưu
+      </button>
+      <button style="display: flex; align-items: center; gap: 8px; font-size: .85rem; color: var(--gray600); font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--gray600)'">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Chia sẻ
+      </button>
+    </div>
+  </aside>
+</main>
+
+<!-- Đóng vai trò là Mobile Sticky CTA -->
+<div class="mobile-sticky-cta" style="display: none;">
+  <div>
+    <div style="font-size:.7rem;color:var(--gray400);text-decoration:line-through;">3.590.000đ</div>
+    <div class="msc-price">1.990.000đ</div>
+  </div>
+  <button class="msc-btn" onclick="addToCart(event, {name: 'Gen AI Studio: Ứng dụng AI vào Marketing thực chiến', price: 1990000, img: 'images/livestream-ai.avif'}); setTimeout(()=>alert('Chuyển hướng sang cổng thanh toán...'), 500)">Đăng ký ngay</button>
+</div>
+
+<script>
+  // Mobile sticky CTA display
+  if(window.innerWidth <= 768) {
+    document.querySelector('.mobile-sticky-cta').style.display = 'flex';
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    function formatMoney(num) {
+      return (num || 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "đ";
+    }
+
+    const adminCoursesStr = localStorage.getItem('adminCourses');
+    const selectedCourseId = localStorage.getItem('selectedCourseId');
+    if (adminCoursesStr && selectedCourseId) {
+      try {
+        const adminCourses = JSON.parse(adminCoursesStr);
+        const course = adminCourses.find(c => c.id == selectedCourseId);
+        if (course) {
+          currentCourseId = course.id;
+          // Update title
+          const titleEls = document.querySelectorAll('.ch-title, title');
+          titleEls.forEach(el => el.textContent = course.title);
+          
+          // Breadcrumb
+          const bcSpan = document.querySelector('.breadcrumbs span');
+          if(bcSpan) bcSpan.textContent = course.title;
+          
+          // Update descriptions
+          const heroDesc = document.querySelector('.ch-desc');
+          if(heroDesc) heroDesc.innerHTML = course.description;
+          
+          const tabDesc = document.getElementById('courseDescriptionText');
+          if(tabDesc) tabDesc.innerHTML = course.description;
+          
+          // Update prices
+          const priceNew = document.querySelector('.price-new');
+          const priceOld = document.querySelector('.price-old');
+          const mscPrice = document.querySelector('.msc-price');
+          const mscOldPrice = document.querySelector('.mobile-sticky-cta > div > div:first-child');
+          
+          if(priceNew) priceNew.textContent = formatMoney(course.price);
+          if(mscPrice) mscPrice.textContent = formatMoney(course.price);
+          
+          if(priceOld && course.oldPrice > course.price) {
+             priceOld.textContent = formatMoney(course.oldPrice);
+             priceOld.style.display = 'inline-block';
+             if(mscOldPrice) {
+               mscOldPrice.textContent = formatMoney(course.oldPrice);
+               mscOldPrice.style.display = 'block';
+             }
+          } else {
+             if(priceOld) priceOld.style.display = 'none';
+             if(mscOldPrice) mscOldPrice.style.display = 'none';
+          }
+          
+          // Update Add to Cart buttons
+          const cartBtns = document.querySelectorAll('.sidebar-cta, .sidebar-cta-outline, .msc-btn');
+          const safeTitle = course.title.replace(/'/g, "\\'");
+          const safeImg = (course.image || '').replace(/'/g, "\\'");
+          
+          if(cartBtns[0]) cartBtns[0].setAttribute('onclick', `addToCart(event, {name: '${safeTitle}', price: ${course.price}, img: '${safeImg}'})`);
+          if(cartBtns[1]) cartBtns[1].setAttribute('onclick', `addToCart(event, {name: '${safeTitle}', price: ${course.price}, img: '${safeImg}'}); setTimeout(()=>alert('Chuyển hướng sang cổng thanh toán...'), 500)`);
+          if(cartBtns[2]) cartBtns[2].setAttribute('onclick', `addToCart(event, {name: '${safeTitle}', price: ${course.price}, img: '${safeImg}'}); setTimeout(()=>alert('Chuyển hướng sang cổng thanh toán...'), 500)`);
+          
+          // Update Curriculum
+          const accordion = document.querySelector('.accordion');
+          const currMeta = document.querySelector('.curriculum-meta span');
+          
+          if(accordion && course.curriculum && course.curriculum.length > 0) {
+            let totalLessons = 0;
+            let accHtml = '';
+            
+            course.curriculum.forEach((sec, sIndex) => {
+              const activeClass = sIndex === 0 ? 'active' : '';
+              let lessonsHtml = '';
+              
+              if(sec.lessons && sec.lessons.length > 0) {
+                totalLessons += sec.lessons.length;
+                sec.lessons.forEach((l, lIndex) => {
+                  const isPreview = l.isPreview;
+                  
+                  const icon = isPreview 
+                    ? `<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>` 
+                    : `<svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+                    
+                  const previewBtn = isPreview
+                    ? `<span class="lesson-preview" onclick="event.stopPropagation(); previewLesson('${l.id}')" style="margin-right:12px;">Học thử</span>`
+                    : '';
+                  
+                  lessonsHtml += `
+                    <div class="lesson-item" ${isPreview ? `style="cursor:pointer;" onclick="previewLesson('${l.id}')"` : ''}>
+                      <div class="lesson-left">
+                        <div class="lesson-icon-wrap">${lIndex + 1}</div>
+                        ${icon}
+                        <span class="lesson-title-text">${lIndex + 1}. ${l.title}</span>
+                      </div>
+                      <div class="lesson-right">${previewBtn}${l.duration ? (l.duration + 'm') : '0m'}</div>
+                    </div>
+                  `;
+                });
+              }
+              
+              accHtml += `
+                <div class="acc-item ${activeClass}">
+                  <div class="acc-header" onclick="this.parentElement.classList.toggle('active')">
+                    <div class="acc-header-left">
+                      <div class="acc-header-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                      </div>
+                      <div>
+                        <div class="acc-header-title">BUỔI ${String(sIndex + 1).padStart(2, '0')}: ${sec.title}</div>
+                        <div class="acc-header-meta">${sec.lessons ? sec.lessons.length : 0} bài học • 0m</div>
+                      </div>
+                    </div>
+                    <svg class="acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </div>
+                  <div class="acc-body">
+                    ${lessonsHtml || '<div style="padding: 16px 20px; color: #64748b;">Chưa có bài học</div>'}
+                  </div>
+                </div>
+              `;
+            });
+            
+            accordion.innerHTML = accHtml;
+            if(currMeta) currMeta.textContent = `${course.curriculum.length} phần • ${totalLessons} bài học • 0m`;
+            
+            const incLessons = document.querySelector('.includes-lessons');
+            if(incLessons) incLessons.textContent = `${totalLessons} bài học`;
+          } else {
+            if(accordion) accordion.innerHTML = '<div style="padding: 24px; text-align: center; color: #64748b; border: 1px dashed var(--border); border-radius: 12px;">Nội dung khóa học đang được cập nhật.</div>';
+            if(currMeta) currMeta.textContent = `0 Phần • 0 Bài giảng`;
+            
+            const incLessons = document.querySelector('.includes-lessons');
+            if(incLessons) incLessons.textContent = `0 bài học`;
+          }
+        }
+      } catch(e) { console.error('Error rendering course details:', e); }
+    }
+  });
+</script>
+
+<script src="main.js" defer></script>
+</body>
+</html>
