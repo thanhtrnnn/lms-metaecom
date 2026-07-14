@@ -1,29 +1,29 @@
-'use client';
+"use client";
 
-import NextLink from 'next/link';
-import Image from 'next/image';
-import {usePathname, useRouter} from 'next/navigation';
+import NextLink from "next/link";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import {
   TopNav,
   TopNavHeading,
   TopNavItem,
   TopNavMegaMenu,
   TopNavMegaMenuItem,
-} from '@astryxdesign/core/TopNav';
-import {Button} from '@astryxdesign/core/Button';
-import {Badge} from '@astryxdesign/core/Badge';
-import {HStack} from '@astryxdesign/core/HStack';
-import {DropdownMenu} from '@astryxdesign/core/DropdownMenu';
-import {ShoppingCart, LogOut, User, GraduationCap} from 'lucide-react';
+} from "@astryxdesign/core/TopNav";
+import { Button } from "@astryxdesign/core/Button";
+import { Badge } from "@astryxdesign/core/Badge";
+import { HStack } from "@astryxdesign/core/HStack";
+import { DropdownMenu } from "@astryxdesign/core/DropdownMenu";
+import { ShoppingCart, LogOut, User, GraduationCap } from "lucide-react";
 
-import {nav, site} from '@/data/site';
-import {useAuth, useCart, useHasMounted} from '@/lib/stores';
+import { nav, site } from "@/data/site";
+import { useAuth, useCart, useHasMounted } from "@/lib/stores";
 
 export function SiteHeader() {
   const pathname = usePathname();
   const router = useRouter();
   const cart = useCart();
-  const {isLoggedIn, user, logout} = useAuth();
+  const { isLoggedIn, user, logout } = useAuth();
 
   // Cart count and auth state come from localStorage, so they differ between
   // the server snapshot and the browser. Hold the neutral state until mounted
@@ -43,7 +43,8 @@ export function SiteHeader() {
               width={132}
               height={32}
               priority
-              style={{height: 32, width: 'auto'}}
+              className="site-logo"
+              style={{ height: 32, width: "auto" }}
             />
           </NextLink>
         </TopNavHeading>
@@ -89,28 +90,28 @@ export function SiteHeader() {
           {mounted && isLoggedIn ? (
             <DropdownMenu
               button={{
-                label: user?.name ?? 'Tài khoản',
-                variant: 'ghost',
+                label: user?.name ?? "Tài khoản",
+                variant: "ghost",
                 icon: <User aria-hidden />,
               }}
               items={[
                 {
-                  label: 'Trang cá nhân',
+                  label: "Trang cá nhân",
                   icon: <User aria-hidden />,
-                  onClick: () => router.push('/tai-khoan'),
+                  onClick: () => router.push("/tai-khoan"),
                 },
                 {
-                  label: 'Khóa học của tôi',
+                  label: "Khóa học của tôi",
                   icon: <GraduationCap aria-hidden />,
-                  onClick: () => router.push('/tai-khoan/khoa-hoc-cua-toi'),
+                  onClick: () => router.push("/tai-khoan/khoa-hoc-cua-toi"),
                 },
-                {type: 'divider'},
+                { type: "divider" },
                 {
-                  label: 'Đăng xuất',
+                  label: "Đăng xuất",
                   icon: <LogOut aria-hidden />,
                   onClick: () => {
                     logout();
-                    router.push('/');
+                    router.push("/");
                   },
                 },
               ]}

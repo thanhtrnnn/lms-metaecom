@@ -1,16 +1,16 @@
-import NextLink from 'next/link';
-import Image from 'next/image';
-import {VStack} from '@astryxdesign/core/VStack';
-import {HStack} from '@astryxdesign/core/HStack';
-import {Grid} from '@astryxdesign/core/Grid';
-import {Text} from '@astryxdesign/core/Text';
-import {Heading} from '@astryxdesign/core/Heading';
-import {Link} from '@astryxdesign/core/Link';
-import {Divider} from '@astryxdesign/core/Divider';
-import {Section} from '@astryxdesign/core/Section';
-import {MapPin, Phone, Mail} from 'lucide-react';
+import NextLink from "next/link";
+import Image from "next/image";
+import { VStack } from "@astryxdesign/core/VStack";
+import { HStack } from "@astryxdesign/core/HStack";
+import { Grid } from "@astryxdesign/core/Grid";
+import { Text } from "@astryxdesign/core/Text";
+import { Heading } from "@astryxdesign/core/Heading";
+import { Link } from "@astryxdesign/core/Link";
+import { Divider } from "@astryxdesign/core/Divider";
+import { Section } from "@astryxdesign/core/Section";
+import { MapPin, Phone, Mail } from "lucide-react";
 
-import {footerColumns, site} from '@/data/site';
+import { footerColumns, site } from "@/data/site";
 
 export function SiteFooter() {
   return (
@@ -24,7 +24,8 @@ export function SiteFooter() {
                 alt={site.name}
                 width={132}
                 height={32}
-                style={{height: 32, width: 'auto'}}
+                className="site-logo"
+                style={{ height: 32, width: "auto" }}
               />
             </NextLink>
             <Text type="supporting" color="secondary">
@@ -54,7 +55,7 @@ export function SiteFooter() {
               </HStack>
               <HStack gap={1} vAlign="center">
                 <Phone size={16} aria-hidden />
-                <Link href={`tel:${site.contact.phone.replace(/\s/g, '')}`}>
+                <Link href={`tel:${site.contact.phone.replace(/\s/g, "")}`}>
                   {site.contact.phone}
                 </Link>
               </HStack>

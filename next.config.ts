@@ -45,11 +45,19 @@ const legacyRoutes: Record<string, string> = {
 
 const nextConfig: NextConfig = {
   images: {
+    // The hosts the ported content actually uses.
+    //
+    // The trailing wildcard is deliberate: admins paste an arbitrary image URL
+    // when authoring a course, and next/image throws a hard 500 on any host not
+    // listed here — so a whitelist turns a typo into a broken storefront page.
+    // This is a localStorage prototype with a single trusted admin; if it ever
+    // gets a real backend, drop the wildcard and validate the URL on write.
     remotePatterns: [
       {protocol: 'https', hostname: 'images.unsplash.com'},
       {protocol: 'https', hostname: 'upload.wikimedia.org'},
       {protocol: 'https', hostname: 'ui-avatars.com'},
       {protocol: 'https', hostname: 'i.pravatar.cc'},
+      {protocol: 'https', hostname: '**'},
     ],
   },
   async redirects() {

@@ -7,6 +7,7 @@ import {Theme} from '@astryxdesign/core/theme';
 import '@astryxdesign/core/reset.css';
 import '@astryxdesign/core/astryx.css';
 import '../theme/theme.css';
+import './site.css';
 
 import {neutralTheme} from '../theme/neutral';
 import {Providers} from '@/components/Providers';

@@ -1,17 +1,17 @@
-import Image from 'next/image';
-import {ClickableCard} from '@astryxdesign/core/ClickableCard';
-import {VStack} from '@astryxdesign/core/VStack';
-import {HStack} from '@astryxdesign/core/HStack';
-import {Heading} from '@astryxdesign/core/Heading';
-import {Text} from '@astryxdesign/core/Text';
-import {Badge} from '@astryxdesign/core/Badge';
-import {AspectRatio} from '@astryxdesign/core/AspectRatio';
-import {Star, Users} from 'lucide-react';
+import Image from "next/image";
+import { ClickableCard } from "@astryxdesign/core/ClickableCard";
+import { VStack } from "@astryxdesign/core/VStack";
+import { HStack } from "@astryxdesign/core/HStack";
+import { Heading } from "@astryxdesign/core/Heading";
+import { Text } from "@astryxdesign/core/Text";
+import { Badge } from "@astryxdesign/core/Badge";
+import { AspectRatio } from "@astryxdesign/core/AspectRatio";
+import { Star, Users } from "lucide-react";
 
-import type {Course} from '@/lib/types';
-import {discountPercent, formatVnd} from '@/lib/format';
+import type { Course } from "@/lib/types";
+import { discountPercent, formatVnd } from "@/lib/format";
 
-export function CourseCard({course}: {course: Course}) {
+export function CourseCard({ course }: { course: Course }) {
   const off = discountPercent(course.price, course.oldPrice);
 
   return (
@@ -27,7 +27,7 @@ export function CourseCard({course}: {course: Course}) {
             alt={course.title}
             fill
             sizes="(max-width: 768px) 100vw, 320px"
-            style={{objectFit: 'cover'}}
+            style={{ objectFit: "cover" }}
           />
         </AspectRatio>
 

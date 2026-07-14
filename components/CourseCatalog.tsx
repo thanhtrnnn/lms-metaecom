@@ -1,42 +1,45 @@
-'use client';
+"use client";
 
-import {useMemo, useState} from 'react';
-import {useRouter, useSearchParams} from 'next/navigation';
-import {VStack} from '@astryxdesign/core/VStack';
-import {HStack} from '@astryxdesign/core/HStack';
-import {StackItem} from '@astryxdesign/core/Stack';
-import {Grid} from '@astryxdesign/core/Grid';
-import {Heading} from '@astryxdesign/core/Heading';
-import {Text} from '@astryxdesign/core/Text';
-import {Card} from '@astryxdesign/core/Card';
-import {Slider} from '@astryxdesign/core/Slider';
-import {CheckboxList, CheckboxListItem} from '@astryxdesign/core/CheckboxList';
-import {Collapsible} from '@astryxdesign/core/Collapsible';
+import { useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { VStack } from "@astryxdesign/core/VStack";
+import { HStack } from "@astryxdesign/core/HStack";
+import { StackItem } from "@astryxdesign/core/Stack";
+import { Grid } from "@astryxdesign/core/Grid";
+import { Heading } from "@astryxdesign/core/Heading";
+import { Text } from "@astryxdesign/core/Text";
+import { Card } from "@astryxdesign/core/Card";
+import { Slider } from "@astryxdesign/core/Slider";
+import {
+  CheckboxList,
+  CheckboxListItem,
+} from "@astryxdesign/core/CheckboxList";
+import { Collapsible } from "@astryxdesign/core/Collapsible";
 import {
   SegmentedControl,
   SegmentedControlItem,
-} from '@astryxdesign/core/SegmentedControl';
-import {EmptyState} from '@astryxdesign/core/EmptyState';
-import {Button} from '@astryxdesign/core/Button';
-import {SearchX} from 'lucide-react';
+} from "@astryxdesign/core/SegmentedControl";
+import { EmptyState } from "@astryxdesign/core/EmptyState";
+import { Button } from "@astryxdesign/core/Button";
+import { SearchX } from "lucide-react";
 
-import {CourseCard} from './CourseCard';
-import {useCourses} from '@/lib/stores';
+import { CourseCard } from "./CourseCard";
+import { useCourses } from "@/lib/stores";
 import {
   courseCategories,
   courseLevels,
   courseTypes,
   priceRange,
-} from '@/data/courses';
-import {formatVnd} from '@/lib/format';
+} from "@/data/courses";
+import { formatVnd } from "@/lib/format";
 
 export function CourseCatalog() {
   const router = useRouter();
   const params = useSearchParams();
-  const {courses} = useCourses();
+  const { courses } = useCourses();
 
   // ?filter= is how the nav mega-menu deep-links into a category.
-  const category = params.get('filter') ?? 'all';
+  const category = params.get("filter") ?? "all";
 
   const [price, setPrice] = useState<[number, number]>([
     priceRange.min,
@@ -48,8 +51,8 @@ export function CourseCatalog() {
   const visible = useMemo(
     () =>
       courses.filter((c) => {
-        if (c.status !== 'active') return false;
-        if (category !== 'all' && c.categorySlug !== category) return false;
+        if (c.status !== "active") return false;
+        if (category !== "all" && c.categorySlug !== category) return false;
         if (c.price < price[0] || c.price > price[1]) return false;
         if (levels.length && (!c.level || !levels.includes(c.level)))
           return false;
@@ -60,7 +63,7 @@ export function CourseCatalog() {
   );
 
   const setCategory = (next: string) => {
-    router.push(next === 'all' ? '/khoa-hoc' : `/khoa-hoc?filter=${next}`, {
+    router.push(next === "all" ? "/khoa-hoc" : `/khoa-hoc?filter=${next}`, {
       scroll: false,
     });
   };
@@ -69,11 +72,11 @@ export function CourseCatalog() {
     setPrice([priceRange.min, priceRange.max]);
     setLevels([]);
     setTypes([]);
-    router.push('/khoa-hoc', {scroll: false});
+    router.push("/khoa-hoc", { scroll: false });
   };
 
   const isFiltered =
-    category !== 'all' ||
+    category !== "all" ||
     levels.length > 0 ||
     types.length > 0 ||
     price[0] !== priceRange.min ||
@@ -175,15 +178,11 @@ export function CourseCatalog() {
                 title="Không tìm thấy khóa học"
                 description="Thử nới rộng khoảng giá hoặc bỏ bớt bộ lọc."
                 actions={
-                  <Button
-                    label="Xóa lọc"
-                    variant="secondary"
-                    onClick={reset}
-                  />
+                  <Button label="Xóa lọc" variant="secondary" onClick={reset} />
                 }
               />
             ) : (
-              <Grid gap={4} columns={{minWidth: 260}}>
+              <Grid gap={4} columns={{ minWidth: 260 }}>
                 {visible.map((c) => (
                   <CourseCard key={c.id} course={c} />
                 ))}

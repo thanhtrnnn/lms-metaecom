@@ -1,0 +1,22 @@
+/*
+ * The only hand-written CSS in the project. Astryx owns everything else.
+ *
+ * logo-meu-ngang.png is a transparent PNG whose wordmark is near-black, so on
+ * astryx's dark surfaces the text disappears and only the orange mark survives.
+ * There is no light variant of the asset, so render it monochrome-white in dark
+ * mode — legible and conventional. Supplying a proper light-mode logo file
+ * would be better; drop it in and delete this rule.
+ */
+@media (prefers-color-scheme: dark) {
+  .site-logo {
+    filter: brightness(0) invert(1);
+  }
+}
+
+/* Astryx's Theme sets color-scheme, but an explicit theme override should win. */
+:root[data-theme='dark'] .site-logo {
+  filter: brightness(0) invert(1);
+}
+:root[data-theme='light'] .site-logo {
+  filter: none;
+}
