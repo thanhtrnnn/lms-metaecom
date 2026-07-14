@@ -45,43 +45,46 @@ export default function HomePage() {
           claims, the headline is the site's own <title> tagline and the lead
           paragraph is its real "Kiến tạo hệ sinh thái" copy. */}
       <Section padding={8}>
-        <HStack gap={6} vAlign="center" wrap="wrap">
-          <StackItem size="fill">
-            <VStack gap={4}>
+        {/* Grid, not HStack: StackItem size="fill" takes a 100% flex-basis, so
+            the image kept wrapping onto its own row instead of sitting beside
+            the copy. Two tracks that collapse to one under 420px each. */}
+        <Grid columns={{minWidth: 420}} gap={6}>
+          <VStack gap={4} vAlign="center">
+            <HStack hAlign="start">
               <Badge label="E-Commerce & Marketing" variant="teal" />
-              <Heading level={1} type="display-2" textWrap="balance">
-                {site.tagline}
-              </Heading>
-              <Text color="secondary">{eco.paragraphs?.[0]}</Text>
-              <HStack gap={2} wrap="wrap">
-                <NextLink href="/khoa-hoc">
-                  <Button label="Đăng ký ngay" variant="primary" size="lg" />
-                </NextLink>
-                <NextLink href="/hoc-thu">
-                  <Button
-                    label="Học thử miễn phí"
-                    variant="secondary"
-                    size="lg"
-                  />
-                </NextLink>
-              </HStack>
-            </VStack>
-          </StackItem>
+            </HStack>
+            <Heading level={1} type="display-2" textWrap="balance">
+              {site.tagline}
+            </Heading>
+            <Text color="secondary">{eco.paragraphs?.[0]}</Text>
+            <HStack gap={2} wrap="wrap">
+              <NextLink href="/khoa-hoc">
+                <Button label="Đăng ký ngay" variant="primary" size="lg" />
+              </NextLink>
+              <NextLink href="/hoc-thu">
+                <Button
+                  label="Học thử miễn phí"
+                  variant="secondary"
+                  size="lg"
+                />
+              </NextLink>
+            </HStack>
+          </VStack>
 
           <Image
             src="/images/chien-luoc-tiktok.avif"
             alt=""
-            width={520}
-            height={340}
+            width={640}
+            height={420}
             priority
             style={{
-              width: 'min(100%, 520px)',
+              width: '100%',
               height: 'auto',
               borderRadius: 'var(--radius-container)',
               objectFit: 'cover',
             }}
           />
-        </HStack>
+        </Grid>
       </Section>
 
       {/* Proof. Static figures exactly as authored — the "animated counters" in

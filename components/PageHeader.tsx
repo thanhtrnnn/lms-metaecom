@@ -1,4 +1,5 @@
 import { VStack } from "@astryxdesign/core/VStack";
+import { HStack } from "@astryxdesign/core/HStack";
 import { Heading } from "@astryxdesign/core/Heading";
 import { Text } from "@astryxdesign/core/Text";
 import { Badge } from "@astryxdesign/core/Badge";
@@ -21,7 +22,11 @@ export function PageHeader({
         <BreadcrumbItem href="/">Trang chủ</BreadcrumbItem>
         <BreadcrumbItem isCurrent>{current}</BreadcrumbItem>
       </Breadcrumbs>
-      {eyebrow ? <Badge label={eyebrow} variant="teal" /> : null}
+      {eyebrow ? (
+        <HStack hAlign="start">
+          <Badge label={eyebrow} variant="teal" />
+        </HStack>
+      ) : null}
       <Heading level={1} textWrap="balance">
         {title}
       </Heading>

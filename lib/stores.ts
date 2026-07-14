@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, useState} from 'react';
+import {useSyncExternalStore} from 'react';
 import {createStore, useStore} from './store';
 import {seedCourses} from '@/data/courses';
 import type {
@@ -33,10 +33,13 @@ const billingStore = createStore<BillingRecord[]>('billingHistory', []);
  * logged-in avatar — must gate on this, or React will report a hydration
  * mismatch and blow away the markup.
  */
+const noopSubscribe = () => () => {};
 export function useHasMounted(): boolean {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  return mounted;
+  return useSyncExternalStore(
+    noopSubscribe,
+    () => true, // client
+    () => false, // server
+  );
 }
 
 export function useCourses() {

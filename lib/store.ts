@@ -2,6 +2,8 @@
 
 import {useCallback, useSyncExternalStore} from 'react';
 
+import {migrateLegacyStorage} from './migrate';
+
 /**
  * The whole "backend" of this app is localStorage — same as the legacy site.
  * This is a prototype, not a real product: there is no server, no session, and
@@ -32,8 +34,22 @@ export type Store<T> = {
 const cache = new Map<string, unknown>();
 const listeners = new Map<string, Set<Listener>>();
 
+/**
+ * The legacy-storage migration MUST run before the first value is read and
+ * cached — if it ran in an effect (i.e. after render) the cache would already
+ * hold the pre-migration data and the merge would be invisible until reload.
+ * Gate it on the first browser read instead.
+ */
+let migrationDone = false;
+function ensureMigrated() {
+  if (migrationDone) return;
+  migrationDone = true;
+  migrateLegacyStorage();
+}
+
 function readRaw<T>(key: string, seed: T): T {
   if (typeof window === 'undefined') return seed;
+  ensureMigrated();
   if (cache.has(key)) return cache.get(key) as T;
   try {
     const raw = window.localStorage.getItem(key);

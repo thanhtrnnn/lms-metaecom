@@ -5,7 +5,6 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import {
   TopNav,
-  TopNavHeading,
   TopNavItem,
   TopNavMegaMenu,
   TopNavMegaMenuItem,
@@ -35,19 +34,21 @@ export function SiteHeader() {
     <TopNav
       label="Điều hướng chính"
       heading={
-        <TopNavHeading>
-          <NextLink href="/" aria-label={`${site.name} — Trang chủ`}>
-            <Image
-              src={site.logo}
-              alt={site.name}
-              width={132}
-              height={32}
-              priority
-              className="site-logo"
-              style={{ height: 32, width: "auto" }}
-            />
-          </NextLink>
-        </TopNavHeading>
+        // Deliberately NOT TopNavHeading: it renders its `logo` only alongside
+        // `heading` text, and our PNG is a full lockup that already contains the
+        // wordmark — pairing them would print the brand name twice. TopNav's
+        // heading slot takes any ReactNode, so hand it the lockup directly.
+        <NextLink href="/" aria-label={`${site.name} — Trang chủ`}>
+          <Image
+            src={site.logo}
+            alt={site.name}
+            width={132}
+            height={32}
+            priority
+            className="site-logo"
+            style={{ height: 32, width: "auto", display: "block" }}
+          />
+        </NextLink>
       }
       startContent={nav.map((item) =>
         item.children ? (
