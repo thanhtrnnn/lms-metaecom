@@ -9,6 +9,7 @@ import '@astryxdesign/core/astryx.css';
 import '../theme/theme.css';
 
 import {neutralTheme} from '../theme/neutral';
+import {Providers} from '@/components/Providers';
 
 // The 'vietnamese' subset is the whole reason this font is here — the stock
 // theme-neutral face (Figtree) has no Vietnamese coverage.
@@ -33,7 +34,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang="vi" className={beVietnamPro.variable} suppressHydrationWarning>
       <body>
         <Theme theme={neutralTheme} mode="system">
-          {children}
+          <Providers>{children}</Providers>
         </Theme>
       </body>
     </html>
