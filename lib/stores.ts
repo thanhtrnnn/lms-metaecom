@@ -28,6 +28,15 @@ const purchasesStore = createStore<PurchasedCourse[]>('purchasedCourses', []);
 const billingStore = createStore<BillingRecord[]>('billingHistory', []);
 
 /**
+ * Persisted color-mode preference. 'system' (default) lets the OS decide;
+ * 'light' / 'dark' force a mode. Fed to <Theme mode=...> in the root layout.
+ */
+const themeModeStore = createStore<'system' | 'light' | 'dark'>(
+  'themeMode',
+  'system',
+);
+
+/**
  * True only after the first client render. Any UI whose value differs between
  * the server snapshot (seed) and real localStorage — the cart badge, the
  * logged-in avatar — must gate on this, or React will report a hydration
@@ -172,5 +181,19 @@ export function useCheckout() {
 
     cart.clear();
     return orderId;
+  };
+}
+
+export function useThemeMode() {
+  const [mode, setMode] = useStore(themeModeStore);
+  return {
+    mode,
+    setMode,
+    /** Cycle system → light → dark → system. */
+    cycle() {
+      setMode((prev) =>
+        prev === 'system' ? 'light' : prev === 'light' ? 'dark' : 'system',
+      );
+    },
   };
 }

@@ -39,71 +39,83 @@ export default function HomePage() {
   const cta = home.bottomCta;
 
   return (
-    <VStack gap={0}>
-      {/* Hero. The legacy hero had NO headline and NO subcopy — it was a
-          background image plus a single CTA. Rather than invent marketing
-          claims, the headline is the site's own <title> tagline and the lead
-          paragraph is its real "Kiến tạo hệ sinh thái" copy. */}
-      <Section padding={8}>
-        {/* Grid, not HStack: StackItem size="fill" takes a 100% flex-basis, so
-            the image kept wrapping onto its own row instead of sitting beside
-            the copy. Two tracks that collapse to one under 420px each. */}
-        <Grid columns={{minWidth: 420}} gap={6}>
-          <VStack gap={4} vAlign="center">
-            <HStack hAlign="start">
-              <Badge label="E-Commerce & Marketing" variant="teal" />
-            </HStack>
-            <Heading level={1} type="display-2" textWrap="balance">
+    <VStack gap={0} className="home-shell">
+      {/* Hero — centered editorial. The legacy hero had NO headline and NO
+          subcopy (a background image + single CTA). The headline is the
+          site's own <title> tagline; the lead is its real "Kiến tạo hệ sinh
+          thái" copy. A soft brand aura sits behind everything. */}
+      <Section padding={8} variant="transparent">
+        <div className="hero-aura" aria-hidden />
+        <VStack gap={5} hAlign="center" vAlign="center">
+          <HStack hAlign="center">
+            <Badge label="E-Commerce & Marketing" variant="info" />
+          </HStack>
+
+          <VStack gap={3} hAlign="center" maxWidth={820}>
+            <Heading
+              level={1}
+              type="display-2"
+              textWrap="balance"
+              justify="center"
+            >
               {site.tagline}
             </Heading>
-            <Text color="secondary">{eco.paragraphs?.[0]}</Text>
-            <HStack gap={2} wrap="wrap">
-              <NextLink href="/khoa-hoc">
-                <Button label="Đăng ký ngay" variant="primary" size="lg" />
-              </NextLink>
-              <NextLink href="/hoc-thu">
-                <Button
-                  label="Học thử miễn phí"
-                  variant="secondary"
-                  size="lg"
-                />
-              </NextLink>
-            </HStack>
+            <Text color="secondary" justify="center" type="large">
+              {eco.paragraphs?.[0]}
+            </Text>
           </VStack>
+
+          <HStack gap={2} wrap="wrap" hAlign="center">
+            <NextLink href="/khoa-hoc">
+              <Button label="Đăng ký ngay" variant="primary" size="lg" />
+            </NextLink>
+            <NextLink href="/hoc-thu">
+              <Button
+                label="Học thử miễn phí"
+                variant="secondary"
+                size="lg"
+              />
+            </NextLink>
+          </HStack>
 
           <Image
             src="/images/chien-luoc-tiktok.avif"
             alt=""
-            width={640}
-            height={420}
+            width={960}
+            height={540}
             priority
             style={{
               width: '100%',
+              maxWidth: 880,
               height: 'auto',
-              borderRadius: 'var(--radius-container)',
+              borderRadius: 'var(--radius-page)',
               objectFit: 'cover',
+              boxShadow: 'var(--shadow-high)',
+              marginTop: 'var(--spacing-3)',
             }}
           />
-        </Grid>
+        </VStack>
       </Section>
 
-      {/* Proof. Static figures exactly as authored — the "animated counters" in
-          main.js were dead code with no matching DOM. */}
+      {/* Proof — static figures exactly as authored (the legacy "animated
+          counters" were dead code with no matching DOM). Centered band. */}
       <Section padding={8} variant="muted" dividers={['top']}>
-        <VStack gap={5}>
-          <VStack gap={2}>
-            <Heading level={2} textWrap="balance">
+        <VStack gap={5} hAlign="center">
+          <VStack gap={2} hAlign="center" maxWidth={720}>
+            <Heading level={2} textWrap="balance" justify="center">
               {stats.titlePlain}
             </Heading>
-            <Text color="secondary">{stats.desc}</Text>
+            <Text color="secondary" justify="center">
+              {stats.desc}
+            </Text>
           </VStack>
-          <Grid columns={{minWidth: 200}} gap={4}>
+          <Grid columns={{minWidth: 200}} gap={4} maxWidth={880}>
             {((stats.cards ?? []) as Stat[]).map((s) => (
-              <VStack key={s.label} gap={1}>
-                <Heading level={2} type="display-3">
+              <VStack key={s.label} gap={1} hAlign="center">
+                <Heading level={2} type="display-3" className="brand-gradient-text">
                   {s.value}
                 </Heading>
-                <Text type="supporting" color="secondary">
+                <Text type="supporting" color="secondary" justify="center">
                   {s.label}
                 </Text>
               </VStack>
@@ -112,14 +124,22 @@ export default function HomePage() {
         </VStack>
       </Section>
 
+      {/* Solutions — what the platform covers. Centered heading + grid. */}
       <Section padding={8}>
-        <VStack gap={5}>
-          <Heading level={2} textWrap="balance">
-            {solutions.titlePlain}
-          </Heading>
-          <Grid columns={{minWidth: 260}} gap={4}>
+        <VStack gap={5} hAlign="center">
+          <VStack gap={2} hAlign="center" maxWidth={720}>
+            <Heading level={2} textWrap="balance" justify="center">
+              {solutions.titlePlain}
+            </Heading>
+            {solutions.desc ? (
+              <Text color="secondary" justify="center">
+                {solutions.desc}
+              </Text>
+            ) : null}
+          </VStack>
+          <Grid columns={{minWidth: 260}} gap={4} maxWidth={1040}>
             {((solutions.cards ?? []) as Solution[]).map((s) => (
-              <Card key={s.title} padding={4}>
+              <Card key={s.title} padding={4} className="brand-gradient-surface">
                 <VStack gap={2}>
                   <Heading level={3}>{s.title}</Heading>
                   {s.description ? (
@@ -134,15 +154,21 @@ export default function HomePage() {
         </VStack>
       </Section>
 
-      <Section padding={8} variant="muted" dividers={['top', 'bottom']}>
-        <VStack gap={5}>
+      {/* Featured courses — centered wall of course cards. */}
+      <Section
+        padding={8}
+        variant="muted"
+        dividers={['top', 'bottom']}
+        className="brand-gradient-surface"
+      >
+        <VStack gap={5} hAlign="center">
           <HStack gap={2} hAlign="between" vAlign="center" wrap="wrap">
             <Heading level={2}>Khóa học nổi bật</Heading>
             <NextLink href="/khoa-hoc">
               <Button label="Xem tất cả khóa học" variant="secondary" />
             </NextLink>
           </HStack>
-          <Grid columns={{minWidth: 260}} gap={4}>
+          <Grid columns={{minWidth: 260}} gap={4} maxWidth={1040}>
             {featured.map((c) => (
               <CourseCard key={c.id} course={c} />
             ))}
@@ -150,13 +176,14 @@ export default function HomePage() {
         </VStack>
       </Section>
 
-      {/* Testimonials as a quote wall. The legacy site used the generic
-          3-card carousel with dots; a wall shows every voice at once and has
-          no autoplay to fight. */}
+      {/* Testimonials as a centered quote wall (the legacy 3-card carousel
+          with dots had no autoplay to fight and showed one voice at a time). */}
       <Section padding={8}>
-        <VStack gap={5}>
-          <Heading level={2}>Học viên nói gì về META ECOM UNI</Heading>
-          <Grid columns={{minWidth: 300}} gap={4}>
+        <VStack gap={5} hAlign="center">
+          <Heading level={2} justify="center">
+            Học viên nói gì về META ECOM UNI
+          </Heading>
+          <Grid columns={{minWidth: 300}} gap={4} maxWidth={1040}>
             {(testimonials as Testimonial[]).map((t) => (
               <Card key={t.name} padding={4}>
                 <VStack gap={3}>
@@ -184,15 +211,16 @@ export default function HomePage() {
         </VStack>
       </Section>
 
+      {/* Blog & knowledge — centered grid. */}
       <Section padding={8} variant="muted" dividers={['top']}>
-        <VStack gap={5}>
+        <VStack gap={5} hAlign="center">
           <HStack gap={2} hAlign="between" vAlign="center" wrap="wrap">
             <Heading level={2}>Blog & Kiến thức</Heading>
             <NextLink href="/blog">
               <Button label="Xem tất cả bài viết" variant="secondary" />
             </NextLink>
           </HStack>
-          <Grid columns={{minWidth: 280}} gap={4}>
+          <Grid columns={{minWidth: 280}} gap={4} maxWidth={1040}>
             {((blog.articles ?? []) as Article[]).slice(0, 3).map((a) => (
               <Card key={a.title} padding={4}>
                 <VStack gap={2}>
@@ -211,7 +239,8 @@ export default function HomePage() {
         </VStack>
       </Section>
 
-      <Section padding={8}>
+      {/* Bottom CTA — centered, glowing brand surface. */}
+      <Section padding={10} className="brand-gradient-surface" dividers={['top']}>
         <VStack gap={4} hAlign="center">
           <Heading level={2} justify="center" textWrap="balance">
             {cta.heading}
@@ -219,8 +248,10 @@ export default function HomePage() {
           <HStack gap={5} wrap="wrap" hAlign="center">
             {((cta.proof?.items ?? []) as Proof[]).map((p) => (
               <VStack key={p.label} gap={0} hAlign="center">
-                <Heading level={3}>{p.value}</Heading>
-                <Text type="supporting" color="secondary">
+                <Heading level={3} className="brand-gradient-text">
+                  {p.value}
+                </Heading>
+                <Text type="supporting" color="secondary" justify="center">
                   {p.label}
                 </Text>
               </VStack>

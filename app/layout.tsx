@@ -6,10 +6,10 @@ import {Theme} from '@astryxdesign/core/theme';
 // reset lands in @layer reset, component styles in @layer astryx-base.
 import '@astryxdesign/core/reset.css';
 import '@astryxdesign/core/astryx.css';
-import '../theme/theme.css';
+import '../theme/creative.css';
 import './site.css';
 
-import {neutralTheme} from '../theme/neutral';
+import {ThemeRoot} from '@/components/ThemeRoot';
 import {Providers} from '@/components/Providers';
 
 // The 'vietnamese' subset is the whole reason this font is here — the stock
@@ -34,9 +34,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="vi" className={beVietnamPro.variable} suppressHydrationWarning>
       <body>
-        <Theme theme={neutralTheme} mode="system">
+        <ThemeRoot>
           <Providers>{children}</Providers>
-        </Theme>
+        </ThemeRoot>
       </body>
     </html>
   );

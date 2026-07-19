@@ -17,6 +17,7 @@ import { ShoppingCart, LogOut, User, GraduationCap } from "lucide-react";
 
 import { nav, site } from "@/data/site";
 import { useAuth, useCart, useHasMounted } from "@/lib/stores";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -75,6 +76,7 @@ export function SiteHeader() {
       )}
       endContent={
         <HStack gap={1} vAlign="center">
+          <ThemeToggle />
           <NextLink href="/gio-hang">
             <Button
               label="Giỏ hàng"
