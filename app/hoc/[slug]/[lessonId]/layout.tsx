@@ -7,11 +7,7 @@ import {metaecomTheme} from '@/theme/metaecom';
  * the site, just pinned to dark mode, so its CSS (metaecom.css) is already
  * loaded and controls/colors stay on-brand.
  */
-export default function PlayerLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function PlayerLayout({children}: {children: React.ReactNode}) {
   return (
     <Theme theme={metaecomTheme} mode="dark">
       {children}

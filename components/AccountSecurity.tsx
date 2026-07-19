@@ -1,29 +1,30 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { VStack } from "@astryxdesign/core/VStack";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Card } from "@astryxdesign/core/Card";
-import { Banner } from "@astryxdesign/core/Banner";
-import { Button } from "@astryxdesign/core/Button";
-import { FormLayout } from "@astryxdesign/core/FormLayout";
-import { Field } from "@astryxdesign/core/Field";
-import { TextInput } from "@astryxdesign/core/TextInput";
-import { useToast } from "@astryxdesign/core/Toast";
+import {useState} from 'react';
+import {VStack} from '@astryxdesign/core/VStack';
+import {HStack} from '@astryxdesign/core/HStack';
+import {Card} from '@astryxdesign/core/Card';
+import {Banner} from '@astryxdesign/core/Banner';
+import {Button} from '@astryxdesign/core/Button';
+import {FormLayout} from '@astryxdesign/core/FormLayout';
+import {Field} from '@astryxdesign/core/Field';
+import {TextInput} from '@astryxdesign/core/TextInput';
+import {useToast} from '@astryxdesign/core/Toast';
 
-import { useAuth, useHasMounted } from "@/lib/stores";
-import { AccountLoginPrompt } from "./AccountLoginPrompt";
+import {useAuth, useHasMounted} from '@/lib/stores';
+import {CARD_PAD, FORM_GAP} from '@/lib/layout';
+import {AccountLoginPrompt} from './AccountLoginPrompt';
 
-type Errors = Partial<Record<"current" | "next" | "confirm", string>>;
+type Errors = Partial<Record<'current' | 'next' | 'confirm', string>>;
 
 export function AccountSecurity() {
-  const { isLoggedIn } = useAuth();
+  const {isLoggedIn} = useAuth();
   const showToast = useToast();
   const mounted = useHasMounted();
 
-  const [current, setCurrent] = useState("");
-  const [next, setNext] = useState("");
-  const [confirm, setConfirm] = useState("");
+  const [current, setCurrent] = useState('');
+  const [next, setNext] = useState('');
+  const [confirm, setConfirm] = useState('');
   const [errors, setErrors] = useState<Errors>({});
 
   if (!mounted) return null;
@@ -31,12 +32,12 @@ export function AccountSecurity() {
 
   const validate = (): boolean => {
     const nextErrors: Errors = {};
-    if (!current) nextErrors.current = "Vui lòng nhập mật khẩu hiện tại.";
+    if (!current) nextErrors.current = 'Vui lòng nhập mật khẩu hiện tại.';
     if (next.length < 8)
-      nextErrors.next = "Mật khẩu mới phải có ít nhất 8 ký tự.";
+      nextErrors.next = 'Mật khẩu mới phải có ít nhất 8 ký tự.';
     if (next && current && next === current)
-      nextErrors.next = "Mật khẩu mới phải khác mật khẩu hiện tại.";
-    if (confirm !== next) nextErrors.confirm = "Mật khẩu xác nhận không khớp.";
+      nextErrors.next = 'Mật khẩu mới phải khác mật khẩu hiện tại.';
+    if (confirm !== next) nextErrors.confirm = 'Mật khẩu xác nhận không khớp.';
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
   };
@@ -47,12 +48,12 @@ export function AccountSecurity() {
     // Không có backend xác thực: không có mật khẩu nào được lưu, nên cũng không
     // có gì để đổi. Nói thẳng thay vì giả vờ đã đổi thành công.
     showToast({
-      body: "Bản demo chưa có hệ thống xác thực — mật khẩu không được lưu và không thể đổi.",
-      type: "error",
+      body: 'Bản demo chưa có hệ thống xác thực — mật khẩu không được lưu và không thể đổi.',
+      type: 'error',
     });
-    setCurrent("");
-    setNext("");
-    setConfirm("");
+    setCurrent('');
+    setNext('');
+    setConfirm('');
   };
 
   return (
@@ -63,8 +64,8 @@ export function AccountSecurity() {
         description="Toàn bộ dữ liệu chỉ nằm trong trình duyệt của bạn. Không có máy chủ, không có mật khẩu nào được lưu, nên chức năng đổi mật khẩu chưa hoạt động thật."
       />
 
-      <Card padding={6} width="100%" maxWidth={640}>
-        <VStack gap={4}>
+      <Card padding={CARD_PAD} width="100%" maxWidth={640}>
+        <VStack gap={FORM_GAP}>
           <FormLayout>
             <TextInput
               label="Mật khẩu hiện tại (bắt buộc)"
@@ -73,7 +74,7 @@ export function AccountSecurity() {
               onChange={setCurrent}
               status={
                 errors.current
-                  ? { type: "error", message: errors.current }
+                  ? {type: 'error', message: errors.current}
                   : undefined
               }
             />
@@ -84,9 +85,7 @@ export function AccountSecurity() {
               onChange={setNext}
               placeholder="Ít nhất 8 ký tự"
               status={
-                errors.next
-                  ? { type: "error", message: errors.next }
-                  : undefined
+                errors.next ? {type: 'error', message: errors.next} : undefined
               }
             />
             <TextInput
@@ -96,7 +95,7 @@ export function AccountSecurity() {
               onChange={setConfirm}
               status={
                 errors.confirm
-                  ? { type: "error", message: errors.confirm }
+                  ? {type: 'error', message: errors.confirm}
                   : undefined
               }
             />

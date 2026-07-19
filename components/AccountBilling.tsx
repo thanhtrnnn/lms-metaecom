@@ -1,45 +1,45 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { VStack } from "@astryxdesign/core/VStack";
-import { Text } from "@astryxdesign/core/Text";
-import { Badge } from "@astryxdesign/core/Badge";
-import { Button } from "@astryxdesign/core/Button";
-import { EmptyState } from "@astryxdesign/core/EmptyState";
-import { Table, proportional, pixel } from "@astryxdesign/core/Table";
-import type { TableColumn } from "@astryxdesign/core/Table";
-import { Receipt } from "lucide-react";
+import {useRouter} from 'next/navigation';
+import {VStack} from '@astryxdesign/core/VStack';
+import {Text} from '@astryxdesign/core/Text';
+import {Badge} from '@astryxdesign/core/Badge';
+import {Button} from '@astryxdesign/core/Button';
+import {EmptyState} from '@astryxdesign/core/EmptyState';
+import {Table, proportional, pixel} from '@astryxdesign/core/Table';
+import type {TableColumn} from '@astryxdesign/core/Table';
+import {Receipt} from 'lucide-react';
 
-import { formatDate, formatVnd } from "@/lib/format";
-import { useAuth, useBilling, useHasMounted } from "@/lib/stores";
-import type { BillingRecord } from "@/lib/types";
-import { AccountLoginPrompt } from "./AccountLoginPrompt";
+import {formatDate, formatVnd} from '@/lib/format';
+import {useAuth, useBilling, useHasMounted} from '@/lib/stores';
+import type {BillingRecord} from '@/lib/types';
+import {AccountLoginPrompt} from './AccountLoginPrompt';
 
-const statusLabel: Record<BillingRecord["status"], string> = {
-  paid: "Đã thanh toán",
-  pending: "Chờ thanh toán",
-  failed: "Thất bại",
+const statusLabel: Record<BillingRecord['status'], string> = {
+  paid: 'Đã thanh toán',
+  pending: 'Chờ thanh toán',
+  failed: 'Thất bại',
 };
 
 const statusVariant: Record<
-  BillingRecord["status"],
-  "success" | "warning" | "error"
+  BillingRecord['status'],
+  'success' | 'warning' | 'error'
 > = {
-  paid: "success",
-  pending: "warning",
-  failed: "error",
+  paid: 'success',
+  pending: 'warning',
+  failed: 'error',
 };
 
 const columns: TableColumn<BillingRecord>[] = [
   {
-    key: "orderId",
-    header: "Mã đơn hàng",
+    key: 'orderId',
+    header: 'Mã đơn hàng',
     width: pixel(160),
     renderCell: (r: BillingRecord) => <Text type="label">{r.orderId}</Text>,
   },
   {
-    key: "date",
-    header: "Ngày",
+    key: 'date',
+    header: 'Ngày',
     width: pixel(120),
     renderCell: (r: BillingRecord) => (
       <Text type="body" color="secondary">
@@ -48,23 +48,23 @@ const columns: TableColumn<BillingRecord>[] = [
     ),
   },
   {
-    key: "title",
-    header: "Khóa học",
+    key: 'title',
+    header: 'Khóa học',
     width: proportional(2),
     renderCell: (r: BillingRecord) => <Text type="body">{r.title}</Text>,
   },
   {
-    key: "price",
-    header: "Số tiền",
+    key: 'price',
+    header: 'Số tiền',
     width: pixel(140),
-    align: "end",
+    align: 'end',
     renderCell: (r: BillingRecord) => (
       <Text type="label">{formatVnd(r.price)}</Text>
     ),
   },
   {
-    key: "status",
-    header: "Trạng thái",
+    key: 'status',
+    header: 'Trạng thái',
     width: pixel(150),
     renderCell: (r: BillingRecord) => (
       <Badge label={statusLabel[r.status]} variant={statusVariant[r.status]} />
@@ -74,8 +74,8 @@ const columns: TableColumn<BillingRecord>[] = [
 
 export function AccountBilling() {
   const router = useRouter();
-  const { isLoggedIn } = useAuth();
-  const { records } = useBilling();
+  const {isLoggedIn} = useAuth();
+  const {records} = useBilling();
   const mounted = useHasMounted();
 
   if (!mounted) return null;
@@ -91,7 +91,7 @@ export function AccountBilling() {
           <Button
             label="Xem khóa học"
             variant="primary"
-            onClick={() => router.push("/khoa-hoc")}
+            onClick={() => router.push('/khoa-hoc')}
           />
         }
       />

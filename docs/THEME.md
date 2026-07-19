@@ -8,13 +8,13 @@ in 0.1.4, so the theme is hand-authored `defineTheme` + `astryx theme build`.
 
 ## Files
 
-| File | Role |
-|---|---|
-| `theme/neutralTheme.ts` | **Thin base.** Stock-neutral grayscale spine + the from-scratch OKLCH categorical/status/badge palette. Rendered by nobody directly — it exists only so the brand theme can `extends` it. |
-| `theme/metaecomTheme.ts` | **The brand theme.** `extends: neutralTheme` and owns all branding: warm-orange accent, tinted canvas, spacing, radius, control heights, shadows, component skins. **Edit this.** |
-| `theme/metaecom.css`, `metaecom.js`, `*.d.ts` | Build output of `metaecomTheme.ts`. Do not hand-edit — regenerate (see below). |
-| `theme/neutral.js`, `*.d.ts` | Build output of the base; `metaecomTheme.ts` imports `neutral.js` at build time for `extends`. |
-| `app/site.css` | The one hand-written stylesheet. Holds `--brand-2` (the coral gradient partner to the accent) and the `.brand-gradient-*` helpers + the dark-mode logo rule. |
+| File                                          | Role                                                                                                                                                                                      |
+| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `theme/neutralTheme.ts`                       | **Thin base.** Stock-neutral grayscale spine + the from-scratch OKLCH categorical/status/badge palette. Rendered by nobody directly — it exists only so the brand theme can `extends` it. |
+| `theme/metaecomTheme.ts`                      | **The brand theme.** `extends: neutralTheme` and owns all branding: warm-orange accent, tinted canvas, spacing, radius, control heights, shadows, component skins. **Edit this.**         |
+| `theme/metaecom.css`, `metaecom.js`, `*.d.ts` | Build output of `metaecomTheme.ts`. Do not hand-edit — regenerate (see below).                                                                                                            |
+| `theme/neutral.js`, `*.d.ts`                  | Build output of the base; `metaecomTheme.ts` imports `neutral.js` at build time for `extends`.                                                                                            |
+| `app/site.css`                                | The one hand-written stylesheet. Holds `--brand-2` (the coral gradient partner to the accent) and the `.brand-gradient-*` helpers + the dark-mode logo rule.                              |
 
 ## How it's wired
 
@@ -66,7 +66,7 @@ partner to move with it.
 
 ## Layout system (spacing application)
 
-Token spacing (above) sets the *scale*; consistent *application* across pages
+Token spacing (above) sets the _scale_; consistent _application_ across pages
 is enforced by `lib/layout.ts` (the constants — section padding, page gap, card
 padding, aside width, grid breakpoints) and `components/layout/PageShell.tsx`
 (the page frame). Build new pages with `PageShell` + those constants rather than

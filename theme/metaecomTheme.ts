@@ -214,7 +214,8 @@ export const metaecomTheme = defineTheme({
         fontWeight: '600',
       },
       'variant:primary': {
-        background: 'linear-gradient(135deg, var(--color-accent), var(--brand-2))',
+        background:
+          'linear-gradient(135deg, var(--color-accent), var(--brand-2))',
         color: 'var(--color-on-accent)',
         border: 'none',
         ':hover': {
@@ -244,7 +245,8 @@ export const metaecomTheme = defineTheme({
         borderRadius: 'var(--radius-full)',
       },
       'variant:info': {
-        background: 'linear-gradient(135deg, var(--color-accent), var(--brand-2))',
+        background:
+          'linear-gradient(135deg, var(--color-accent), var(--brand-2))',
         color: 'var(--color-on-accent)',
       },
       'variant:neutral': {

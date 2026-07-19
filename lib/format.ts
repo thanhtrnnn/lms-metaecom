@@ -11,7 +11,10 @@ export function formatNumber(amount: number): string {
 }
 
 /** 3500000 -> 1990000 => 43 (percent off, rounded) */
-export function discountPercent(price: number, oldPrice?: number): number | null {
+export function discountPercent(
+  price: number,
+  oldPrice?: number,
+): number | null {
   if (!oldPrice || oldPrice <= price) return null;
   return Math.round(((oldPrice - price) / oldPrice) * 100);
 }

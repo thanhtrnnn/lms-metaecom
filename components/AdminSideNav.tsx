@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
+import {usePathname} from 'next/navigation';
 import {
   SideNav,
   SideNavHeading,
   SideNavItem,
   SideNavSection,
-} from "@astryxdesign/core/SideNav";
+} from '@astryxdesign/core/SideNav';
 import {
   BookOpen,
   ExternalLink,
   GraduationCap,
   LayoutDashboard,
   Users,
-} from "lucide-react";
+} from 'lucide-react';
 
 /**
  * The admin's own navigation. Deliberately NOT SiteHeader/SiteFooter: the
@@ -21,9 +21,9 @@ import {
  * are behind the admin routes.
  */
 const adminNav = [
-  { href: "/admin", label: "Tổng quan", icon: LayoutDashboard },
-  { href: "/admin/khoa-hoc", label: "Khóa học", icon: BookOpen },
-  { href: "/admin/hoc-vien", label: "Học viên", icon: Users },
+  {href: '/admin', label: 'Tổng quan', icon: LayoutDashboard},
+  {href: '/admin/khoa-hoc', label: 'Khóa học', icon: BookOpen},
+  {href: '/admin/hoc-vien', label: 'Học viên', icon: Users},
 ];
 
 export function AdminSideNav() {
@@ -42,7 +42,7 @@ export function AdminSideNav() {
       collapsible
     >
       <SideNavSection title="Quản trị">
-        {adminNav.map(({ href, label, icon: Icon }) => (
+        {adminNav.map(({href, label, icon: Icon}) => (
           <SideNavItem
             key={href}
             label={label}

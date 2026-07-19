@@ -1,26 +1,27 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { VStack } from "@astryxdesign/core/VStack";
-import { HStack } from "@astryxdesign/core/HStack";
-import { StackItem } from "@astryxdesign/core/Stack";
-import { Card } from "@astryxdesign/core/Card";
-import { Heading } from "@astryxdesign/core/Heading";
-import { Text } from "@astryxdesign/core/Text";
-import { Button } from "@astryxdesign/core/Button";
-import { Badge } from "@astryxdesign/core/Badge";
-import { List, ListItem } from "@astryxdesign/core/List";
-import { TabList, Tab } from "@astryxdesign/core/TabList";
-import { AspectRatio } from "@astryxdesign/core/AspectRatio";
-import { EmptyState } from "@astryxdesign/core/EmptyState";
-import { ProgressBar } from "@astryxdesign/core/ProgressBar";
-import { Divider } from "@astryxdesign/core/Divider";
-import { Lock, PlayCircle, ArrowLeft, VideoOff } from "lucide-react";
+import {useState} from 'react';
+import {useRouter} from 'next/navigation';
+import {VStack} from '@astryxdesign/core/VStack';
+import {HStack} from '@astryxdesign/core/HStack';
+import {StackItem} from '@astryxdesign/core/Stack';
+import {Card} from '@astryxdesign/core/Card';
+import {Heading} from '@astryxdesign/core/Heading';
+import {Text} from '@astryxdesign/core/Text';
+import {Button} from '@astryxdesign/core/Button';
+import {Badge} from '@astryxdesign/core/Badge';
+import {List, ListItem} from '@astryxdesign/core/List';
+import {TabList, Tab} from '@astryxdesign/core/TabList';
+import {AspectRatio} from '@astryxdesign/core/AspectRatio';
+import {EmptyState} from '@astryxdesign/core/EmptyState';
+import {ProgressBar} from '@astryxdesign/core/ProgressBar';
+import {Divider} from '@astryxdesign/core/Divider';
+import {Lock, PlayCircle, ArrowLeft, VideoOff} from 'lucide-react';
 
-import type { Course } from "@/lib/types";
-import { resolveVideo } from "@/lib/youtube";
-import { usePurchases, useCourses, useHasMounted } from "@/lib/stores";
+import type {Course} from '@/lib/types';
+import {resolveVideo} from '@/lib/youtube';
+import {usePurchases, useCourses, useHasMounted} from '@/lib/stores';
+import {ASIDE_WIDTH} from '@/lib/layout';
 
 export function LessonPlayer({
   course: seeded,
@@ -30,10 +31,10 @@ export function LessonPlayer({
   lessonId: string;
 }) {
   const router = useRouter();
-  const { owns } = usePurchases();
-  const { courses } = useCourses();
+  const {owns} = usePurchases();
+  const {courses} = useCourses();
   const mounted = useHasMounted();
-  const [tab, setTab] = useState("description");
+  const [tab, setTab] = useState('description');
 
   // Lessons only ever exist in the store — no seed course has a curriculum —
   // so the player MUST read the live copy, not the statically-rendered seed.
@@ -99,7 +100,7 @@ export function LessonPlayer({
                   />
                 }
               />
-            ) : video.kind === "youtube" ? (
+            ) : video.kind === 'youtube' ? (
               <AspectRatio ratio={16 / 9}>
                 <iframe
                   src={video.embedUrl}
@@ -107,23 +108,23 @@ export function LessonPlayer({
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   style={{
-                    width: "100%",
-                    height: "100%",
+                    width: '100%',
+                    height: '100%',
                     border: 0,
-                    borderRadius: "var(--radius-container)",
+                    borderRadius: 'var(--radius-container)',
                   }}
                 />
               </AspectRatio>
-            ) : video.kind === "file" ? (
+            ) : video.kind === 'file' ? (
               <AspectRatio ratio={16 / 9}>
                 {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
                 <video
                   src={video.src}
                   controls
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: "var(--radius-container)",
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: 'var(--radius-container)',
                   }}
                 />
               </AspectRatio>
@@ -142,8 +143,8 @@ export function LessonPlayer({
               <Tab value="resources" label="Tài liệu đính kèm" />
             </TabList>
 
-            {tab === "description" ? (
-              <Text>{lesson.description ?? "Bài học chưa có mô tả."}</Text>
+            {tab === 'description' ? (
+              <Text>{lesson.description ?? 'Bài học chưa có mô tả.'}</Text>
             ) : (
               <Text color="secondary">Chưa có tài liệu đính kèm.</Text>
             )}
@@ -160,7 +161,7 @@ export function LessonPlayer({
           </VStack>
         </StackItem>
 
-        <Card padding={0} width={320}>
+        <Card padding={0} width={ASIDE_WIDTH}>
           <VStack gap={0}>
             <VStack gap={2} padding={4}>
               <Heading level={3}>Nội dung khóa học</Heading>

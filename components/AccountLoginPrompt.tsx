@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { EmptyState } from "@astryxdesign/core/EmptyState";
-import { Button } from "@astryxdesign/core/Button";
-import { LogIn } from "lucide-react";
+import {useRouter} from 'next/navigation';
+import {EmptyState} from '@astryxdesign/core/EmptyState';
+import {Button} from '@astryxdesign/core/Button';
+import {LogIn} from 'lucide-react';
 
 /**
  * Every student page needs the same "you are not logged in" state. `next` is
  * the path to come back to after login.
  */
-export function AccountLoginPrompt({ next }: { next: string }) {
+export function AccountLoginPrompt({next}: {next: string}) {
   const router = useRouter();
 
   return (

@@ -1,10 +1,9 @@
 import {notFound} from 'next/navigation';
 import type {Metadata} from 'next';
-import {Section} from '@astryxdesign/core/Section';
-import {VStack} from '@astryxdesign/core/VStack';
 import {Breadcrumbs, BreadcrumbItem} from '@astryxdesign/core/Breadcrumbs';
 
 import {CourseDetail} from '@/components/CourseDetail';
+import {PageShell} from '@/components/layout/PageShell';
 import {seedCourses} from '@/data/courses';
 
 // Next 16: params is async.
@@ -44,21 +43,19 @@ export default async function Page({params}: Props) {
   };
 
   return (
-    <Section padding={6}>
-      <VStack gap={4}>
-        <Breadcrumbs label="Đường dẫn">
-          <BreadcrumbItem href="/">Trang chủ</BreadcrumbItem>
-          <BreadcrumbItem href="/khoa-hoc">Khóa học</BreadcrumbItem>
-          <BreadcrumbItem isCurrent>{course.title}</BreadcrumbItem>
-        </Breadcrumbs>
+    <PageShell>
+      <Breadcrumbs label="Đường dẫn">
+        <BreadcrumbItem href="/">Trang chủ</BreadcrumbItem>
+        <BreadcrumbItem href="/khoa-hoc">Khóa học</BreadcrumbItem>
+        <BreadcrumbItem isCurrent>{course.title}</BreadcrumbItem>
+      </Breadcrumbs>
 
-        <CourseDetail course={course} />
+      <CourseDetail course={course} />
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
-        />
-      </VStack>
-    </Section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
+      />
+    </PageShell>
   );
 }

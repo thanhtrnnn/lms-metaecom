@@ -1,20 +1,21 @@
-"use client";
+'use client';
 
-import { VStack } from "@astryxdesign/core/VStack";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Grid } from "@astryxdesign/core/Grid";
-import { Card } from "@astryxdesign/core/Card";
-import { Heading } from "@astryxdesign/core/Heading";
-import { Text } from "@astryxdesign/core/Text";
-import { Badge } from "@astryxdesign/core/Badge";
-import { EmptyState } from "@astryxdesign/core/EmptyState";
-import { Table, proportional, pixel } from "@astryxdesign/core/Table";
-import type { TableColumn } from "@astryxdesign/core/Table";
-import { BookOpen, Receipt, Users, Wallet } from "lucide-react";
+import {VStack} from '@astryxdesign/core/VStack';
+import {HStack} from '@astryxdesign/core/HStack';
+import {Card} from '@astryxdesign/core/Card';
+import {Heading} from '@astryxdesign/core/Heading';
+import {Text} from '@astryxdesign/core/Text';
+import {Badge} from '@astryxdesign/core/Badge';
+import {EmptyState} from '@astryxdesign/core/EmptyState';
+import {Table, proportional, pixel} from '@astryxdesign/core/Table';
+import type {TableColumn} from '@astryxdesign/core/Table';
+import {BookOpen, Receipt, Users, Wallet} from 'lucide-react';
 
-import { formatDate, formatVnd } from "@/lib/format";
-import { useBilling, useCourses, useHasMounted, useUsers } from "@/lib/stores";
-import type { BillingRecord } from "@/lib/types";
+import {formatDate, formatVnd} from '@/lib/format';
+import {useBilling, useCourses, useHasMounted, useUsers} from '@/lib/stores';
+import type {BillingRecord} from '@/lib/types';
+import {CardGrid} from '@/components/layout/CardGrid';
+import {CARD_PAD, PAGE_GAP} from '@/lib/layout';
 
 /**
  * Every number on this page is derived from the stores. The legacy dashboard
@@ -24,19 +25,19 @@ import type { BillingRecord } from "@/lib/types";
  * is no rating tile rather than an invented one.
  */
 
-const statusLabel: Record<BillingRecord["status"], string> = {
-  paid: "Đã thanh toán",
-  pending: "Chờ xử lý",
-  failed: "Thất bại",
+const statusLabel: Record<BillingRecord['status'], string> = {
+  paid: 'Đã thanh toán',
+  pending: 'Chờ xử lý',
+  failed: 'Thất bại',
 };
 
 const statusVariant: Record<
-  BillingRecord["status"],
-  "success" | "warning" | "error"
+  BillingRecord['status'],
+  'success' | 'warning' | 'error'
 > = {
-  paid: "success",
-  pending: "warning",
-  failed: "error",
+  paid: 'success',
+  pending: 'warning',
+  failed: 'error',
 };
 
 interface OrderRow extends Record<string, unknown> {
@@ -45,28 +46,28 @@ interface OrderRow extends Record<string, unknown> {
   date: string;
   title: string;
   price: number;
-  status: BillingRecord["status"];
+  status: BillingRecord['status'];
 }
 
 const orderColumns: TableColumn<OrderRow>[] = [
-  { key: "orderId", header: "Mã đơn", width: pixel(140) },
-  { key: "title", header: "Khóa học", width: proportional(2) },
+  {key: 'orderId', header: 'Mã đơn', width: pixel(140)},
+  {key: 'title', header: 'Khóa học', width: proportional(2)},
   {
-    key: "date",
-    header: "Ngày",
+    key: 'date',
+    header: 'Ngày',
     width: pixel(120),
     renderCell: (item) => formatDate(item.date),
   },
   {
-    key: "price",
-    header: "Giá trị",
+    key: 'price',
+    header: 'Giá trị',
     width: pixel(140),
-    align: "end",
+    align: 'end',
     renderCell: (item) => formatVnd(item.price),
   },
   {
-    key: "status",
-    header: "Trạng thái",
+    key: 'status',
+    header: 'Trạng thái',
     width: pixel(150),
     renderCell: (item) => (
       <Badge
@@ -87,7 +88,7 @@ function StatCard({
   icon: React.ReactNode;
 }) {
   return (
-    <Card padding={4}>
+    <Card padding={CARD_PAD}>
       <VStack gap={2}>
         <HStack gap={2} vAlign="center">
           {icon}
@@ -102,8 +103,8 @@ function StatCard({
 }
 
 export function AdminDashboard() {
-  const { records } = useBilling();
-  const { courses } = useCourses();
+  const {records} = useBilling();
+  const {courses} = useCourses();
   const users = useUsers();
   const mounted = useHasMounted();
 
@@ -126,7 +127,7 @@ export function AdminDashboard() {
     }));
 
   return (
-    <VStack gap={5}>
+    <VStack gap={PAGE_GAP}>
       <VStack gap={1}>
         <Heading level={1}>Tổng quan</Heading>
         <Text type="supporting" color="secondary">
@@ -134,7 +135,7 @@ export function AdminDashboard() {
         </Text>
       </VStack>
 
-      <Grid columns={{ minWidth: 220 }} gap={4}>
+      <CardGrid>
         <StatCard
           label="Doanh thu"
           value={formatVnd(revenue)}
@@ -155,7 +156,7 @@ export function AdminDashboard() {
           value={String(users.length)}
           icon={<Users aria-hidden />}
         />
-      </Grid>
+      </CardGrid>
 
       <VStack gap={3}>
         <Heading level={2}>Đơn hàng gần đây</Heading>

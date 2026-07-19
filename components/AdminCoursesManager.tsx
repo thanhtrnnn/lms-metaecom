@@ -1,38 +1,39 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { VStack } from "@astryxdesign/core/VStack";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Heading } from "@astryxdesign/core/Heading";
-import { Text } from "@astryxdesign/core/Text";
-import { Badge } from "@astryxdesign/core/Badge";
-import { Button } from "@astryxdesign/core/Button";
-import { IconButton } from "@astryxdesign/core/IconButton";
-import { EmptyState } from "@astryxdesign/core/EmptyState";
-import { AlertDialog } from "@astryxdesign/core/AlertDialog";
-import { Table, proportional, pixel } from "@astryxdesign/core/Table";
-import type { TableColumn } from "@astryxdesign/core/Table";
-import { useToast } from "@astryxdesign/core/Toast";
-import { BookOpen, Pencil, Plus, Trash2 } from "lucide-react";
+import {useState} from 'react';
+import {VStack} from '@astryxdesign/core/VStack';
+import {HStack} from '@astryxdesign/core/HStack';
+import {Heading} from '@astryxdesign/core/Heading';
+import {Text} from '@astryxdesign/core/Text';
+import {Badge} from '@astryxdesign/core/Badge';
+import {Button} from '@astryxdesign/core/Button';
+import {IconButton} from '@astryxdesign/core/IconButton';
+import {EmptyState} from '@astryxdesign/core/EmptyState';
+import {AlertDialog} from '@astryxdesign/core/AlertDialog';
+import {Table, proportional, pixel} from '@astryxdesign/core/Table';
+import type {TableColumn} from '@astryxdesign/core/Table';
+import {useToast} from '@astryxdesign/core/Toast';
+import {BookOpen, Pencil, Plus, Trash2} from 'lucide-react';
 
-import { AdminCourseDialog } from "@/components/AdminCourseDialog";
-import { formatVnd } from "@/lib/format";
-import { useCourses, useHasMounted } from "@/lib/stores";
-import type { Course } from "@/lib/types";
+import {AdminCourseDialog} from '@/components/AdminCourseDialog';
+import {formatVnd} from '@/lib/format';
+import {useCourses, useHasMounted} from '@/lib/stores';
+import type {Course} from '@/lib/types';
+import {PAGE_GAP} from '@/lib/layout';
 
 interface CourseRow extends Record<string, unknown> {
   id: string;
   title: string;
   category: string;
   price: number;
-  status: Course["status"];
+  status: Course['status'];
   purchases: number;
   lessonCount: number;
   course: Course;
 }
 
 export function AdminCoursesManager() {
-  const { courses, setCourses } = useCourses();
+  const {courses, setCourses} = useCourses();
   const showToast = useToast();
   const mounted = useHasMounted();
 
@@ -63,10 +64,10 @@ export function AdminCoursesManager() {
 
   const confirmDelete = () => {
     if (!pendingDelete) return;
-    const { id, title } = pendingDelete;
+    const {id, title} = pendingDelete;
     setCourses((prev) => prev.filter((c) => c.id !== id));
     setPendingDelete(null);
-    showToast({ body: `Đã xóa "${title}".` });
+    showToast({body: `Đã xóa "${title}".`});
   };
 
   const rows: CourseRow[] = courses.map((course) => ({
@@ -84,31 +85,31 @@ export function AdminCoursesManager() {
   }));
 
   const columns: TableColumn<CourseRow>[] = [
-    { key: "title", header: "Khóa học", width: proportional(3) },
-    { key: "category", header: "Danh mục", width: proportional(1) },
+    {key: 'title', header: 'Khóa học', width: proportional(3)},
+    {key: 'category', header: 'Danh mục', width: proportional(1)},
     {
-      key: "price",
-      header: "Giá",
+      key: 'price',
+      header: 'Giá',
       width: pixel(130),
-      align: "end",
+      align: 'end',
       renderCell: (item) => formatVnd(item.price),
     },
     {
-      key: "status",
-      header: "Trạng thái",
+      key: 'status',
+      header: 'Trạng thái',
       width: pixel(120),
       renderCell: (item) => (
         <Badge
-          label={item.status === "active" ? "Đang bán" : "Bản nháp"}
-          variant={item.status === "active" ? "success" : "neutral"}
+          label={item.status === 'active' ? 'Đang bán' : 'Bản nháp'}
+          variant={item.status === 'active' ? 'success' : 'neutral'}
         />
       ),
     },
     {
-      key: "lessonCount",
-      header: "Bài học",
+      key: 'lessonCount',
+      header: 'Bài học',
       width: pixel(100),
-      align: "end",
+      align: 'end',
       renderCell: (item) =>
         item.lessonCount === 0 ? (
           <Text type="supporting" color="secondary">
@@ -118,12 +119,12 @@ export function AdminCoursesManager() {
           String(item.lessonCount)
         ),
     },
-    { key: "purchases", header: "Lượt mua", width: pixel(110), align: "end" },
+    {key: 'purchases', header: 'Lượt mua', width: pixel(110), align: 'end'},
     {
-      key: "actions",
-      header: "",
+      key: 'actions',
+      header: '',
       width: pixel(104),
-      align: "end",
+      align: 'end',
       renderCell: (item) => (
         <HStack gap={1} hAlign="end">
           <IconButton
@@ -146,7 +147,7 @@ export function AdminCoursesManager() {
   ];
 
   return (
-    <VStack gap={5}>
+    <VStack gap={PAGE_GAP}>
       <HStack gap={3} hAlign="between" vAlign="center" wrap="wrap">
         <VStack gap={1}>
           <Heading level={1}>Khóa học</Heading>
@@ -170,7 +171,7 @@ export function AdminCoursesManager() {
           actions={
             <Button
               label="Thêm khóa học"
-              variant="primary"
+              variant="secondary"
               icon={<Plus aria-hidden />}
               onClick={openCreate}
             />
@@ -202,7 +203,7 @@ export function AdminCoursesManager() {
         description={
           pendingDelete
             ? `"${pendingDelete.title}" sẽ bị xóa vĩnh viễn cùng toàn bộ chương trình học. Không thể hoàn tác.`
-            : ""
+            : ''
         }
         actionLabel="Xóa khóa học"
         cancelLabel="Hủy"

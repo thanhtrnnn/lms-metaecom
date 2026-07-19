@@ -4,19 +4,32 @@ import type {Metadata} from 'next';
 import {Section} from '@astryxdesign/core/Section';
 import {VStack} from '@astryxdesign/core/VStack';
 import {HStack} from '@astryxdesign/core/HStack';
-import {Grid} from '@astryxdesign/core/Grid';
 import {Card} from '@astryxdesign/core/Card';
 import {Heading} from '@astryxdesign/core/Heading';
 import {Text} from '@astryxdesign/core/Text';
 import {Button} from '@astryxdesign/core/Button';
+import {CardGrid} from '@/components/layout/CardGrid';
 import {PageHeader} from '@/components/PageHeader';
+import {CARD_PAD, LOGO_HEIGHT, PAGE_GAP, SECTION_PAD} from '@/lib/layout';
 import {enterprise, img} from '@/data/content';
 
 export const metadata: Metadata = {title: 'Đào tạo doanh nghiệp'};
 
-type Block = {title: string; desc?: string | null; description?: string | null};
-type Logo = {src?: string | null; fallback?: string | null; name?: string | null};
-type CaseStudy = {title: string; desc?: string | null; description?: string | null};
+type Block = {
+  title: string;
+  desc?: string | null;
+  description?: string | null;
+};
+type Logo = {
+  src?: string | null;
+  fallback?: string | null;
+  name?: string | null;
+};
+type CaseStudy = {
+  title: string;
+  desc?: string | null;
+  description?: string | null;
+};
 
 export default function Page() {
   const blocks = (enterprise.solutions?.blocks ?? []) as Block[];
@@ -24,8 +37,8 @@ export default function Page() {
   const cases = (enterprise.caseStudies?.items ?? []) as CaseStudy[];
 
   return (
-    <Section padding={6}>
-      <VStack gap={8}>
+    <Section padding={SECTION_PAD}>
+      <VStack gap={PAGE_GAP}>
         <PageHeader
           title={enterprise.hero?.heading ?? 'Đào tạo doanh nghiệp'}
           subcopy={enterprise.hero?.subcopy}
@@ -47,7 +60,11 @@ export default function Page() {
                     alt={l.name ?? ''}
                     width={110}
                     height={32}
-                    style={{height: 28, width: 'auto', objectFit: 'contain'}}
+                    style={{
+                      height: LOGO_HEIGHT,
+                      width: 'auto',
+                      objectFit: 'contain',
+                    }}
                   />
                 ) : null;
               })}
@@ -60,9 +77,9 @@ export default function Page() {
             <Heading level={2}>{enterprise.solutions?.heading}</Heading>
             <Text color="secondary">{enterprise.solutions?.subcopy}</Text>
           </VStack>
-          <Grid columns={{minWidth: 260}} gap={4}>
+          <CardGrid>
             {blocks.map((b) => (
-              <Card key={b.title} padding={4}>
+              <Card key={b.title} padding={CARD_PAD}>
                 <VStack gap={2}>
                   <Heading level={3}>{b.title}</Heading>
                   <Text type="supporting" color="secondary">
@@ -71,7 +88,7 @@ export default function Page() {
                 </VStack>
               </Card>
             ))}
-          </Grid>
+          </CardGrid>
         </VStack>
 
         {cases.length ? (
@@ -80,9 +97,9 @@ export default function Page() {
               <Heading level={2}>{enterprise.caseStudies?.heading}</Heading>
               <Text color="secondary">{enterprise.caseStudies?.subcopy}</Text>
             </VStack>
-            <Grid columns={{minWidth: 260}} gap={4}>
+            <CardGrid>
               {cases.map((c) => (
-                <Card key={c.title} padding={4}>
+                <Card key={c.title} padding={CARD_PAD}>
                   <VStack gap={2}>
                     <Heading level={3}>{c.title}</Heading>
                     <Text type="supporting" color="secondary">
@@ -91,11 +108,11 @@ export default function Page() {
                   </VStack>
                 </Card>
               ))}
-            </Grid>
+            </CardGrid>
           </VStack>
         ) : null}
 
-        <Card padding={6}>
+        <Card padding={CARD_PAD}>
           <VStack gap={3} hAlign="center">
             <Heading level={2} justify="center">
               Cần lộ trình riêng cho đội ngũ của bạn?

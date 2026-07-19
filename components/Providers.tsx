@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import NextLink from "next/link";
-import { LinkProvider } from "@astryxdesign/core/Link";
-import { ToastViewport } from "@astryxdesign/core/Toast";
+import NextLink from 'next/link';
+import {LinkProvider} from '@astryxdesign/core/Link';
+import {ToastViewport} from '@astryxdesign/core/Toast';
 
 /**
  * LinkProvider routes every Astryx link (nav items, breadcrumbs, cards…)
@@ -12,7 +12,7 @@ import { ToastViewport } from "@astryxdesign/core/Toast";
  * ToastViewport hosts the toasts raised by useToast — these replace the
  * legacy site's window.alert() calls on checkout, invoice download, etc.
  */
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({children}: {children: React.ReactNode}) {
   return (
     <LinkProvider component={NextLink}>
       {children}

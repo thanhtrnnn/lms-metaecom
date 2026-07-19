@@ -1,19 +1,20 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { VStack } from "@astryxdesign/core/VStack";
-import { HStack } from "@astryxdesign/core/HStack";
-import { StackItem } from "@astryxdesign/core/Stack";
-import { Heading } from "@astryxdesign/core/Heading";
-import { Text } from "@astryxdesign/core/Text";
-import { TextInput } from "@astryxdesign/core/TextInput";
-import { EmptyState } from "@astryxdesign/core/EmptyState";
-import { Table, proportional, pixel } from "@astryxdesign/core/Table";
-import type { TableColumn } from "@astryxdesign/core/Table";
-import { Search, SearchX, Users } from "lucide-react";
+import {useState} from 'react';
+import {VStack} from '@astryxdesign/core/VStack';
+import {HStack} from '@astryxdesign/core/HStack';
+import {StackItem} from '@astryxdesign/core/Stack';
+import {Heading} from '@astryxdesign/core/Heading';
+import {Text} from '@astryxdesign/core/Text';
+import {TextInput} from '@astryxdesign/core/TextInput';
+import {EmptyState} from '@astryxdesign/core/EmptyState';
+import {Table, proportional, pixel} from '@astryxdesign/core/Table';
+import type {TableColumn} from '@astryxdesign/core/Table';
+import {Search, SearchX, Users} from 'lucide-react';
 
-import { formatDate } from "@/lib/format";
-import { useHasMounted, useUsers } from "@/lib/stores";
+import {formatDate} from '@/lib/format';
+import {useHasMounted, useUsers} from '@/lib/stores';
+import {PAGE_GAP} from '@/lib/layout';
 
 interface StudentRow extends Record<string, unknown> {
   rowId: string;
@@ -24,10 +25,10 @@ interface StudentRow extends Record<string, unknown> {
 }
 
 const columns: TableColumn<StudentRow>[] = [
-  { key: "name", header: "Họ và tên", width: proportional(2) },
+  {key: 'name', header: 'Họ và tên', width: proportional(2)},
   {
-    key: "phone",
-    header: "Số điện thoại",
+    key: 'phone',
+    header: 'Số điện thoại',
     width: pixel(160),
     renderCell: (item) =>
       item.phone ? (
@@ -38,10 +39,10 @@ const columns: TableColumn<StudentRow>[] = [
         </Text>
       ),
   },
-  { key: "email", header: "Email", width: proportional(2) },
+  {key: 'email', header: 'Email', width: proportional(2)},
   {
-    key: "joinedAt",
-    header: "Ngày tham gia",
+    key: 'joinedAt',
+    header: 'Ngày tham gia',
     width: pixel(150),
     renderCell: (item) =>
       item.joinedAt ? (
@@ -57,7 +58,7 @@ const columns: TableColumn<StudentRow>[] = [
 export function AdminStudents() {
   const users = useUsers();
   const mounted = useHasMounted();
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   // The user list is localStorage-only; the server snapshot is always empty.
   if (!mounted) return null;
@@ -72,13 +73,13 @@ export function AdminStudents() {
       joinedAt: user.joinedAt,
     }))
     .filter((row) =>
-      q === ""
+      q === ''
         ? true
-        : [row.name, row.email, row.phone].join(" ").toLowerCase().includes(q),
+        : [row.name, row.email, row.phone].join(' ').toLowerCase().includes(q),
     );
 
   return (
-    <VStack gap={5}>
+    <VStack gap={PAGE_GAP}>
       <VStack gap={1}>
         <Heading level={1}>Học viên</Heading>
         <Text type="supporting" color="secondary">

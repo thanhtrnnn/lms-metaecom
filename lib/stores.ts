@@ -96,9 +96,7 @@ export function useAuth() {
     user,
     login(email: string) {
       setLoggedIn(true);
-      setUser((prev) =>
-        prev ?? {name: email.split('@')[0], email, phone: ''},
-      );
+      setUser((prev) => prev ?? {name: email.split('@')[0], email, phone: ''});
     },
     signup(data: UserData) {
       setLoggedIn(true);

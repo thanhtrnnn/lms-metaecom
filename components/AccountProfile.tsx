@@ -1,34 +1,35 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { VStack } from "@astryxdesign/core/VStack";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Card } from "@astryxdesign/core/Card";
-import { Heading } from "@astryxdesign/core/Heading";
-import { Text } from "@astryxdesign/core/Text";
-import { Avatar } from "@astryxdesign/core/Avatar";
-import { Button } from "@astryxdesign/core/Button";
-import { Divider } from "@astryxdesign/core/Divider";
-import { FormLayout } from "@astryxdesign/core/FormLayout";
-import { Field } from "@astryxdesign/core/Field";
-import { TextInput } from "@astryxdesign/core/TextInput";
-import { useToast } from "@astryxdesign/core/Toast";
+import {useState} from 'react';
+import {VStack} from '@astryxdesign/core/VStack';
+import {HStack} from '@astryxdesign/core/HStack';
+import {Card} from '@astryxdesign/core/Card';
+import {Heading} from '@astryxdesign/core/Heading';
+import {Text} from '@astryxdesign/core/Text';
+import {Avatar} from '@astryxdesign/core/Avatar';
+import {Button} from '@astryxdesign/core/Button';
+import {Divider} from '@astryxdesign/core/Divider';
+import {FormLayout} from '@astryxdesign/core/FormLayout';
+import {Field} from '@astryxdesign/core/Field';
+import {TextInput} from '@astryxdesign/core/TextInput';
+import {useToast} from '@astryxdesign/core/Toast';
 
-import { formatDate } from "@/lib/format";
-import { useAuth, useHasMounted } from "@/lib/stores";
-import { AccountLoginPrompt } from "./AccountLoginPrompt";
+import {formatDate} from '@/lib/format';
+import {useAuth, useHasMounted} from '@/lib/stores';
+import {CARD_PAD, FORM_GAP} from '@/lib/layout';
+import {AccountLoginPrompt} from './AccountLoginPrompt';
 
-type Errors = Partial<Record<"name" | "phone", string>>;
+type Errors = Partial<Record<'name' | 'phone', string>>;
 
 export function AccountProfile() {
-  const { isLoggedIn, user, updateProfile } = useAuth();
+  const {isLoggedIn, user, updateProfile} = useAuth();
   const showToast = useToast();
   const mounted = useHasMounted();
 
   // The store hands back the server snapshot (null) on the first render and the
   // real user only after mount, so the form reads from the store until the user
   // actually edits something — no effect needed to seed it.
-  const [draft, setDraft] = useState<{ name: string; phone: string } | null>(
+  const [draft, setDraft] = useState<{name: string; phone: string} | null>(
     null,
   );
   const [errors, setErrors] = useState<Errors>({});
@@ -38,27 +39,27 @@ export function AccountProfile() {
 
   const name = draft ? draft.name : user.name;
   const phone = draft ? draft.phone : user.phone;
-  const setName = (value: string) => setDraft({ name: value, phone });
-  const setPhone = (value: string) => setDraft({ name, phone: value });
+  const setName = (value: string) => setDraft({name: value, phone});
+  const setPhone = (value: string) => setDraft({name, phone: value});
 
   const validate = (): boolean => {
     const nextErrors: Errors = {};
-    if (!name.trim()) nextErrors.name = "Vui lòng nhập họ tên.";
-    if (!/^0\d{8,10}$/.test(phone.replace(/\s/g, "")))
-      nextErrors.phone = "Số điện thoại không hợp lệ (bắt đầu bằng 0).";
+    if (!name.trim()) nextErrors.name = 'Vui lòng nhập họ tên.';
+    if (!/^0\d{8,10}$/.test(phone.replace(/\s/g, '')))
+      nextErrors.phone = 'Số điện thoại không hợp lệ (bắt đầu bằng 0).';
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
   };
 
   const save = () => {
     if (!validate()) return;
-    updateProfile({ name: name.trim(), phone: phone.replace(/\s/g, "") });
-    showToast({ body: "Đã lưu thông tin cá nhân." });
+    updateProfile({name: name.trim(), phone: phone.replace(/\s/g, '')});
+    showToast({body: 'Đã lưu thông tin cá nhân.'});
   };
 
   return (
-    <Card padding={6} width="100%" maxWidth={640}>
-      <VStack gap={4}>
+    <Card padding={CARD_PAD} width="100%" maxWidth={640}>
+      <VStack gap={FORM_GAP}>
         <HStack gap={3} vAlign="center">
           <Avatar name={user.name} src={user.avatar} size="large" />
           <VStack gap={0.5}>
@@ -80,7 +81,7 @@ export function AccountProfile() {
             onChange={setName}
             placeholder="Nguyễn Văn A"
             status={
-              errors.name ? { type: "error", message: errors.name } : undefined
+              errors.name ? {type: 'error', message: errors.name} : undefined
             }
           />
           <TextInput
@@ -89,9 +90,7 @@ export function AccountProfile() {
             onChange={setPhone}
             placeholder="0912345678"
             status={
-              errors.phone
-                ? { type: "error", message: errors.phone }
-                : undefined
+              errors.phone ? {type: 'error', message: errors.phone} : undefined
             }
           />
           <TextInput

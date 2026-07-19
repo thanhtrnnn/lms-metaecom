@@ -1,13 +1,13 @@
 import type {Metadata} from 'next';
-import {Section} from '@astryxdesign/core/Section';
 import {AdminDashboard} from '@/components/AdminDashboard';
+import {PageShell} from '@/components/layout/PageShell';
 
 export const metadata: Metadata = {title: 'Tổng quan'};
 
 export default function AdminDashboardPage() {
   return (
-    <Section padding={5} variant="transparent">
+    <PageShell variant="transparent">
       <AdminDashboard />
-    </Section>
+    </PageShell>
   );
 }

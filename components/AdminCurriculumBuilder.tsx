@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { VStack } from "@astryxdesign/core/VStack";
-import { HStack } from "@astryxdesign/core/HStack";
-import { StackItem } from "@astryxdesign/core/Stack";
-import { Section } from "@astryxdesign/core/Section";
-import { Heading } from "@astryxdesign/core/Heading";
-import { Text } from "@astryxdesign/core/Text";
-import { Badge } from "@astryxdesign/core/Badge";
-import { Button } from "@astryxdesign/core/Button";
-import { IconButton } from "@astryxdesign/core/IconButton";
-import { Collapsible } from "@astryxdesign/core/Collapsible";
-import { Field } from "@astryxdesign/core/Field";
-import { TextInput } from "@astryxdesign/core/TextInput";
-import { TextArea } from "@astryxdesign/core/TextArea";
-import { Switch } from "@astryxdesign/core/Switch";
-import { EmptyState } from "@astryxdesign/core/EmptyState";
-import { ListVideo, Plus, Trash2 } from "lucide-react";
+import {VStack} from '@astryxdesign/core/VStack';
+import {HStack} from '@astryxdesign/core/HStack';
+import {StackItem} from '@astryxdesign/core/Stack';
+import {Section} from '@astryxdesign/core/Section';
+import {Heading} from '@astryxdesign/core/Heading';
+import {Text} from '@astryxdesign/core/Text';
+import {Badge} from '@astryxdesign/core/Badge';
+import {Button} from '@astryxdesign/core/Button';
+import {IconButton} from '@astryxdesign/core/IconButton';
+import {Collapsible} from '@astryxdesign/core/Collapsible';
+import {Field} from '@astryxdesign/core/Field';
+import {TextInput} from '@astryxdesign/core/TextInput';
+import {TextArea} from '@astryxdesign/core/TextArea';
+import {Switch} from '@astryxdesign/core/Switch';
+import {EmptyState} from '@astryxdesign/core/EmptyState';
+import {ListVideo, Plus, Trash2} from 'lucide-react';
 
-import type { Lesson, Section as CourseSection } from "@/lib/types";
+import type {Lesson, Section as CourseSection} from '@/lib/types';
 
 /**
  * NO course in the seed has a curriculum — the legacy accordion read
@@ -50,9 +50,7 @@ export function AdminCurriculumBuilder({
   };
 
   const patchSection = (sectionId: string, patch: Partial<CourseSection>) => {
-    onChange(
-      sections.map((s) => (s.id === sectionId ? { ...s, ...patch } : s)),
-    );
+    onChange(sections.map((s) => (s.id === sectionId ? {...s, ...patch} : s)));
   };
 
   const addLesson = (sectionId: string) => {
@@ -79,7 +77,7 @@ export function AdminCurriculumBuilder({
     onChange(
       sections.map((s) =>
         s.id === sectionId
-          ? { ...s, lessons: s.lessons.filter((l) => l.id !== lessonId) }
+          ? {...s, lessons: s.lessons.filter((l) => l.id !== lessonId)}
           : s,
       ),
     );
@@ -96,7 +94,7 @@ export function AdminCurriculumBuilder({
           ? {
               ...s,
               lessons: s.lessons.map((l) =>
-                l.id === lessonId ? { ...l, ...patch } : l,
+                l.id === lessonId ? {...l, ...patch} : l,
               ),
             }
           : s,
@@ -142,14 +140,14 @@ export function AdminCurriculumBuilder({
               key={section.id}
               variant="muted"
               padding={3}
-              dividers={["top"]}
+              dividers={['top']}
             >
               <Collapsible
                 defaultIsOpen
                 trigger={
                   <HStack gap={2} vAlign="center">
                     <Text type="label">
-                      {`Chương ${sectionIndex + 1}. ${section.title || "Chưa đặt tên"}`}
+                      {`Chương ${sectionIndex + 1}. ${section.title || 'Chưa đặt tên'}`}
                     </Text>
                     <Badge
                       label={`${section.lessons.length} bài`}
@@ -162,7 +160,7 @@ export function AdminCurriculumBuilder({
                   <TextInput
                     label="Tên chương (bắt buộc)"
                     value={section.title}
-                    onChange={(v) => patchSection(section.id, { title: v })}
+                    onChange={(v) => patchSection(section.id, {title: v})}
                     placeholder="Ví dụ: Khởi động với Livestream"
                   />
 
@@ -186,7 +184,7 @@ export function AdminCurriculumBuilder({
                           label="Tiêu đề bài học (bắt buộc)"
                           value={lesson.title}
                           onChange={(v) =>
-                            patchLesson(section.id, lesson.id, { title: v })
+                            patchLesson(section.id, lesson.id, {title: v})
                           }
                           placeholder="Ví dụ: Cách lên kịch bản livestream"
                         />
@@ -195,7 +193,7 @@ export function AdminCurriculumBuilder({
                           <StackItem size="fill">
                             <TextInput
                               label="Thời lượng"
-                              value={lesson.duration ?? ""}
+                              value={lesson.duration ?? ''}
                               onChange={(v) =>
                                 patchLesson(section.id, lesson.id, {
                                   duration: v,
@@ -207,7 +205,7 @@ export function AdminCurriculumBuilder({
                           <StackItem size="fill">
                             <TextInput
                               label="Link video (YouTube)"
-                              value={lesson.videoUrl ?? ""}
+                              value={lesson.videoUrl ?? ''}
                               onChange={(v) =>
                                 patchLesson(section.id, lesson.id, {
                                   videoUrl: v,
@@ -220,7 +218,7 @@ export function AdminCurriculumBuilder({
 
                         <TextArea
                           label="Mô tả bài học"
-                          value={lesson.description ?? ""}
+                          value={lesson.description ?? ''}
                           onChange={(v) =>
                             patchLesson(section.id, lesson.id, {
                               description: v,

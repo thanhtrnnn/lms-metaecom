@@ -1,29 +1,30 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { VStack } from "@astryxdesign/core/VStack";
-import { FormLayout } from "@astryxdesign/core/FormLayout";
-import { Field } from "@astryxdesign/core/Field";
-import { TextInput } from "@astryxdesign/core/TextInput";
-import { TextArea } from "@astryxdesign/core/TextArea";
-import { Button } from "@astryxdesign/core/Button";
-import { useToast } from "@astryxdesign/core/Toast";
+import {useState} from 'react';
+import {VStack} from '@astryxdesign/core/VStack';
+import {FormLayout} from '@astryxdesign/core/FormLayout';
+import {Field} from '@astryxdesign/core/Field';
+import {TextInput} from '@astryxdesign/core/TextInput';
+import {TextArea} from '@astryxdesign/core/TextArea';
+import {Button} from '@astryxdesign/core/Button';
+import {useToast} from '@astryxdesign/core/Toast';
+import {FORM_GAP} from '@/lib/layout';
 
-type Errors = Partial<Record<"name" | "email" | "message", string>>;
+type Errors = Partial<Record<'name' | 'email' | 'message', string>>;
 
 export function ContactForm() {
   const showToast = useToast();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
   const [errors, setErrors] = useState<Errors>({});
 
   const submit = () => {
     const next: Errors = {};
-    if (!name.trim()) next.name = "Vui lòng nhập họ tên.";
-    if (!/^\S+@\S+\.\S+$/.test(email)) next.email = "Email không hợp lệ.";
+    if (!name.trim()) next.name = 'Vui lòng nhập họ tên.';
+    if (!/^\S+@\S+\.\S+$/.test(email)) next.email = 'Email không hợp lệ.';
     if (message.trim().length < 10)
-      next.message = "Nội dung cần ít nhất 10 ký tự.";
+      next.message = 'Nội dung cần ít nhất 10 ký tự.';
     setErrors(next);
     if (Object.keys(next).length) return;
 
@@ -35,7 +36,7 @@ export function ContactForm() {
   };
 
   return (
-    <VStack gap={3}>
+    <VStack gap={FORM_GAP}>
       <FormLayout>
         <TextInput
           label="Họ và tên (bắt buộc)"
@@ -43,7 +44,7 @@ export function ContactForm() {
           onChange={setName}
           placeholder="Nguyễn Văn A"
           status={
-            errors.name ? { type: "error", message: errors.name } : undefined
+            errors.name ? {type: 'error', message: errors.name} : undefined
           }
         />
         <TextInput
@@ -53,7 +54,7 @@ export function ContactForm() {
           onChange={setEmail}
           placeholder="ban@email.com"
           status={
-            errors.email ? { type: "error", message: errors.email } : undefined
+            errors.email ? {type: 'error', message: errors.email} : undefined
           }
         />
         <TextArea
@@ -63,7 +64,7 @@ export function ContactForm() {
           placeholder="Bạn cần hỗ trợ điều gì?"
           status={
             errors.message
-              ? { type: "error", message: errors.message }
+              ? {type: 'error', message: errors.message}
               : undefined
           }
         />

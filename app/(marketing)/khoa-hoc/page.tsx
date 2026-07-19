@@ -1,6 +1,5 @@
 import {Suspense} from 'react';
 import {VStack} from '@astryxdesign/core/VStack';
-import {Section} from '@astryxdesign/core/Section';
 import {Heading} from '@astryxdesign/core/Heading';
 import {Text} from '@astryxdesign/core/Text';
 import {Breadcrumbs, BreadcrumbItem} from '@astryxdesign/core/Breadcrumbs';
@@ -8,6 +7,8 @@ import {Spinner} from '@astryxdesign/core/Spinner';
 import type {Metadata} from 'next';
 
 import {CourseCatalog} from '@/components/CourseCatalog';
+import {PageShell} from '@/components/layout/PageShell';
+import {HEADER_GAP} from '@/lib/layout';
 
 export const metadata: Metadata = {
   title: 'Khóa học',
@@ -17,23 +18,21 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <Section padding={6}>
-      <VStack gap={5}>
-        <VStack gap={2}>
-          <Breadcrumbs label="Đường dẫn">
-            <BreadcrumbItem href="/">Trang chủ</BreadcrumbItem>
-            <BreadcrumbItem isCurrent>Khóa học</BreadcrumbItem>
-          </Breadcrumbs>
-          <Heading level={1}>Khóa học</Heading>
-          <Text color="secondary">
-            Chọn lộ trình phù hợp với mục tiêu kinh doanh của bạn.
-          </Text>
-        </VStack>
-
-        <Suspense fallback={<Spinner label="Đang tải khóa học" />}>
-          <CourseCatalog />
-        </Suspense>
+    <PageShell>
+      <VStack gap={HEADER_GAP}>
+        <Breadcrumbs label="Đường dẫn">
+          <BreadcrumbItem href="/">Trang chủ</BreadcrumbItem>
+          <BreadcrumbItem isCurrent>Khóa học</BreadcrumbItem>
+        </Breadcrumbs>
+        <Heading level={1}>Khóa học</Heading>
+        <Text color="secondary">
+          Chọn lộ trình phù hợp với mục tiêu kinh doanh của bạn.
+        </Text>
       </VStack>
-    </Section>
+
+      <Suspense fallback={<Spinner label="Đang tải khóa học" />}>
+        <CourseCatalog />
+      </Suspense>
+    </PageShell>
   );
 }

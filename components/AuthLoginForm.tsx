@@ -1,22 +1,23 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { VStack } from "@astryxdesign/core/VStack";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Card } from "@astryxdesign/core/Card";
-import { Heading } from "@astryxdesign/core/Heading";
-import { Text } from "@astryxdesign/core/Text";
-import { Link } from "@astryxdesign/core/Link";
-import { Button } from "@astryxdesign/core/Button";
-import { FormLayout } from "@astryxdesign/core/FormLayout";
-import { Field } from "@astryxdesign/core/Field";
-import { TextInput } from "@astryxdesign/core/TextInput";
-import { useToast } from "@astryxdesign/core/Toast";
+import {useState} from 'react';
+import {useRouter} from 'next/navigation';
+import {VStack} from '@astryxdesign/core/VStack';
+import {HStack} from '@astryxdesign/core/HStack';
+import {Card} from '@astryxdesign/core/Card';
+import {Heading} from '@astryxdesign/core/Heading';
+import {Text} from '@astryxdesign/core/Text';
+import {Link} from '@astryxdesign/core/Link';
+import {Button} from '@astryxdesign/core/Button';
+import {FormLayout} from '@astryxdesign/core/FormLayout';
+import {Field} from '@astryxdesign/core/Field';
+import {TextInput} from '@astryxdesign/core/TextInput';
+import {useToast} from '@astryxdesign/core/Toast';
 
-import { useAuth } from "@/lib/stores";
+import {useAuth} from '@/lib/stores';
+import {CARD_PAD, FORM_GAP} from '@/lib/layout';
 
-type Errors = Partial<Record<"email" | "password", string>>;
+type Errors = Partial<Record<'email' | 'password', string>>;
 
 /**
  * The legacy login.html validated NOTHING — submitting an empty form set
@@ -25,22 +26,22 @@ type Errors = Partial<Record<"email" | "password", string>>;
  * Still a localStorage prototype: there is no password check, because there is
  * no account store to check one against. The form validates shape, not identity.
  */
-export function AuthLoginForm({ next }: { next?: string }) {
+export function AuthLoginForm({next}: {next?: string}) {
   const router = useRouter();
-  const { login } = useAuth();
+  const {login} = useAuth();
   const showToast = useToast();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<Errors>({});
   const [isSubmitting, setSubmitting] = useState(false);
 
   const validate = (): boolean => {
     const nextErrors: Errors = {};
     if (!/^\S+@\S+\.\S+$/.test(email.trim()))
-      nextErrors.email = "Email không hợp lệ.";
+      nextErrors.email = 'Email không hợp lệ.';
     if (password.length < 8)
-      nextErrors.password = "Mật khẩu phải có ít nhất 8 ký tự.";
+      nextErrors.password = 'Mật khẩu phải có ít nhất 8 ký tự.';
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
   };
@@ -50,18 +51,18 @@ export function AuthLoginForm({ next }: { next?: string }) {
 
     setSubmitting(true);
     login(email.trim());
-    showToast({ body: "Đăng nhập thành công." });
+    showToast({body: 'Đăng nhập thành công.'});
 
     // Only same-origin paths — never bounce the user to an external URL from a
     // query string.
     const target =
-      next && next.startsWith("/") && !next.startsWith("//") ? next : "/";
+      next && next.startsWith('/') && !next.startsWith('//') ? next : '/';
     router.push(target);
   };
 
   return (
-    <Card padding={6} width="100%" maxWidth={440}>
-      <VStack gap={4}>
+    <Card padding={CARD_PAD} width="100%" maxWidth={440}>
+      <VStack gap={FORM_GAP}>
         <VStack gap={1}>
           <Heading level={1}>Đăng nhập</Heading>
           <Text type="supporting" color="secondary">
@@ -77,9 +78,7 @@ export function AuthLoginForm({ next }: { next?: string }) {
             onChange={setEmail}
             placeholder="ban@email.com"
             status={
-              errors.email
-                ? { type: "error", message: errors.email }
-                : undefined
+              errors.email ? {type: 'error', message: errors.email} : undefined
             }
           />
           <TextInput
@@ -90,7 +89,7 @@ export function AuthLoginForm({ next }: { next?: string }) {
             placeholder="Ít nhất 8 ký tự"
             status={
               errors.password
-                ? { type: "error", message: errors.password }
+                ? {type: 'error', message: errors.password}
                 : undefined
             }
           />

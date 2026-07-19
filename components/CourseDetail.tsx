@@ -1,42 +1,38 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { VStack } from "@astryxdesign/core/VStack";
-import { HStack } from "@astryxdesign/core/HStack";
-import { StackItem } from "@astryxdesign/core/Stack";
-import { Card } from "@astryxdesign/core/Card";
-import { Heading } from "@astryxdesign/core/Heading";
-import { Text } from "@astryxdesign/core/Text";
-import { Badge } from "@astryxdesign/core/Badge";
-import { Button } from "@astryxdesign/core/Button";
-import { TabList, Tab } from "@astryxdesign/core/TabList";
-import { Collapsible } from "@astryxdesign/core/Collapsible";
-import { List, ListItem } from "@astryxdesign/core/List";
-import { EmptyState } from "@astryxdesign/core/EmptyState";
-import { AspectRatio } from "@astryxdesign/core/AspectRatio";
-import { Divider } from "@astryxdesign/core/Divider";
-import { useToast } from "@astryxdesign/core/Toast";
-import { Lock, PlayCircle, BookOpen, Star, Users } from "lucide-react";
+import {useState} from 'react';
+import Image from 'next/image';
+import {useRouter} from 'next/navigation';
+import {VStack} from '@astryxdesign/core/VStack';
+import {HStack} from '@astryxdesign/core/HStack';
+import {StackItem} from '@astryxdesign/core/Stack';
+import {Card} from '@astryxdesign/core/Card';
+import {Heading} from '@astryxdesign/core/Heading';
+import {Text} from '@astryxdesign/core/Text';
+import {Badge} from '@astryxdesign/core/Badge';
+import {Button} from '@astryxdesign/core/Button';
+import {TabList, Tab} from '@astryxdesign/core/TabList';
+import {Collapsible} from '@astryxdesign/core/Collapsible';
+import {List, ListItem} from '@astryxdesign/core/List';
+import {EmptyState} from '@astryxdesign/core/EmptyState';
+import {AspectRatio} from '@astryxdesign/core/AspectRatio';
+import {Divider} from '@astryxdesign/core/Divider';
+import {useToast} from '@astryxdesign/core/Toast';
+import {Lock, PlayCircle, BookOpen, Star, Users} from 'lucide-react';
 
-import type { Course } from "@/lib/types";
-import { discountPercent, formatVnd } from "@/lib/format";
-import {
-  useCart,
-  useCourses,
-  useHasMounted,
-  usePurchases,
-} from "@/lib/stores";
+import type {Course} from '@/lib/types';
+import {discountPercent, formatVnd} from '@/lib/format';
+import {useCart, useCourses, useHasMounted, usePurchases} from '@/lib/stores';
+import {ASIDE_WIDTH, CARD_PAD} from '@/lib/layout';
 
-export function CourseDetail({ course: seeded }: { course: Course }) {
+export function CourseDetail({course: seeded}: {course: Course}) {
   const router = useRouter();
   const cart = useCart();
-  const { owns } = usePurchases();
-  const { courses } = useCourses();
+  const {owns} = usePurchases();
+  const {courses} = useCourses();
   const showToast = useToast();
   const mounted = useHasMounted();
-  const [tab, setTab] = useState("curriculum");
+  const [tab, setTab] = useState('curriculum');
 
   // The server renders the static seed (good for SEO and first paint), but the
   // admin authors courses into localStorage — including the curriculum, which
@@ -53,7 +49,7 @@ export function CourseDetail({ course: seeded }: { course: Course }) {
   const addToCart = () => {
     cart.add(course);
     // Replaces the legacy `alert()` / 1.8s "✓ Đã thêm" button hack.
-    showToast({ body: `Đã thêm "${course.title}" vào giỏ hàng.` });
+    showToast({body: `Đã thêm "${course.title}" vào giỏ hàng.`});
   };
 
   return (
@@ -68,8 +64,8 @@ export function CourseDetail({ course: seeded }: { course: Course }) {
                 fill
                 sizes="(max-width: 900px) 100vw, 700px"
                 style={{
-                  objectFit: "cover",
-                  borderRadius: "var(--radius-container)",
+                  objectFit: 'cover',
+                  borderRadius: 'var(--radius-container)',
                 }}
                 priority
               />
@@ -80,7 +76,7 @@ export function CourseDetail({ course: seeded }: { course: Course }) {
                 <Badge label={course.category} variant="teal" />
                 {course.level ? (
                   <Badge
-                    label={course.level === "basic" ? "Cơ bản" : "Chuyên sâu"}
+                    label={course.level === 'basic' ? 'Cơ bản' : 'Chuyên sâu'}
                     variant="neutral"
                   />
                 ) : null}
@@ -119,7 +115,7 @@ export function CourseDetail({ course: seeded }: { course: Course }) {
               <Tab value="instructor" label="Giảng viên" />
             </TabList>
 
-            {tab === "curriculum" ? (
+            {tab === 'curriculum' ? (
               sections.length === 0 ? (
                 /* Not a placeholder for missing UI — the legacy data genuinely
                    has no curriculum for any course. Lessons are authored in
@@ -179,24 +175,24 @@ export function CourseDetail({ course: seeded }: { course: Course }) {
               )
             ) : null}
 
-            {tab === "description" ? (
+            {tab === 'description' ? (
               <Text>
-                {course.description ?? "Khóa học chưa có mô tả chi tiết."}
+                {course.description ?? 'Khóa học chưa có mô tả chi tiết.'}
               </Text>
             ) : null}
 
-            {tab === "instructor" ? (
+            {tab === 'instructor' ? (
               <Text>
                 {course.instructor
                   ? `Giảng viên phụ trách: ${course.instructor}.`
-                  : "Chưa có thông tin giảng viên."}
+                  : 'Chưa có thông tin giảng viên.'}
               </Text>
             ) : null}
           </VStack>
         </StackItem>
 
         {/* Purchase panel */}
-        <Card padding={4} width={320}>
+        <Card padding={CARD_PAD} width={ASIDE_WIDTH}>
           <VStack gap={3}>
             <HStack gap={2} vAlign="center" wrap="wrap">
               <Heading level={2}>{formatVnd(course.price)}</Heading>
@@ -216,7 +212,7 @@ export function CourseDetail({ course: seeded }: { course: Course }) {
                   ? `${sections.length} phần • ${lessonCount} bài học`
                   : course.lessonsLabel
                     ? `${course.lessonsLabel}`
-                    : "Nội dung đang cập nhật"}
+                    : 'Nội dung đang cập nhật'}
               </Text>
               <Text type="supporting" color="secondary">
                 Truy cập trọn đời
@@ -227,13 +223,13 @@ export function CourseDetail({ course: seeded }: { course: Course }) {
               <Button
                 label="Vào học ngay"
                 variant="primary"
-                onClick={() => router.push("/tai-khoan/khoa-hoc-cua-toi")}
+                onClick={() => router.push('/tai-khoan/khoa-hoc-cua-toi')}
               />
             ) : inCart ? (
               <Button
                 label="Xem giỏ hàng"
                 variant="primary"
-                onClick={() => router.push("/gio-hang")}
+                onClick={() => router.push('/gio-hang')}
               />
             ) : (
               <Button

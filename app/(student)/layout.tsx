@@ -8,11 +8,7 @@ import {AccountSideNav} from '@/components/AccountSideNav';
  * the four account destinations. Pages bring their own Section padding, so the
  * shell adds none.
  */
-export default function StudentLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function StudentLayout({children}: {children: React.ReactNode}) {
   return (
     <AppShell
       topNav={<SiteHeader />}

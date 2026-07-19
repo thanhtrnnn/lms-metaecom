@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { VStack } from "@astryxdesign/core/VStack";
-import { Grid } from "@astryxdesign/core/Grid";
-import { Card } from "@astryxdesign/core/Card";
-import { Heading } from "@astryxdesign/core/Heading";
-import { Text } from "@astryxdesign/core/Text";
-import { Button } from "@astryxdesign/core/Button";
-import { AspectRatio } from "@astryxdesign/core/AspectRatio";
-import { ProgressBar } from "@astryxdesign/core/ProgressBar";
-import { EmptyState } from "@astryxdesign/core/EmptyState";
-import { GraduationCap } from "lucide-react";
+import Image from 'next/image';
+import {useRouter} from 'next/navigation';
+import {VStack} from '@astryxdesign/core/VStack';
+import {Card} from '@astryxdesign/core/Card';
+import {Heading} from '@astryxdesign/core/Heading';
+import {Text} from '@astryxdesign/core/Text';
+import {Button} from '@astryxdesign/core/Button';
+import {AspectRatio} from '@astryxdesign/core/AspectRatio';
+import {ProgressBar} from '@astryxdesign/core/ProgressBar';
+import {EmptyState} from '@astryxdesign/core/EmptyState';
+import {GraduationCap} from 'lucide-react';
 
-import { formatDate } from "@/lib/format";
-import { useAuth, useCourses, useHasMounted, usePurchases } from "@/lib/stores";
-import type { Course } from "@/lib/types";
-import { AccountLoginPrompt } from "./AccountLoginPrompt";
+import {formatDate} from '@/lib/format';
+import {useAuth, useCourses, useHasMounted, usePurchases} from '@/lib/stores';
+import type {Course} from '@/lib/types';
+import {CardGrid} from '@/components/layout/CardGrid';
+import {AccountLoginPrompt} from './AccountLoginPrompt';
 
 /**
  * Where "Vào học" goes. If the course has a curriculum we open its first
@@ -24,7 +24,7 @@ import { AccountLoginPrompt } from "./AccountLoginPrompt";
  * page rather than a player with nothing to play.
  */
 function learnHref(course: Course | undefined): string {
-  if (!course) return "/khoa-hoc";
+  if (!course) return '/khoa-hoc';
   const firstLesson = course.curriculum?.[0]?.lessons?.[0];
   return firstLesson
     ? `/hoc/${course.slug}/${firstLesson.id}`
@@ -33,9 +33,9 @@ function learnHref(course: Course | undefined): string {
 
 export function AccountCourses() {
   const router = useRouter();
-  const { isLoggedIn } = useAuth();
-  const { purchased } = usePurchases();
-  const { courses } = useCourses();
+  const {isLoggedIn} = useAuth();
+  const {purchased} = usePurchases();
+  const {courses} = useCourses();
   const mounted = useHasMounted();
 
   if (!mounted) return null;
@@ -52,7 +52,7 @@ export function AccountCourses() {
           <Button
             label="Xem khóa học"
             variant="primary"
-            onClick={() => router.push("/khoa-hoc")}
+            onClick={() => router.push('/khoa-hoc')}
           />
         }
       />
@@ -60,7 +60,7 @@ export function AccountCourses() {
   }
 
   return (
-    <Grid gap={4} columns={{ minWidth: 260 }}>
+    <CardGrid>
       {purchased.map((item) => {
         const course = courses.find((c) => c.id === item.courseId);
         return (
@@ -72,7 +72,7 @@ export function AccountCourses() {
                   alt={item.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 320px"
-                  style={{ objectFit: "cover" }}
+                  style={{objectFit: 'cover'}}
                 />
               </AspectRatio>
 
@@ -96,7 +96,7 @@ export function AccountCourses() {
 
                 <Button
                   label="Vào học"
-                  variant="primary"
+                  variant="secondary"
                   onClick={() => router.push(learnHref(course))}
                 />
               </VStack>
@@ -104,6 +104,6 @@ export function AccountCourses() {
           </Card>
         );
       })}
-    </Grid>
+    </CardGrid>
   );
 }

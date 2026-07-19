@@ -1,9 +1,10 @@
-import { VStack } from "@astryxdesign/core/VStack";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Heading } from "@astryxdesign/core/Heading";
-import { Text } from "@astryxdesign/core/Text";
-import { Badge } from "@astryxdesign/core/Badge";
-import { Breadcrumbs, BreadcrumbItem } from "@astryxdesign/core/Breadcrumbs";
+import {VStack} from '@astryxdesign/core/VStack';
+import {HStack} from '@astryxdesign/core/HStack';
+import {Heading} from '@astryxdesign/core/Heading';
+import {Text} from '@astryxdesign/core/Text';
+import {Badge} from '@astryxdesign/core/Badge';
+import {Breadcrumbs, BreadcrumbItem} from '@astryxdesign/core/Breadcrumbs';
+import {HEADER_GAP} from '@/lib/layout';
 
 export function PageHeader({
   eyebrow,
@@ -17,7 +18,7 @@ export function PageHeader({
   current: string;
 }) {
   return (
-    <VStack gap={3}>
+    <VStack gap={HEADER_GAP}>
       <Breadcrumbs label="Đường dẫn">
         <BreadcrumbItem href="/">Trang chủ</BreadcrumbItem>
         <BreadcrumbItem isCurrent>{current}</BreadcrumbItem>

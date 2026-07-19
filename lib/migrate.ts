@@ -81,7 +81,8 @@ export function migrateLegacyStorage(): void {
       return {
         ...(match ?? ({} as Course)),
         ...(c as Partial<Course>),
-        id: match?.id ?? `legacy-${c.id ?? Math.random().toString(36).slice(2)}`,
+        id:
+          match?.id ?? `legacy-${c.id ?? Math.random().toString(36).slice(2)}`,
         slug: match?.slug ?? `khoa-hoc-${c.id ?? 'cu'}`,
         categorySlug: match?.categorySlug ?? 'content-ai',
         status: (c.status === 'draft' ? 'draft' : 'active') as Course['status'],

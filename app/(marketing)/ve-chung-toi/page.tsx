@@ -2,13 +2,14 @@ import Image from 'next/image';
 import type {Metadata} from 'next';
 import {Section} from '@astryxdesign/core/Section';
 import {VStack} from '@astryxdesign/core/VStack';
-import {Grid} from '@astryxdesign/core/Grid';
 import {Card} from '@astryxdesign/core/Card';
 import {Heading} from '@astryxdesign/core/Heading';
 import {Text} from '@astryxdesign/core/Text';
 import {Avatar} from '@astryxdesign/core/Avatar';
 import {AspectRatio} from '@astryxdesign/core/AspectRatio';
+import {CardGrid} from '@/components/layout/CardGrid';
 import {PageHeader} from '@/components/PageHeader';
+import {CARD_PAD, PAGE_GAP, SECTION_PAD} from '@/lib/layout';
 import {about, img} from '@/data/content';
 
 export const metadata: Metadata = {title: 'Về chúng tôi'};
@@ -27,8 +28,8 @@ export default function Page() {
   const members = (about.team?.members ?? []) as Member[];
 
   return (
-    <Section padding={6}>
-      <VStack gap={8}>
+    <Section padding={SECTION_PAD}>
+      <VStack gap={PAGE_GAP}>
         <PageHeader
           eyebrow={about.hero?.tag}
           title={about.hero?.headingPlain ?? 'Về chúng tôi'}
@@ -36,23 +37,23 @@ export default function Page() {
           current="Về chúng tôi"
         />
 
-        <Grid columns={{minWidth: 300}} gap={4}>
+        <CardGrid minWidth={300}>
           {[vm?.vision, vm?.mission].filter(Boolean).map((b) => (
-            <Card key={b!.title} padding={5}>
+            <Card key={b!.title} padding={CARD_PAD}>
               <VStack gap={2}>
                 <Heading level={2}>{b!.title}</Heading>
                 <Text color="secondary">{b!.desc}</Text>
               </VStack>
             </Card>
           ))}
-        </Grid>
+        </CardGrid>
 
         <VStack gap={4}>
           <VStack gap={2}>
             <Heading level={2}>{about.coreValues?.heading}</Heading>
             <Text color="secondary">{about.coreValues?.subcopy}</Text>
           </VStack>
-          <Grid columns={{minWidth: 260}} gap={4}>
+          <CardGrid>
             {values.map((v) => {
               const src = img(v.image);
               return (
@@ -81,7 +82,7 @@ export default function Page() {
                 </Card>
               );
             })}
-          </Grid>
+          </CardGrid>
         </VStack>
 
         <VStack gap={4}>
@@ -89,9 +90,9 @@ export default function Page() {
             <Heading level={2}>{about.team?.heading}</Heading>
             <Text color="secondary">{about.team?.subcopy}</Text>
           </VStack>
-          <Grid columns={{minWidth: 220}} gap={4}>
+          <CardGrid>
             {members.map((m) => (
-              <Card key={m.name} padding={4}>
+              <Card key={m.name} padding={CARD_PAD}>
                 <VStack gap={2} hAlign="center">
                   <Avatar
                     name={m.name}
@@ -109,7 +110,7 @@ export default function Page() {
                 </VStack>
               </Card>
             ))}
-          </Grid>
+          </CardGrid>
         </VStack>
       </VStack>
     </Section>

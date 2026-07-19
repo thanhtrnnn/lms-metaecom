@@ -1,9 +1,5 @@
 export type CourseCategory =
-  | 'livestream'
-  | 'content-ai'
-  | 'tiktok'
-  | 'shopee'
-  | 'combo';
+  'livestream' | 'content-ai' | 'tiktok' | 'shopee' | 'combo';
 
 export type CourseLevel = 'basic' | 'advanced';
 export type CourseType = 'course' | 'combo' | 'performance';
