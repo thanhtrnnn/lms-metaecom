@@ -8,6 +8,21 @@
  * file would be better; drop it in and delete this rule.
  */
 
+/*
+ * Top-nav density. Astryx's TopNav items ship 18px inline padding with
+ * white-space:normal, so on the airier 6px spacing scale the five menu labels
+ * balloon and wrap mid-word ("Khóa\nhọc") on narrower desktops. AppShell only
+ * swaps in the mobile drawer at <=1024px (its breakpoint cap), so 1025-1180
+ * would otherwise show a squeezed two-row nav. Tighten the item padding and
+ * keep every label on one line so the whole bar fits down to the 1024 handoff.
+ * Scoped to the item class; a version bump could rename it (astryx pinned 0.1.4).
+ */
+.astryx-top-nav-item,
+.astryx-top-nav-mega-menu {
+  padding-inline: 10px;
+  white-space: nowrap;
+}
+
 /* OS-preference dark, before the theme store hydrates. */
 @media (prefers-color-scheme: dark) {
   .site-logo {

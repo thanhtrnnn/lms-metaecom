@@ -13,6 +13,7 @@ export default function StudentLayout({children}: {children: React.ReactNode}) {
     <AppShell
       topNav={<SiteHeader />}
       sideNav={<AccountSideNav />}
+      mobileNav={{breakpoint: 'lg'}}
       height="auto"
       contentPadding={0}
     >

@@ -14,7 +14,12 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <AppShell topNav={<SiteHeader />} height="auto" contentPadding={0}>
+    <AppShell
+      topNav={<SiteHeader />}
+      mobileNav={{breakpoint: 'lg'}}
+      height="auto"
+      contentPadding={0}
+    >
       {children}
       <SiteFooter />
     </AppShell>

@@ -10,7 +10,8 @@ import {
   TopNavMegaMenuItem,
 } from '@astryxdesign/core/TopNav';
 import {Button} from '@astryxdesign/core/Button';
-import {Badge} from '@astryxdesign/core/Badge';
+import {IconButton} from '@astryxdesign/core/IconButton';
+import {Link} from '@astryxdesign/core/Link';
 import {HStack} from '@astryxdesign/core/HStack';
 import {DropdownMenu} from '@astryxdesign/core/DropdownMenu';
 import {ShoppingCart, LogOut, User, GraduationCap} from 'lucide-react';
@@ -79,15 +80,13 @@ export function SiteHeader() {
         <HStack gap={1} vAlign="center">
           <ThemeToggle />
           <NextLink href="/gio-hang">
-            <Button
-              label="Giỏ hàng"
-              variant="ghost"
+            <IconButton
               icon={<ShoppingCart aria-hidden />}
-              endContent={
-                cartCount > 0 ? (
-                  <Badge label={String(cartCount)} variant="info" />
-                ) : undefined
+              label={cartCount > 0 ? `Giỏ hàng (${cartCount})` : 'Giỏ hàng'}
+              tooltip={
+                cartCount > 0 ? `Giỏ hàng · ${cartCount} khóa học` : 'Giỏ hàng'
               }
+              variant="ghost"
             />
           </NextLink>
 
@@ -122,9 +121,10 @@ export function SiteHeader() {
             />
           ) : (
             <>
-              <NextLink href="/dang-nhap">
-                <Button label="Đăng nhập" variant="ghost" />
-              </NextLink>
+              {/* Login as a compact text link, register as the button CTA —
+                  keeps the top bar narrow enough to avoid wrapping on smaller
+                  laptops. */}
+              <Link href="/dang-nhap">Đăng nhập</Link>
               <NextLink href="/khoa-hoc">
                 <Button label="Đăng ký khóa học" variant="primary" />
               </NextLink>
