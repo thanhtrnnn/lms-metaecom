@@ -40,9 +40,15 @@ export function CourseCard({course}: {course: Course}) {
             {off ? <Badge label={`-${off}%`} variant="error" /> : null}
           </HStack>
 
-          <Heading level={3} maxLines={2}>
-            {course.title}
-          </Heading>
+          {/* Production titles are long ALL-CAPS strings: give them 3 lines
+              and reserve that height so the meta/price rows align across
+              cards. Astryx shows the full title in a tooltip if it still
+              truncates. */}
+          <VStack minHeight={88}>
+            <Heading level={3} maxLines={3}>
+              {course.title}
+            </Heading>
+          </VStack>
 
           <HStack gap={3} vAlign="center">
             {course.rating ? (

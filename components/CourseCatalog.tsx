@@ -114,8 +114,12 @@ export function CourseCatalog() {
           </VStack>
         </Card>
 
-        {/* Results */}
-        <StackItem size="fill">
+        {/* Results. flexBasis 0 is load-bearing: StackItem fill computes
+            flex-basis auto, so the grid's max-content width (six cards) would
+            wrap the whole results block onto its own row below the filter.
+            Basis 0 makes "fill" mean the remaining space; minWidth keeps the
+            wrap for genuinely narrow screens. */}
+        <StackItem size="fill" style={{flexBasis: 0, minWidth: 320}}>
           <VStack gap={3}>
             <Text type="supporting" color="secondary">
               {visible.length} khóa học

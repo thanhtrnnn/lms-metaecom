@@ -107,6 +107,12 @@
   }
 }
 
+/* Auth split-screen: the two panels fill the viewport height on desktop; when
+ * the Grid stacks them on narrow screens each panel sizes to its content. */
+.auth-split {
+  min-height: 100dvh;
+}
+
 /* The home hero gets a glowing brand aura behind the headline. Purely
  * decorative; pointer-events off so it never intercepts clicks. */
 .hero-aura {
