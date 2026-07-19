@@ -85,7 +85,7 @@ export function LessonPlayer({
       </HStack>
 
       <HStack gap={4} vAlign="start" wrap="wrap">
-        <StackItem size="fill">
+        <StackItem size="fill" style={{flexBasis: 0, minWidth: 320}}>
           <VStack gap={3}>
             {!unlocked ? (
               <EmptyState
@@ -161,7 +161,19 @@ export function LessonPlayer({
           </VStack>
         </StackItem>
 
-        <Card padding={0} width={ASIDE_WIDTH}>
+        {/* Sticky: the 33-lesson list outlives the viewport, so it pins and
+            scrolls internally while the video column scrolls the page. */}
+        <Card
+          padding={0}
+          width={ASIDE_WIDTH}
+          style={{
+            position: 'sticky',
+            top: 'var(--spacing-3)',
+            alignSelf: 'flex-start',
+            maxHeight: 'calc(100dvh - var(--spacing-6))',
+            overflowY: 'auto',
+          }}
+        >
           <VStack gap={0}>
             <VStack gap={2} padding={4}>
               <Heading level={3}>Nội dung khóa học</Heading>

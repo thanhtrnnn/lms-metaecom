@@ -57,7 +57,12 @@ export default function Page() {
             </Breadcrumbs>
           </VStack>
           <VStack gap={3} hAlign="center" maxWidth={820}>
-            <Heading level={1} type="display-3" textWrap="balance" justify="center">
+            <Heading
+              level={1}
+              type="display-3"
+              textWrap="balance"
+              justify="center"
+            >
               {enterprise.hero?.headingPlain ?? 'Đào tạo doanh nghiệp'}
             </Heading>
             <Text color="secondary" justify="center" type="large">
@@ -110,7 +115,11 @@ export default function Page() {
           </VStack>
           <CardGrid minWidth={300} maxWidth={CONTENT_MAXW}>
             {blocks.map((b) => (
-              <Card key={b.title} padding={CARD_PAD} className="brand-gradient-surface">
+              <Card
+                key={b.title}
+                padding={CARD_PAD}
+                className="brand-gradient-surface"
+              >
                 <VStack gap={2}>
                   <Heading level={3}>{b.title}</Heading>
                   <Text type="supporting" color="secondary">
@@ -139,7 +148,9 @@ export default function Page() {
               {cases.map((c) => (
                 <Card key={c.title} padding={CARD_PAD}>
                   <VStack gap={2}>
-                    {c.client ? <Badge label={c.client} variant="teal" /> : null}
+                    {c.client ? (
+                      <Badge label={c.client} variant="teal" />
+                    ) : null}
                     <Heading level={3}>{c.title}</Heading>
                     <Text type="supporting" color="secondary">
                       {c.desc ?? c.description}
@@ -153,7 +164,11 @@ export default function Page() {
       ) : null}
 
       {/* Closing CTA band */}
-      <Section padding={HERO_PAD} className="brand-gradient-surface" dividers={['top']}>
+      <Section
+        padding={HERO_PAD}
+        className="brand-gradient-surface"
+        dividers={['top']}
+      >
         <VStack gap={3} hAlign="center">
           <Heading level={2} justify="center" textWrap="balance">
             Cần lộ trình riêng cho đội ngũ của bạn?

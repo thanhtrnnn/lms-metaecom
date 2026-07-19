@@ -32,7 +32,7 @@ export const CARD_GRID = {minWidth: 280} as const;
 export const CARD_GAP = 4;
 
 /** Side panels: filter rail, order summary, purchase panel. */
-export const ASIDE_WIDTH = 340;
+export const ASIDE_WIDTH = 650;
 /** Legal / prose reading column. */
 export const PROSE_MAXW = 760;
 /** Centered content column on wide viewports. */

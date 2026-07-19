@@ -13,6 +13,8 @@ import {Avatar} from '@astryxdesign/core/Avatar';
 import {Blockquote} from '@astryxdesign/core/Blockquote';
 import {List, ListItem} from '@astryxdesign/core/List';
 
+import {Building2, Bot, Megaphone, GraduationCap} from 'lucide-react';
+
 import {CardGrid} from '@/components/layout/CardGrid';
 import {FeaturedCoursesCarousel} from '@/components/FeaturedCoursesCarousel';
 import {seedCourses} from '@/data/courses';
@@ -22,6 +24,10 @@ import {CARD_PAD, CONTENT_MAXW, HERO_PAD, PAGE_GAP} from '@/lib/layout';
 // The carousel exists to show breadth, so it gets every active course rather
 // than the old 4-card sample.
 const featured = seedCourses.filter((c) => c.status === 'active');
+
+/** One icon per solutions card, in data order (đào tạo đội ngũ / tự động hóa
+ * AI / digital marketing / hệ thống e-learning). */
+const SOLUTION_ICONS = [Building2, Bot, Megaphone, GraduationCap];
 
 type Stat = {value: string; label: string};
 type Solution = {title: string; description?: string | null};
@@ -185,22 +191,26 @@ export default function HomePage() {
             ) : null}
           </VStack>
           <CardGrid minWidth={240} maxWidth={CONTENT_MAXW}>
-            {((solutions.cards ?? []) as Solution[]).map((s) => (
-              <Card
-                key={s.title}
-                padding={CARD_PAD}
-                className="brand-gradient-surface"
-              >
-                <VStack gap={2}>
-                  <Heading level={3}>{s.title}</Heading>
-                  {s.description ? (
-                    <Text type="supporting" color="secondary">
-                      {s.description}
-                    </Text>
-                  ) : null}
-                </VStack>
-              </Card>
-            ))}
+            {((solutions.cards ?? []) as Solution[]).map((s, i) => {
+              const Icon = SOLUTION_ICONS[i % SOLUTION_ICONS.length];
+              return (
+                <Card
+                  key={s.title}
+                  padding={CARD_PAD}
+                  className="brand-gradient-surface"
+                >
+                  <VStack gap={2}>
+                    <Icon aria-hidden color="var(--color-icon-accent)" />
+                    <Heading level={3}>{s.title}</Heading>
+                    {s.description ? (
+                      <Text type="supporting" color="secondary">
+                        {s.description}
+                      </Text>
+                    ) : null}
+                  </VStack>
+                </Card>
+              );
+            })}
           </CardGrid>
         </VStack>
       </Section>

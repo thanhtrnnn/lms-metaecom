@@ -10,6 +10,7 @@ import {Heading} from '@astryxdesign/core/Heading';
 import {Text} from '@astryxdesign/core/Text';
 import {Card} from '@astryxdesign/core/Card';
 import {Slider} from '@astryxdesign/core/Slider';
+import {TextInput} from '@astryxdesign/core/TextInput';
 import {Collapsible} from '@astryxdesign/core/Collapsible';
 import {
   SegmentedControl,
@@ -17,7 +18,7 @@ import {
 } from '@astryxdesign/core/SegmentedControl';
 import {EmptyState} from '@astryxdesign/core/EmptyState';
 import {Button} from '@astryxdesign/core/Button';
-import {SearchX} from 'lucide-react';
+import {Search, SearchX} from 'lucide-react';
 
 import {CourseCard} from './CourseCard';
 import {useCourses} from '@/lib/stores';
@@ -37,6 +38,25 @@ export function CourseCatalog() {
     priceRange.min,
     priceRange.max,
   ]);
+  const [query, setQuery] = useState('');
+
+  // Diacritic- and punctuation-insensitive matching, so "livestream ai" finds
+  // "LIVESTREAM A.I MASTER". Every query word must appear in the title.
+  const fold = (t: string) =>
+    t
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/đ/g, 'd')
+      .replace(/Đ/g, 'D')
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '');
+  const matches = (title: string, q: string) => {
+    const hay = fold(title);
+    return q
+      .split(/\s+/)
+      .filter(Boolean)
+      .every((tok) => hay.includes(fold(tok)));
+  };
 
   const visible = useMemo(
     () =>
@@ -44,9 +64,10 @@ export function CourseCatalog() {
         if (c.status !== 'active') return false;
         if (category !== 'all' && c.categorySlug !== category) return false;
         if (c.price < price[0] || c.price > price[1]) return false;
+        if (query.trim() && !matches(c.title, query.trim())) return false;
         return true;
       }),
-    [courses, category, price],
+    [courses, category, price, query],
   );
 
   const setCategory = (next: string) => {
@@ -57,11 +78,13 @@ export function CourseCatalog() {
 
   const reset = () => {
     setPrice([priceRange.min, priceRange.max]);
+    setQuery('');
     router.push('/khoa-hoc', {scroll: false});
   };
 
   const isFiltered =
     category !== 'all' ||
+    query.trim() !== '' ||
     price[0] !== priceRange.min ||
     price[1] !== priceRange.max;
 
@@ -92,6 +115,15 @@ export function CourseCatalog() {
                 />
               ) : null}
             </HStack>
+
+            <TextInput
+              label="Tìm kiếm khóa học"
+              isLabelHidden
+              value={query}
+              onChange={setQuery}
+              placeholder="Tìm kiếm khóa học"
+              startIcon={Search}
+            />
 
             <Collapsible trigger={<Text type="label">Khoảng giá</Text>}>
               <VStack gap={2}>

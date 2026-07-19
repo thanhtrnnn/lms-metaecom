@@ -333,31 +333,6 @@
       ]
     }
   },
-  "ticker": {
-    "_note": "The .ticker-track contains 8 <span.ticker-item> nodes: the same 4 announcements repeated twice (for the marquee loop). The 4 unique announcements are listed below.",
-    "items": [
-      {
-        "text": "Ưu đãi 30% khi mua từ 3 khóa học — ",
-        "linkLabel": "Xem ngay",
-        "href": "#"
-      },
-      {
-        "text": "Ưu đãi 10% khi mua từ 3 khóa — ",
-        "linkLabel": "Xem ngay",
-        "href": "#"
-      },
-      {
-        "text": "Ra mắt khóa học mới: TikTok Ads Mastery 2025 — ",
-        "linkLabel": "Đăng ký ngay",
-        "href": "#"
-      },
-      {
-        "text": "Webinar miễn phí: Scale Facebook Ads thứ 7 tuần này — ",
-        "linkLabel": "Đăng ký",
-        "href": "#"
-      }
-    ]
-  },
   "home": {
     "hero": {
       "_source": "meu.edu.vn production, synced 2026-07-20 (legacy hero preserved in git history)",

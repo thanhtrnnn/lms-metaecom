@@ -29,7 +29,7 @@ export default function Page() {
       />
 
       <HStack gap={5} vAlign="start" wrap="wrap">
-        <StackItem size="fill">
+        <StackItem size="fill" style={{flexBasis: 0, minWidth: 320}}>
           <Card padding={CARD_PAD}>
             <VStack gap={4}>
               <Heading level={2}>Gửi yêu cầu tư vấn</Heading>

@@ -25,7 +25,7 @@ export default function Page() {
         current="Học thử"
       />
       <HStack gap={5} vAlign="start" wrap="wrap">
-        <StackItem size="fill">
+        <StackItem size="fill" style={{flexBasis: 0, minWidth: 320}}>
           <VStack gap={3}>
             <Heading level={2}>Bạn nhận được gì</Heading>
             <List hasDividers>

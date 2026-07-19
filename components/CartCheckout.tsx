@@ -94,7 +94,7 @@ export function CartCheckout() {
 
   return (
     <HStack gap={5} vAlign="start" wrap="wrap">
-      <StackItem size="fill">
+      <StackItem size="fill" style={{flexBasis: 0, minWidth: 320}}>
         <VStack gap={4}>
           <Heading level={2}>Đơn hàng</Heading>
 

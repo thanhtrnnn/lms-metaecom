@@ -22,7 +22,6 @@ export const trial = raw.trial;
 export const about = raw.about;
 export const enterprise = raw.enterprise;
 export const contact = raw.contact;
-export const ticker = raw.ticker;
 export const newsletter = raw.newsletter;
 export const socials = raw.socials;
 
