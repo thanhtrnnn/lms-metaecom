@@ -25,19 +25,19 @@ export const contact = raw.contact;
 export const ticker = raw.ticker;
 
 /**
- * Several images the legacy markup pointed at (avt1-3.jpg, logo-fpt/shopee/
- * tiktok/viettel.png, default-course.avif) 404 on the asset host. Each one has
- * a working remote fallback that was already present in the old HTML, so use
- * that rather than shipping a broken <img>.
+ * Images the legacy markup pointed at that 404 on the asset host resolve to
+ * their remote fallbacks instead of shipping a broken <img>.
+ *
+ * The four partner logos (logo-fpt/shopee/tiktok/viettel.png) used to be in
+ * this set, but their legacy Wikimedia fallback URLs rotted (HTTP 400), so
+ * they are now vendored into public/images/ under the exact filenames the
+ * legacy site expected — fetched via Wikimedia's stable Special:FilePath
+ * endpoint. Local paths resolve normally again.
  */
 const MISSING = new Set([
   'images/avt1.jpg',
   'images/avt2.jpg',
   'images/avt3.jpg',
-  'images/logo-fpt.png',
-  'images/logo-shopee.png',
-  'images/logo-tiktok.png',
-  'images/logo-viettel.png',
   'images/default-course.avif',
 ]);
 

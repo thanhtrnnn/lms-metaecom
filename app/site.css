@@ -77,6 +77,36 @@
   );
 }
 
+/* ---------------------------------------------------------------------------
+ * Z-scale (systemic layers only, per docs/THEME.md):
+ *   0   page content (.home-shell)
+ *   10  sticky app-shell header (below)
+ *   500 / 9999  astryx overlay portals (popover, drawer, toast) — theirs.
+ *
+ * Astryx ships the sticky header at z-index:1. The landing content wrapper is
+ * also a positioned stacking context, and a 1-vs-1 tie is won by DOM order —
+ * so the hero image scrolled OVER the navbar. Lift the header decisively above
+ * content while staying far below every astryx overlay.
+ * ------------------------------------------------------------------------- */
+.astryx-app-shell-header {
+  z-index: 10;
+}
+
+/* Partner logos in the trust strip: neutralize the mixed brand colors so the
+ * row reads as one quiet band. Monochrome-white in dark mode (same treatment
+ * as the site logo). */
+.partner-logo {
+  filter: grayscale(1) opacity(0.65);
+}
+:root[data-theme='dark'] .partner-logo {
+  filter: brightness(0) invert(1) opacity(0.6);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .partner-logo {
+    filter: brightness(0) invert(1) opacity(0.6);
+  }
+}
+
 /* The home hero gets a glowing brand aura behind the headline. Purely
  * decorative; pointer-events off so it never intercepts clicks. */
 .hero-aura {
@@ -92,11 +122,12 @@
   z-index: 0;
 }
 
-/* Constrain the marketing landing content to a comfortable centered column
- * and lift it above the hero aura. */
+/* Constrain the marketing landing content to a comfortable centered column.
+ * z-index 0 (not 1): it must stay below the sticky header — see z-scale above —
+ * while still forming the stacking context that keeps .hero-aura contained. */
 .home-shell {
   position: relative;
-  z-index: 1;
+  z-index: 0;
   width: 100%;
   max-width: 1120px;
   margin-inline: auto;

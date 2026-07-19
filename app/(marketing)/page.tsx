@@ -11,16 +11,18 @@ import {Button} from '@astryxdesign/core/Button';
 import {Badge} from '@astryxdesign/core/Badge';
 import {Avatar} from '@astryxdesign/core/Avatar';
 import {Blockquote} from '@astryxdesign/core/Blockquote';
-import {Divider} from '@astryxdesign/core/Divider';
+import {List, ListItem} from '@astryxdesign/core/List';
 
-import {CourseCard} from '@/components/CourseCard';
 import {CardGrid} from '@/components/layout/CardGrid';
+import {FeaturedCoursesCarousel} from '@/components/FeaturedCoursesCarousel';
 import {seedCourses} from '@/data/courses';
-import {home, testimonials, blog, img} from '@/data/content';
+import {home, testimonials, blog, enterprise, img} from '@/data/content';
 import {site} from '@/data/site';
 import {CARD_PAD, CONTENT_MAXW, HERO_PAD, PAGE_GAP} from '@/lib/layout';
 
-const featured = seedCourses.filter((c) => c.status === 'active').slice(0, 4);
+// The carousel exists to show breadth, so it gets every active course rather
+// than the old 4-card sample.
+const featured = seedCourses.filter((c) => c.status === 'active');
 
 type Stat = {value: string; label: string};
 type Solution = {title: string; description?: string | null};
@@ -30,14 +32,26 @@ type Testimonial = {
   role?: string | null;
   avatar?: string | null;
 };
-type Article = {title: string; excerpt?: string | null};
+type Article = {
+  title: string;
+  excerpt?: string | null;
+  image?: string | null;
+  date?: string | null;
+};
 type Proof = {value: string; label: string};
+type PartnerLogo = {src?: string | null; fallback?: string | null; name?: string | null};
 
+/**
+ * Landing composition: each band is a different layout family so the page
+ * doesn't read as one card grid repeated (hero / logo strip / number band /
+ * card grid / carousel / quote columns / row list / CTA band).
+ */
 export default function HomePage() {
   const stats = home.stats;
   const eco = home.ecosystem;
   const solutions = home.solutions;
   const cta = home.bottomCta;
+  const partnerLogos = (enterprise.trustLogos?.logos ?? []) as PartnerLogo[];
 
   return (
     <VStack gap={0} className="home-shell">
@@ -94,8 +108,37 @@ export default function HomePage() {
         </VStack>
       </Section>
 
+      {/* Trust strip — the legacy index had a partner strip; this restores it
+          with the real brand logos already ported for the enterprise page.
+          Logos only, neutralized to one tone (.partner-logo). */}
+      {partnerLogos.length ? (
+        <Section padding={4} variant="transparent">
+          <VStack gap={3} hAlign="center">
+            <Text type="supporting" color="secondary" justify="center">
+              {enterprise.trustLogos?.title}
+            </Text>
+            <HStack gap={6} wrap="wrap" hAlign="center" vAlign="center">
+              {partnerLogos.map((l, i) => {
+                const src = img(l.src, l.fallback);
+                return src ? (
+                  <Image
+                    key={i}
+                    src={src}
+                    alt={l.name ?? ''}
+                    width={110}
+                    height={28}
+                    className="partner-logo"
+                    style={{height: 24, width: 'auto', objectFit: 'contain'}}
+                  />
+                ) : null;
+              })}
+            </HStack>
+          </VStack>
+        </Section>
+      ) : null}
+
       {/* Proof — static figures exactly as authored (the legacy "animated
-          counters" were dead code with no matching DOM). Centered band. */}
+          counters" were dead code with no matching DOM). Number band, no cards. */}
       <Section padding={HERO_PAD} variant="muted" dividers={['top']}>
         <VStack gap={PAGE_GAP} hAlign="center">
           <VStack gap={2} hAlign="center" maxWidth={720}>
@@ -125,7 +168,8 @@ export default function HomePage() {
         </VStack>
       </Section>
 
-      {/* Solutions — what the platform covers. Centered heading + grid. */}
+      {/* Solutions — the page's one card grid. minWidth 240 lands the four
+          cards on a single row at the content width (no 3+1 orphan). */}
       <Section padding={HERO_PAD}>
         <VStack gap={PAGE_GAP} hAlign="center">
           <VStack gap={2} hAlign="center" maxWidth={720}>
@@ -138,7 +182,7 @@ export default function HomePage() {
               </Text>
             ) : null}
           </VStack>
-          <CardGrid maxWidth={CONTENT_MAXW}>
+          <CardGrid minWidth={240} maxWidth={CONTENT_MAXW}>
             {((solutions.cards ?? []) as Solution[]).map((s) => (
               <Card
                 key={s.title}
@@ -159,88 +203,113 @@ export default function HomePage() {
         </VStack>
       </Section>
 
-      {/* Featured courses — centered wall of course cards. */}
-      <Section
-        padding={HERO_PAD}
-        variant="muted"
-        dividers={['top', 'bottom']}
-        className="brand-gradient-surface"
-      >
+      {/* Featured courses — scroll-snap carousel over every active course. */}
+      <Section padding={HERO_PAD} variant="muted" dividers={['top', 'bottom']}>
         <VStack gap={PAGE_GAP} hAlign="center">
-          <HStack gap={2} hAlign="between" vAlign="center" wrap="wrap">
+          <HStack
+            gap={2}
+            hAlign="between"
+            vAlign="center"
+            wrap="wrap"
+            width="100%"
+            maxWidth={CONTENT_MAXW}
+          >
             <Heading level={2}>Khóa học nổi bật</Heading>
             <NextLink href="/khoa-hoc">
               <Button label="Xem tất cả khóa học" variant="secondary" />
             </NextLink>
           </HStack>
-          <CardGrid maxWidth={CONTENT_MAXW}>
-            {featured.map((c) => (
-              <CourseCard key={c.id} course={c} />
-            ))}
-          </CardGrid>
+          <VStack width="100%" maxWidth={CONTENT_MAXW}>
+            <FeaturedCoursesCarousel courses={featured} />
+          </VStack>
         </VStack>
       </Section>
 
-      {/* Testimonials as a centered quote wall (the legacy 3-card carousel
-          with dots had no autoplay to fight and showed one voice at a time). */}
+      {/* Testimonials — quote columns with breathing room instead of another
+          card grid. Four voices; the rest of the wall lives in the legacy
+          data untouched. */}
       <Section padding={HERO_PAD}>
         <VStack gap={PAGE_GAP} hAlign="center">
           <Heading level={2} justify="center">
             Học viên nói gì về META ECOM UNI
           </Heading>
-          <CardGrid minWidth={300} maxWidth={CONTENT_MAXW}>
-            {(testimonials as Testimonial[]).map((t) => (
-              <Card key={t.name} padding={CARD_PAD}>
-                <VStack gap={3}>
-                  <Blockquote>{t.quote}</Blockquote>
-                  <Divider />
-                  <HStack gap={2} vAlign="center">
-                    <Avatar
-                      name={t.name}
-                      src={img(t.avatar) ?? undefined}
-                      size="medium"
-                    />
-                    <VStack gap={0}>
-                      <Text type="label">{t.name}</Text>
-                      {t.role ? (
-                        <Text type="supporting" color="secondary">
-                          {t.role}
-                        </Text>
-                      ) : null}
-                    </VStack>
-                  </HStack>
-                </VStack>
-              </Card>
+          <Grid columns={{minWidth: 380}} gap={6} maxWidth={CONTENT_MAXW}>
+            {(testimonials as Testimonial[]).slice(0, 4).map((t) => (
+              <VStack key={t.name} gap={3}>
+                <Blockquote>{t.quote}</Blockquote>
+                <HStack gap={2} vAlign="center">
+                  <Avatar
+                    name={t.name}
+                    src={img(t.avatar) ?? undefined}
+                    size="medium"
+                  />
+                  <VStack gap={0}>
+                    <Text type="label">{t.name}</Text>
+                    {t.role ? (
+                      <Text type="supporting" color="secondary">
+                        {t.role}
+                      </Text>
+                    ) : null}
+                  </VStack>
+                </HStack>
+              </VStack>
             ))}
-          </CardGrid>
+          </Grid>
         </VStack>
       </Section>
 
-      {/* Blog & knowledge — centered grid. */}
+      {/* Blog & knowledge — edge-to-edge rows (dense data = rows, not cards). */}
       <Section padding={HERO_PAD} variant="muted" dividers={['top']}>
         <VStack gap={PAGE_GAP} hAlign="center">
-          <HStack gap={2} hAlign="between" vAlign="center" wrap="wrap">
+          <HStack
+            gap={2}
+            hAlign="between"
+            vAlign="center"
+            wrap="wrap"
+            width="100%"
+            maxWidth={CONTENT_MAXW}
+          >
             <Heading level={2}>Blog & Kiến thức</Heading>
             <NextLink href="/blog">
               <Button label="Xem tất cả bài viết" variant="secondary" />
             </NextLink>
           </HStack>
-          <CardGrid maxWidth={CONTENT_MAXW}>
-            {((blog.articles ?? []) as Article[]).slice(0, 3).map((a) => (
-              <Card key={a.title} padding={CARD_PAD}>
-                <VStack gap={2}>
-                  <Heading level={3} maxLines={2}>
-                    {a.title}
-                  </Heading>
-                  {a.excerpt ? (
-                    <Text type="supporting" color="secondary" maxLines={3}>
-                      {a.excerpt}
-                    </Text>
-                  ) : null}
-                </VStack>
-              </Card>
-            ))}
-          </CardGrid>
+          <VStack width="100%" maxWidth={CONTENT_MAXW}>
+            <List hasDividers>
+              {((blog.articles ?? []) as Article[]).slice(0, 3).map((a) => {
+                const thumb = img(a.image);
+                return (
+                  <ListItem
+                    key={a.title}
+                    label={a.title}
+                    description={a.excerpt ?? undefined}
+                    href="/blog"
+                    startContent={
+                      thumb ? (
+                        <Image
+                          src={thumb}
+                          alt=""
+                          width={96}
+                          height={54}
+                          style={{
+                            objectFit: 'cover',
+                            borderRadius: 'var(--radius-inner)',
+                          }}
+                        />
+                      ) : undefined
+                    }
+                    endContent={
+                      a.date ? (
+                        <Text type="supporting" color="secondary">
+                          {a.date}
+                        </Text>
+                      ) : undefined
+                    }
+                  />
+                );
+              })}
+            </List>
+          </VStack>
         </VStack>
       </Section>
 
