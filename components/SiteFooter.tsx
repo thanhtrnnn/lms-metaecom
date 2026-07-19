@@ -11,7 +11,24 @@ import {Section} from '@astryxdesign/core/Section';
 import {MapPin, Phone, Mail} from 'lucide-react';
 
 import {footerColumns, site} from '@/data/site';
+import {newsletter, socials} from '@/data/content';
+import {NewsletterForm} from '@/components/NewsletterForm';
 import {CARD_GAP, LOGO_HEIGHT} from '@/lib/layout';
+
+/** Production social links (synced from meu.edu.vn's footer). The zalo entry
+ * ships wrapped in a TikTok bio-link redirect; we link the actual target. */
+const SOCIAL_LABEL: Record<string, string> = {
+  facebook: 'Facebook',
+  tiktok: 'TikTok',
+  zalo: 'Zalo',
+};
+function socialHref(platform: string, href: string): string {
+  if (platform === 'zalo') {
+    const m = href.match(/target=([^&]+)/);
+    if (m) return decodeURIComponent(m[1]);
+  }
+  return href;
+}
 
 export function SiteFooter() {
   return (
@@ -32,6 +49,17 @@ export function SiteFooter() {
             <Text type="supporting" color="secondary">
               {site.tagline}
             </Text>
+            <HStack gap={2} wrap="wrap">
+              {socials.map((s) => (
+                <Link
+                  key={s.platform}
+                  href={socialHref(s.platform, s.href)}
+                  target="_blank"
+                >
+                  {SOCIAL_LABEL[s.platform] ?? s.platform}
+                </Link>
+              ))}
+            </HStack>
           </VStack>
 
           {footerColumns.map((col) => (
@@ -69,6 +97,18 @@ export function SiteFooter() {
             </VStack>
           </VStack>
         </Grid>
+
+        <Divider />
+
+        <HStack gap={4} wrap="wrap" vAlign="center" hAlign="between">
+          <VStack gap={1} maxWidth={420}>
+            <Heading level={3}>{newsletter.heading}</Heading>
+            <Text type="supporting" color="secondary">
+              {newsletter.subcopy}
+            </Text>
+          </VStack>
+          <NewsletterForm />
+        </HStack>
 
         <Divider />
 

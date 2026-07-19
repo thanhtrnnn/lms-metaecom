@@ -35,7 +35,7 @@ const cardCount = await page.$$eval(
   'a[href^="/khoa-hoc/"]',
   (els) => els.length,
 );
-check('catalog renders course cards', cardCount >= 6, `${cardCount} cards`);
+check('catalog renders course cards', cardCount === 6, `${cardCount} cards`);
 
 // ---------- 2. Category filter via nav deep-link ----------
 await page.goto(`${BASE}/khoa-hoc?filter=tiktok`, {waitUntil: 'domcontentloaded'});
@@ -46,21 +46,21 @@ await settle();
 const shopeeCards = await page.$$eval('a[href^="/khoa-hoc/"]', (e) => e.length);
 check(
   'category filter narrows results',
-  tiktokCards === 2 && shopeeCards === 1 && cardCount === 8,
+  tiktokCards === 2 && shopeeCards === 1 && cardCount === 6,
   `all=${cardCount} tiktok=${tiktokCards} shopee=${shopeeCards}`,
 );
 
 // ---------- 3. Course detail ----------
-await page.goto(`${BASE}/khoa-hoc/gen-ai-studio-ung-dung-ai-vao-marketing-thuc-chien`, {
+await page.goto(`${BASE}/khoa-hoc/livestream-ai-master`, {
   waitUntil: 'domcontentloaded',
 });
 let body = await page.$eval('body', (b) => b.innerText);
-check('detail page renders title', /Gen AI Studio/.test(body));
-check('detail shows VND price', /4\.500\.000₫/.test(body), 'formatted vi-VN');
+check('detail page renders title', /LIVESTREAM A.I MASTER/.test(body));
+check('detail shows VND price', /699\.000₫/.test(body), 'formatted vi-VN');
 check(
-  'empty curriculum handled honestly',
-  /Nội dung đang được cập nhật/.test(body),
-  'EmptyState, not a fake syllabus',
+  'real production curriculum renders',
+  /TỔNG QUAN KHOÁ HỌC/.test(body) && /Học thử/.test(body),
+  '33 lessons synced from meu.edu.vn, preview lesson badged',
 );
 
 // ---------- 4. Add to cart ----------
@@ -93,8 +93,8 @@ check(
 await page.goto(`${BASE}/gio-hang`, {waitUntil: 'domcontentloaded'});
 await settle();
 body = await page.$eval('body', (b) => b.innerText);
-check('cart shows the item', /Gen AI Studio/.test(body));
-check('cart shows total', /4\.500\.000₫/.test(body));
+check('cart shows the item', /LIVESTREAM A.I MASTER/.test(body));
+check('cart shows total', /699\.000₫/.test(body));
 await page.screenshot({path: `${SHOT}/cart.png`});
 
 // ---------- 6. Checkout validation (legacy validated NOTHING) ----------
@@ -118,7 +118,7 @@ check(
 await page.screenshot({path: `${SHOT}/checkout-validation.png`});
 
 // ---------- 7. Player gating ----------
-await page.goto(`${BASE}/hoc/gen-ai-studio-ung-dung-ai-vao-marketing-thuc-chien/nope`, {
+await page.goto(`${BASE}/hoc/livestream-ai-master/nope`, {
   waitUntil: 'domcontentloaded',
 });
 body = await page.$eval('body', (b) => b.innerText);

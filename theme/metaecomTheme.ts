@@ -61,7 +61,10 @@ export const metaecomTheme = defineTheme({
   // `extends`, but re-stated so the scale/weight stays explicit and the body
   // reads a touch larger for the airier editorial layout.
   typography: {
-    scale: {base: 14.5, ratio: 1.22},
+    // base 16 / ratio 1.25: body reads comfortably larger and each heading
+    // level steps up more decisively (a gradual, even progression — same
+    // scale the matcha brand theme ships).
+    scale: {base: 16, ratio: 1.25},
     body: {
       family: 'var(--font-be-vietnam-pro)',
       fallbacks:

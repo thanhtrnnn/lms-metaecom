@@ -18,6 +18,7 @@ import {EmptyState} from '@astryxdesign/core/EmptyState';
 import {AspectRatio} from '@astryxdesign/core/AspectRatio';
 import {Divider} from '@astryxdesign/core/Divider';
 import {useToast} from '@astryxdesign/core/Toast';
+import {Markdown} from '@astryxdesign/core/Markdown';
 import {Lock, PlayCircle, BookOpen, Star, Users} from 'lucide-react';
 
 import type {Course} from '@/lib/types';
@@ -176,9 +177,15 @@ export function CourseDetail({course: seeded}: {course: Course}) {
             ) : null}
 
             {tab === 'description' ? (
-              <Text>
-                {course.description ?? 'Khóa học chưa có mô tả chi tiết.'}
-              </Text>
+              course.longDescription ? (
+                <Markdown headingLevelStart={3}>
+                  {course.longDescription}
+                </Markdown>
+              ) : (
+                <Text>
+                  {course.description ?? 'Khóa học chưa có mô tả chi tiết.'}
+                </Text>
+              )
             ) : null}
 
             {tab === 'instructor' ? (

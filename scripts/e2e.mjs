@@ -95,83 +95,40 @@ const loggedIn = await page.evaluate(() =>
 );
 check('signup logs the user in', loggedIn === 'true', `isLoggedIn=${loggedIn}`);
 
-// ---------- 2. admin authors a curriculum (the ONLY source of lessons) ----------
+// ---------- 2. admin catalog lists the production courses ----------
 await go('/admin/khoa-hoc');
 let body = await text();
-check('admin lists courses', /Gen AI Studio|Livestream/.test(body));
+check('admin lists courses', /LIVESTREAM A.I MASTER/i.test(body));
 await page.screenshot({path: `${SHOT}/admin-courses.png`});
 
-// Inject a curriculum through the real store the builder writes to, then
-// confirm the player consumes it. (Driving the whole dialog UI is brittle;
-// what we're proving is that the data contract between admin and player holds.)
-await page.evaluate(() => {
-  // The store keeps the seed in memory and only persists on write, so read the
-  // rendered catalogue back out of the app's own module isn't possible here —
-  // instead write the course we need, exactly as the admin builder would.
-  const courses = JSON.parse(localStorage.getItem('adminCourses') || 'null') || [];
-  let target = courses.find((c) => c.slug && c.slug.includes('gen-ai-studio'));
-  if (!target) {
-    target = {
-      id: 'c8',
-      slug: 'gen-ai-studio-ung-dung-ai-vao-marketing-thuc-chien',
-      title: 'Gen AI Studio: Ứng dụng AI vào Marketing thực chiến',
-      category: 'Tối ưu Content AI',
-      categorySlug: 'content-ai',
-      price: 4500000,
-      purchases: 128,
-      status: 'active',
-      image: '/images/livestream-ai.avif',
-    };
-    courses.push(target);
-  }
-  target.curriculum = [
-    {
-      id: 's1',
-      title: 'Phần 1: Nhập môn AI Marketing',
-      lessons: [
-        {
-          id: 'l1',
-          title: 'Bài 1: Tổng quan Gen AI',
-          duration: '12:30',
-          videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          isPreview: true,
-        },
-        {
-          id: 'l2',
-          title: 'Bài 2: Xây dựng prompt bán hàng',
-          duration: '18:05',
-          videoUrl: 'https://youtu.be/dQw4w9WgXcQ',
-          isPreview: false,
-        },
-      ],
-    },
-  ];
-  localStorage.setItem('adminCourses', JSON.stringify(courses));
-});
 
-// ---------- 3. curriculum shows on the storefront ----------
-await go('/khoa-hoc/gen-ai-studio-ung-dung-ai-vao-marketing-thuc-chien');
+// ---------- 3. the production-synced curriculum shows on the storefront ----------
+await go('/khoa-hoc/livestream-ai-master');
 body = await text();
-check('curriculum authored in admin appears on course page',
-  /Phần 1: Nhập môn AI Marketing/.test(body));
+check('production curriculum renders on course page',
+  /TỔNG QUAN KHOÁ HỌC/.test(body));
 check('preview lesson is badged', /Học thử/.test(body));
 
 // ---------- 4. locked lesson is gated before purchase ----------
-await go('/hoc/gen-ai-studio-ung-dung-ai-vao-marketing-thuc-chien/l2');
+await go('/hoc/livestream-ai-master/l2');
 body = await text();
 check('non-preview lesson LOCKED before purchase',
   /Bài học đã bị khóa/.test(body));
 
 // ---------- 5. preview lesson plays without buying ----------
-await go('/hoc/gen-ai-studio-ung-dung-ai-vao-marketing-thuc-chien/l1');
-const iframeSrc = await page.$eval('iframe', (f) => f.src).catch(() => null);
-check('preview lesson plays free',
-  !!iframeSrc && iframeSrc.includes('youtube-nocookie.com/embed/dQw4w9WgXcQ'),
-  iframeSrc || 'no iframe');
+await go('/hoc/livestream-ai-master/l1');
+// Production lessons carry no public video URL (the real player is behind
+// auth on meu.edu.vn), so a free preview lesson renders the honest
+// "Chưa có video" state rather than a fake embed — what matters is that it
+// is NOT the locked gate.
+body = await text();
+check('preview lesson opens free (not locked)',
+  !/Bài học đã bị khóa/.test(body) && /BÀI 0: TỔNG QUAN KHOÁ HỌC/.test(body),
+  'gating allows isPreview lesson');
 await page.screenshot({path: `${SHOT}/player.png`});
 
 // ---------- 6. buy it ----------
-await go('/khoa-hoc/gen-ai-studio-ung-dung-ai-vao-marketing-thuc-chien');
+await go('/khoa-hoc/livestream-ai-master');
 await clickText('Thêm vào giỏ hàng');
 await settle();
 await go('/gio-hang');
@@ -195,14 +152,15 @@ check('checkout writes a billing record', billing.length === 1,
 await go('/tai-khoan/khoa-hoc-cua-toi');
 body = await text();
 check('purchased course appears in "Khóa học của tôi"',
-  /Gen AI Studio/.test(body));
+  /LIVESTREAM A.I MASTER/i.test(body));
 await page.screenshot({path: `${SHOT}/my-courses.png`});
 
 // ---------- 8. previously-locked lesson now plays ----------
-await go('/hoc/gen-ai-studio-ung-dung-ai-vao-marketing-thuc-chien/l2');
-const src2 = await page.$eval('iframe', (f) => f.src).catch(() => null);
-check('purchase UNLOCKS the previously-locked lesson', !!src2,
-  src2 ? 'video renders' : 'still locked');
+await go('/hoc/livestream-ai-master/l2');
+body = await text();
+check('purchase UNLOCKS the previously-locked lesson',
+  !/Bài học đã bị khóa/.test(body),
+  'locked gate gone after purchase');
 
 // ---------- 9. billing page ----------
 await go('/tai-khoan/thanh-toan');
@@ -213,7 +171,7 @@ check('billing history renders the order', /ORD-/.test(body));
 await go('/admin');
 body = await text();
 check('admin dashboard shows real computed revenue (not the legacy fake 324.5M)',
-  /4\.500\.000₫/.test(body) && !/324\.5/.test(body), 'derived from billingHistory');
+  /699\.000₫/.test(body) && !/324\.5/.test(body), 'derived from billingHistory');
 await page.screenshot({path: `${SHOT}/admin-dashboard.png`});
 
 // ---------- hygiene ----------

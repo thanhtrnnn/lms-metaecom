@@ -122,13 +122,13 @@
   z-index: 0;
 }
 
-/* Constrain the marketing landing content to a comfortable centered column.
+/* The landing wrapper spans the FULL viewport width so tinted section bands
+ * (muted #FFF5ED, gradient CTA) bleed edge-to-edge; each band constrains its
+ * own inner content column instead (maxWidth on the stacks/grids inside).
  * z-index 0 (not 1): it must stay below the sticky header — see z-scale above —
  * while still forming the stacking context that keeps .hero-aura contained. */
 .home-shell {
   position: relative;
   z-index: 0;
   width: 100%;
-  max-width: 1120px;
-  margin-inline: auto;
 }

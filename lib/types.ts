@@ -1,5 +1,5 @@
 export type CourseCategory =
-  'livestream' | 'content-ai' | 'tiktok' | 'shopee' | 'combo';
+  'livestream' | 'tiktok' | 'shopee' | 'ecom-foundation';
 
 export type CourseLevel = 'basic' | 'advanced';
 export type CourseType = 'course' | 'combo' | 'performance';
@@ -35,6 +35,8 @@ export type Course = {
   status: CourseStatus;
   image: string;
   description?: string;
+  /** Full marketing description (markdown, rendered with astryx Markdown). */
+  longDescription?: string;
   level?: CourseLevel;
   type?: CourseType;
   rating?: number;

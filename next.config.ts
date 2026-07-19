@@ -33,8 +33,8 @@ const legacyRoutes: Record<string, string> = {
   '/admin-users.html': '/admin/hoc-vien',
 
   // The eight empty shells.
-  '/course-ai.html': '/khoa-hoc?filter=content-ai',
-  '/course-combo.html': '/khoa-hoc?filter=combo',
+  '/course-ai.html': '/khoa-hoc',
+  '/course-combo.html': '/khoa-hoc',
   '/course-custom.html': '/khoa-hoc',
   '/course-pro-skills.html': '/khoa-hoc',
   '/course-soft-skills.html': '/khoa-hoc',

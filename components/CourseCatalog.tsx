@@ -10,7 +10,6 @@ import {Heading} from '@astryxdesign/core/Heading';
 import {Text} from '@astryxdesign/core/Text';
 import {Card} from '@astryxdesign/core/Card';
 import {Slider} from '@astryxdesign/core/Slider';
-import {CheckboxList, CheckboxListItem} from '@astryxdesign/core/CheckboxList';
 import {Collapsible} from '@astryxdesign/core/Collapsible';
 import {
   SegmentedControl,
@@ -22,12 +21,7 @@ import {SearchX} from 'lucide-react';
 
 import {CourseCard} from './CourseCard';
 import {useCourses} from '@/lib/stores';
-import {
-  courseCategories,
-  courseLevels,
-  courseTypes,
-  priceRange,
-} from '@/data/courses';
+import {courseCategories, priceRange} from '@/data/courses';
 import {formatVnd} from '@/lib/format';
 import {ASIDE_WIDTH, CARD_PAD} from '@/lib/layout';
 
@@ -43,8 +37,6 @@ export function CourseCatalog() {
     priceRange.min,
     priceRange.max,
   ]);
-  const [levels, setLevels] = useState<string[]>([]);
-  const [types, setTypes] = useState<string[]>([]);
 
   const visible = useMemo(
     () =>
@@ -52,12 +44,9 @@ export function CourseCatalog() {
         if (c.status !== 'active') return false;
         if (category !== 'all' && c.categorySlug !== category) return false;
         if (c.price < price[0] || c.price > price[1]) return false;
-        if (levels.length && (!c.level || !levels.includes(c.level)))
-          return false;
-        if (types.length && (!c.type || !types.includes(c.type))) return false;
         return true;
       }),
-    [courses, category, price, levels, types],
+    [courses, category, price],
   );
 
   const setCategory = (next: string) => {
@@ -68,15 +57,11 @@ export function CourseCatalog() {
 
   const reset = () => {
     setPrice([priceRange.min, priceRange.max]);
-    setLevels([]);
-    setTypes([]);
     router.push('/khoa-hoc', {scroll: false});
   };
 
   const isFiltered =
     category !== 'all' ||
-    levels.length > 0 ||
-    types.length > 0 ||
     price[0] !== priceRange.min ||
     price[1] !== priceRange.max;
 
@@ -125,40 +110,6 @@ export function CourseCatalog() {
                   {formatVnd(price[0])} – {formatVnd(price[1])}
                 </Text>
               </VStack>
-            </Collapsible>
-
-            <Collapsible trigger={<Text type="label">Trình độ</Text>}>
-              <CheckboxList
-                label="Trình độ"
-                isLabelHidden
-                value={levels}
-                onChange={setLevels}
-              >
-                {courseLevels.map((l) => (
-                  <CheckboxListItem
-                    key={l.value}
-                    value={l.value}
-                    label={l.label}
-                  />
-                ))}
-              </CheckboxList>
-            </Collapsible>
-
-            <Collapsible trigger={<Text type="label">Loại khóa học</Text>}>
-              <CheckboxList
-                label="Loại khóa học"
-                isLabelHidden
-                value={types}
-                onChange={setTypes}
-              >
-                {courseTypes.map((t) => (
-                  <CheckboxListItem
-                    key={t.value}
-                    value={t.value}
-                    label={t.label}
-                  />
-                ))}
-              </CheckboxList>
             </Collapsible>
           </VStack>
         </Card>

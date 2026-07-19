@@ -1,32 +1,25 @@
 import type {Metadata} from 'next';
+import {Markdown} from '@astryxdesign/core/Markdown';
 import {Text} from '@astryxdesign/core/Text';
-import {Banner} from '@astryxdesign/core/Banner';
 import {PageShell} from '@/components/layout/PageShell';
 import {PageHeader} from '@/components/PageHeader';
 import {PROSE_MAXW} from '@/lib/layout';
-import {site} from '@/data/site';
+import legal from '@/data/legal.json';
 
-export const metadata: Metadata = {title: 'Chính sách bảo mật'};
+export const metadata: Metadata = {title: legal.privacy.title};
 
+/** Full legal text synced verbatim from production (meu.edu.vn/privacy). */
 export default function Page() {
   return (
     <PageShell maxWidth={PROSE_MAXW}>
-      <PageHeader title="Chính sách bảo mật" current="Chính sách bảo mật" />
-      {/* The legacy footer linked to this page but no such page ever existed
-          (href="#"). Rather than fabricate legal terms — which would be
-          actively harmful — this states plainly that the text is pending. */}
-      <Banner
-        status="warning"
-        title="Nội dung đang được hoàn thiện"
-        description="Văn bản pháp lý chính thức chưa được cung cấp. Vui lòng liên hệ trước khi dựa vào nội dung trang này."
-      />
-      <Text color="secondary">
-        Trang này sẽ trình bày cách META ECOM UNI thu thập và xử lý dữ liệu cá
-        nhân của học viên.
-      </Text>
-      <Text color="secondary">
-        Mọi thắc mắc xin liên hệ {site.contact.email} hoặc {site.contact.phone}.
-      </Text>
+      <PageHeader title={legal.privacy.title} current={legal.privacy.title} />
+      <Markdown headingLevelStart={2}>{legal.privacy.markdown}</Markdown>
+      {legal.privacy.updatedAt ? (
+        <Text type="supporting" color="secondary">
+          Cập nhật:{' '}
+          {new Date(legal.privacy.updatedAt).toLocaleDateString('vi-VN')}
+        </Text>
+      ) : null}
     </PageShell>
   );
 }

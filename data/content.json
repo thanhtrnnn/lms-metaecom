@@ -360,17 +360,30 @@
   },
   "home": {
     "hero": {
-      "heading": null,
-      "subcopy": null,
-      "backgroundImage": "images/chien-luoc-tiktok.avif",
+      "_source": "meu.edu.vn production, synced 2026-07-20 (legacy hero preserved in git history)",
+      "badge": "Nền tảng học trực tuyến hiện đại & chuyên nghiệp",
+      "heading": "META ECOM UNI\nChinh phục\nTHƯƠNG MẠI ĐIỆN TỬ",
+      "subcopy": "Hệ thống đào tạo thực chiến hàng đầu Việt Nam. Chúng tôi giúp bạn kiến tạo sự nghiệp triệu đô trên các nền tảng thương mại điện tử từ con số 0.",
       "ctas": [
         {
-          "label": "Đăng ký ngay",
-          "href": "course-detail.html",
-          "style": "primary"
+          "label": "Khám phá lộ trình ngay",
+          "href": "/courses"
         }
       ],
-      "_note": "The hero has NO heading and NO subcopy in the markup — only the single CTA button. The background image comes from style.css (.sb-hero)."
+      "statPills": [
+        {
+          "value": "20K+",
+          "label": "Học viên"
+        },
+        {
+          "value": "50+",
+          "label": "Khóa học"
+        },
+        {
+          "value": "4.8★",
+          "label": "Đánh giá"
+        }
+      ]
     },
     "ecosystem": {
       "_note": "Section .sb-eco ('Kiến tạo hệ sinh thái'). There are no title+desc pillars — only paragraphs, a stat, and a services list of plain strings.",
@@ -401,42 +414,23 @@
       }
     },
     "stats": {
-      "_note": "Section .sb-stats. STATIC values — no data-target/data-suffix animated counters exist.",
-      "title": "Bảo chứng chất lượng từ 17.000+<br>chuyên gia và doanh nghiệp",
-      "titlePlain": "Bảo chứng chất lượng từ 17.000+ chuyên gia và doanh nghiệp",
-      "desc": "Kết quả thực tiễn là thước đo duy nhất. Hàng chục ngàn học viên và tổ chức đã áp dụng công thành công hệ thống kiến thức từ META ECOM UNI để tối ưu vận hành và bứt phá doanh thu.",
+      "_source": "meu.edu.vn production stats band",
       "cards": [
         {
-          "value": "17,000+",
-          "label": "Học viên & Chuyên gia",
-          "sub": "Nâng cấp tư duy chiến lược và thành thạo kỹ năng thực chiến để tự tin dẫn đầu thị trường.",
-          "bgImage": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop",
-          "dataTarget": null,
-          "dataSuffix": null
+          "value": "20,000+",
+          "label": "Học viên"
         },
         {
-          "value": "70+",
-          "label": "Doanh nghiệp đối tác",
-          "sub": "Ứng dụng tự động hóa AI và tối ưu toàn diện quy trình làm việc, tiết kiệm hàng ngàn giờ vận hành.",
-          "bgImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop",
-          "dataTarget": null,
-          "dataSuffix": null
+          "value": "50+",
+          "label": "Khóa học"
         },
         {
-          "value": "7",
-          "label": "Thị trường quốc tế",
-          "sub": "Khẳng định chất lượng đào tạo và năng lực triển khai đáp ứng các tiêu chuẩn khắt khe nhất toàn cầu.",
-          "bgImage": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop",
-          "dataTarget": null,
-          "dataSuffix": null
+          "value": "15+",
+          "label": "Giảng viên"
         },
         {
-          "value": "75%",
-          "label": "Tỷ lệ hài lòng (NPS)",
-          "sub": "Học viên sẵn sàng giới thiệu chương trình cho đối tác và đồng nghiệp sau khi áp dụng tạo ra sự thay đổi.",
-          "bgImage": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=600&auto=format&fit=crop",
-          "dataTarget": null,
-          "dataSuffix": null
+          "value": "4.8★",
+          "label": "Đánh giá chung"
         }
       ]
     },
@@ -735,118 +729,88 @@
       ]
     },
     "bottomCta": {
-      "heading": "Hệ sinh thái đào tạo E-Commerce & AI thực chiến",
-      "proof": {
-        "raw": "<span>8K+</span> giờ đào tạo | <span>500+</span> học viên | <span>100+</span> đối tác",
-        "items": [
-          {
-            "value": "8K+",
-            "label": "giờ đào tạo"
-          },
-          {
-            "value": "500+",
-            "label": "học viên"
-          },
-          {
-            "value": "100+",
-            "label": "đối tác"
-          }
-        ]
+      "_source": "meu.edu.vn production CTA section",
+      "heading": "Sẵn sàng bắt đầu hành trình của bạn?",
+      "subcopy": "Tham gia cộng đồng 20.000+ học viên đang xây dựng sự nghiệp thành công cùng META ECOM UNI",
+      "primary": {
+        "label": "Đăng ký ngay - Miễn phí",
+        "href": "/dang-ky"
       },
-      "cta": {
-        "label": "Nhận tư vấn lộ trình miễn phí",
-        "href": "contact.html"
-      },
-      "microcopy": "Không cam kết mua khóa học — tư vấn theo mục tiêu của bạn",
-      "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1000&auto=format&fit=crop",
-      "imageAlt": "META ECOM UNI Workshop"
+      "secondary": {
+        "label": "Tư vấn 1-1",
+        "href": "https://m.me/metaecomuni"
+      }
     },
     "mobileStickyCta": {
       "oldPrice": "3.590.000đ",
       "price": "1.990.000đ",
       "button": "Đăng ký ngay"
+    },
+    "sectionHeadings": {
+      "featured": "Lộ trình đào tạo tiêu biểu",
+      "testimonials": "Trải nghiệm học viên",
+      "fields": {
+        "heading": "Lĩnh vực kinh doanh thực chiến",
+        "subcopy": "Chọn nền tảng bạn muốn chinh phục và bắt đầu hành trình ngay"
+      }
     }
   },
   "testimonials": [
     {
-      "quote": "\"Mình từng làm nội dung và bán hàng khá thủ công. Sau khóa học, mình biết cách dùng AI để phân tích khách hàng, xây nội dung nhanh hơn và tối ưu Fanpage hiệu quả hơn. Sau vài tuần áp dụng, đơn hàng đều hơn và quy trình vận hành nhẹ hơn rất nhiều.\"",
-      "name": "Lê Huyền",
-      "role": "Chủ shop thời trang mẹ & bé",
-      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=256&auto=format&fit=crop",
-      "course": "Học viên khóa: Chiến lược Livestream & AI Content",
-      "stars": 5,
-      "caseInfo": {
-        "label": "CASE HỌC VIÊN",
-        "text": "Ngành hàng: Thời trang mẹ & bé"
-      },
-      "image": "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1000&auto=format&fit=crop",
-      "imageBadge": "Kết quả sau 30 ngày áp dụng"
+      "quote": "Học xong khóa mình thấy rằng ứng dụng AI không còn là chuyện của các bạn trẻ. Mentor hướng dẫn tận tâm và linh hoạt. Giờ team mình tiết kiệm được ít nhất 60% thời gian xử lý công việc vận hành. Cảm ơn sự chuyên nghiệp và hỗ trợ xuất sắc!",
+      "name": "Thanh Vân",
+      "role": "Chủ doanh nghiệp",
+      "avatar": "https://meu.edu.vn/images/thanh-van.jpg",
+      "course": "AI & Ecom Thực Chiến",
+      "imageTag": "Kết quả thực tế"
     },
     {
-      "quote": "\"Trước đây mình tốn rất nhiều thời gian để viết content và chạy quảng cáo mà hiệu quả vẫn bấp bênh. Từ khi biết cách ứng dụng AI vào vận hành shop, mọi thứ thay đổi tích cực hơn. Doanh thu tháng sau tăng đều so với tháng trước. Cảm ơn đội ngũ mentor rất nhiều!\"",
+      "quote": "Trước đây mình tốn rất nhiều thời gian để viết content và chạy quảng cáo mà hiệu quả vẫn bấp bênh. Từ khi biết cách ứng dụng AI vào vận hành shop, mọi thứ thay đổi tích cực hơn. Doanh thu tháng sau tăng đều so với tháng trước. Cảm ơn đội ngũ mentor rất nhiều!",
       "name": "Minh Châu",
       "role": "Chủ shop mỹ phẩm handmade",
-      "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=256&auto=format&fit=crop",
-      "course": "Học viên khóa: Content & Tối ưu chuyển đổi",
-      "stars": 5,
-      "caseInfo": null,
-      "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop",
-      "imageBadge": "Kết quả thực tế"
+      "avatar": "https://meu.edu.vn/images/minh-chau.jpg",
+      "course": "AI & Ecom Thực Chiến",
+      "imageTag": "Kết quả thực tế"
     },
     {
-      "quote": "\"Mình bắt đầu từ con số 0 với ecom, nhưng nhờ lộ trình được thiết kế rõ ràng và mentor luôn sát sao, mình đã có đơn hàng đầu tiên chỉ sau vài tuần. Cảm ơn sự chuyên nghiệp và hỗ trợ nhiệt tình của các mentor.\"",
+      "quote": "Mình bắt đầu từ con số 0 với ecom, nhưng nhờ lộ trình được thiết kế rõ ràng và mentor luôn sát sao, mình đã có đơn hàng đầu tiên chỉ sau vài tuần. Cảm ơn sự chuyên nghiệp và hỗ trợ nhiệt tình của các mentor.",
       "name": "Ngọc Hà",
       "role": "Kinh doanh tự do",
-      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=256&auto=format&fit=crop",
-      "course": "Học viên khóa: Shopee Master",
-      "stars": 5,
-      "caseInfo": null,
-      "image": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=1000&auto=format&fit=crop",
-      "imageBadge": "Kết quả thực tế"
+      "avatar": "https://meu.edu.vn/images/ngoc-ha.jpg",
+      "course": "AI & Ecom Thực Chiến",
+      "imageTag": "Kết quả thực tế"
     },
     {
-      "quote": "\"Đội ngũ mentor tại Meta Ecom Uni hỗ trợ cực kỳ tận tâm và dễ hiểu. Mình đặc biệt ấn tượng với việc cập nhật và giảng giải kiến thức theo thị trường thực, không phải lý thuyết suông. Shop nhà mình giờ ổn định hơn, nhân sự có thêm thời gian để phát triển sản phẩm mới.\"",
+      "quote": "Đội ngũ mentor tại Meta Ecom Uni hỗ trợ cực kỳ tận tâm và dễ hiểu. Mình đặc biệt ấn tượng với việc cập nhật và giảng giải kiến thức theo thị trường thực, không phải lý thuyết suông. Shop nhà mình giờ ổn định hơn, nhân sự có thêm thời gian để phát triển sản phẩm mới.",
       "name": "Tín Trần",
       "role": "Chủ shop thời trang",
-      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=256&auto=format&fit=crop",
-      "course": "Học viên khóa: Xây kênh TikTok",
-      "stars": 5,
-      "caseInfo": null,
-      "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1000&auto=format&fit=crop",
-      "imageBadge": "Kết quả thực tế"
+      "avatar": "https://meu.edu.vn/images/tin-tran.jpg",
+      "course": "AI & Ecom Thực Chiến",
+      "imageTag": "Kết quả thực tế"
     },
     {
-      "quote": "\"Kiến thức tại Meta Ecom Uni thực tế và luôn được cập nhật. Điều này giúp tôi bắt kịp xu hướng Thương mại điện tử và AI, áp dụng kiến thức trực tiếp vào công việc của mình. Trải nghiệm học tập đầy thách thức và thú vị!\"",
+      "quote": "Kiến thức tại Meta Ecom Uni thực tế và luôn được cập nhật. Điều này giúp tôi bắt kịp xu hướng Thương mại điện tử và AI, áp dụng kiến thức trực tiếp vào công việc của mình. Trải nghiệm học tập đầy thách thức và thú vị!",
       "name": "Hoàng Nguyên",
       "role": "Freelancer",
-      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=256&auto=format&fit=crop",
-      "course": "Học viên khóa: AI & Ecom Thực Chiến",
-      "stars": 5,
-      "caseInfo": null,
-      "image": "images/lop-hoc.jpg",
-      "imageBadge": "Kết quả thực tế"
+      "avatar": "https://meu.edu.vn/images/hoang-nguyen.jpg",
+      "course": "AI & Ecom Thực Chiến",
+      "imageTag": "Kết quả thực tế"
     },
     {
-      "quote": "\"Mình khá hoài nghi về việc AI có thể áp dụng thực tế vào shop nhỏ lẻ. Nhưng chỉ sau vài tuần thực hành theo hướng dẫn của mentor, mình đã tự tối ưu xây dựng được quy trình vận hành gần như tự động, giúp tiết kiệm nhân sự, tăng hiệu quả.\"",
+      "quote": "Mình khá hoài nghi về việc AI có thể áp dụng thực tế vào shop nhỏ lẻ. Nhưng chỉ sau vài tuần thực hành theo hướng dẫn của mentor, mình đã tự tối ưu xây dựng được quy trình vận hành gần như tự động, giúp tiết kiệm nhân sự, tăng hiệu quả.",
       "name": "Quốc Bảo",
       "role": "Shop đồ gia dụng",
-      "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=256&auto=format&fit=crop",
-      "course": "Học viên khóa: Tối ưu vận hành AI",
-      "stars": 5,
-      "caseInfo": null,
-      "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop",
-      "imageBadge": "Kết quả thực tế"
+      "avatar": "https://meu.edu.vn/images/quoc-bao.jpg",
+      "course": "AI & Ecom Thực Chiến",
+      "imageTag": "Kết quả thực tế"
     },
     {
-      "quote": "\"Mình không nghĩ AI lại có thể hỗ trợ được nhiều đến vậy trong việc bán hàng online. Từ phân tích khách hàng, tạo nội dung đều nhanh và hiệu quả hơn hẳn làm thủ công. Đơn hàng đều hơn, Fanpage cũng sống động hơn rất nhiều. Cảm ơn đội ngũ mentor rất nhiều!\"",
+      "quote": "Mình không nghĩ AI lại có thể hỗ trợ được nhiều đến vậy trong việc bán hàng online. Từ phân tích khách hàng, tạo nội dung đều nhanh và hiệu quả hơn hẳn làm thủ công. Đơn hàng đều hơn, Fanpage cũng sống động hơn rất nhiều. Cảm ơn đội ngũ mentor rất nhiều!",
       "name": "Lê Huyền",
       "role": "Chủ shop thời trang mẹ và bé",
-      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=256&auto=format&fit=crop",
-      "course": "Học viên khóa: Chiến lược Livestream",
-      "stars": 5,
-      "caseInfo": null,
-      "image": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=1000&auto=format&fit=crop",
-      "imageBadge": "Kết quả thực tế"
+      "avatar": "https://meu.edu.vn/images/le-huyen.jpg",
+      "course": "AI & Ecom Thực Chiến",
+      "imageTag": "Kết quả thực tế"
     }
   ],
   "blog": {
@@ -1393,5 +1357,25 @@
       ],
       "submit": "Submit"
     }
-  }
+  },
+  "newsletter": {
+    "heading": "Nhận thông tin mới nhất",
+    "subcopy": "Đăng ký để nhận bài viết, tips và khuyến mãi mới nhất từ META ECOM UNI",
+    "placeholder": "Nhập email của bạn",
+    "cta": "Đăng ký"
+  },
+  "socials": [
+    {
+      "platform": "facebook",
+      "href": "https://www.facebook.com/MetaEcomUni"
+    },
+    {
+      "platform": "tiktok",
+      "href": "https://www.tiktok.com/@metaecomuni?_r=1&_t=ZS-96rd29k6LDB"
+    },
+    {
+      "platform": "zalo",
+      "href": "https://www.tiktok.com/link/v2?aid=1988&lang=vi-VN&scene=bio_url&target=https%3A%2F%2Fzalo.me%2Fg%2F7zf1gtmpfvlnul6chlnh"
+    }
+  ]
 }

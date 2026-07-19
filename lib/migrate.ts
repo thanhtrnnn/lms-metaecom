@@ -21,7 +21,7 @@ import type {Course} from './types';
  * Runs at most once per browser; guarded by SCHEMA_KEY.
  */
 const SCHEMA_KEY = 'meuSchemaVersion';
-const SCHEMA_VERSION = '2';
+const SCHEMA_VERSION = '3'; // v3: production catalog sync (meu.edu.vn, 2026-07-20)
 
 type LegacyCourse = {
   id?: string | number;
@@ -84,7 +84,7 @@ export function migrateLegacyStorage(): void {
         id:
           match?.id ?? `legacy-${c.id ?? Math.random().toString(36).slice(2)}`,
         slug: match?.slug ?? `khoa-hoc-${c.id ?? 'cu'}`,
-        categorySlug: match?.categorySlug ?? 'content-ai',
+        categorySlug: match?.categorySlug ?? 'ecom-foundation',
         status: (c.status === 'draft' ? 'draft' : 'active') as Course['status'],
         purchases: c.purchases ?? 0,
         image: c.image || match?.image || '/images/livestream-ai.avif',

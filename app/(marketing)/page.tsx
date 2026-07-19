@@ -17,7 +17,6 @@ import {CardGrid} from '@/components/layout/CardGrid';
 import {FeaturedCoursesCarousel} from '@/components/FeaturedCoursesCarousel';
 import {seedCourses} from '@/data/courses';
 import {home, testimonials, blog, enterprise, img} from '@/data/content';
-import {site} from '@/data/site';
 import {CARD_PAD, CONTENT_MAXW, HERO_PAD, PAGE_GAP} from '@/lib/layout';
 
 // The carousel exists to show breadth, so it gets every active course rather
@@ -38,8 +37,11 @@ type Article = {
   image?: string | null;
   date?: string | null;
 };
-type Proof = {value: string; label: string};
-type PartnerLogo = {src?: string | null; fallback?: string | null; name?: string | null};
+type PartnerLogo = {
+  src?: string | null;
+  fallback?: string | null;
+  name?: string | null;
+};
 
 /**
  * Landing composition: each band is a different layout family so the page
@@ -47,42 +49,50 @@ type PartnerLogo = {src?: string | null; fallback?: string | null; name?: string
  * card grid / carousel / quote columns / row list / CTA band).
  */
 export default function HomePage() {
+  const hero = home.hero;
   const stats = home.stats;
-  const eco = home.ecosystem;
+  const headings = home.sectionHeadings;
   const solutions = home.solutions;
   const cta = home.bottomCta;
   const partnerLogos = (enterprise.trustLogos?.logos ?? []) as PartnerLogo[];
 
   return (
     <VStack gap={0} className="home-shell">
-      {/* Hero — centered editorial. The legacy hero had NO headline and NO
-          subcopy (a background image + single CTA). The headline is the
-          site's own <title> tagline; the lead is its real "Kiến tạo hệ sinh
-          thái" copy. A soft brand aura sits behind everything. */}
+      {/* Hero — copy synced verbatim from production (meu.edu.vn): its badge,
+          three-line headline, subcopy and primary CTA. The secondary CTA keeps
+          our trial route (production has no trial page). Soft brand aura
+          behind everything. */}
       <Section padding={HERO_PAD} variant="transparent">
         <div className="hero-aura" aria-hidden />
         <VStack gap={PAGE_GAP} hAlign="center" vAlign="center">
           <HStack hAlign="center">
-            <Badge label="E-Commerce & Marketing" variant="info" />
+            <Badge
+              label={hero.badge ?? 'E-Commerce & Marketing'}
+              variant="info"
+            />
           </HStack>
 
           <VStack gap={3} hAlign="center" maxWidth={820}>
             <Heading
               level={1}
               type="display-2"
-              textWrap="balance"
               justify="center"
+              style={{whiteSpace: 'pre-line'}}
             >
-              {site.tagline}
+              {hero.heading}
             </Heading>
             <Text color="secondary" justify="center" type="large">
-              {eco.paragraphs?.[0]}
+              {hero.subcopy}
             </Text>
           </VStack>
 
           <HStack gap={2} wrap="wrap" hAlign="center">
             <NextLink href="/khoa-hoc">
-              <Button label="Đăng ký ngay" variant="primary" size="lg" />
+              <Button
+                label={hero.ctas?.[0]?.label ?? 'Khám phá lộ trình ngay'}
+                variant="primary"
+                size="lg"
+              />
             </NextLink>
             <NextLink href="/hoc-thu">
               <Button label="Học thử miễn phí" variant="secondary" size="lg" />
@@ -137,18 +147,10 @@ export default function HomePage() {
         </Section>
       ) : null}
 
-      {/* Proof — static figures exactly as authored (the legacy "animated
-          counters" were dead code with no matching DOM). Number band, no cards. */}
+      {/* Proof — the production stats band (20,000+ / 50+ / 15+ / 4.8★),
+          numbers only, no heading. */}
       <Section padding={HERO_PAD} variant="muted" dividers={['top']}>
         <VStack gap={PAGE_GAP} hAlign="center">
-          <VStack gap={2} hAlign="center" maxWidth={720}>
-            <Heading level={2} textWrap="balance" justify="center">
-              {stats.titlePlain}
-            </Heading>
-            <Text color="secondary" justify="center">
-              {stats.desc}
-            </Text>
-          </VStack>
           <Grid columns={{minWidth: 200}} gap={4} maxWidth={880}>
             {((stats.cards ?? []) as Stat[]).map((s) => (
               <VStack key={s.label} gap={1} hAlign="center">
@@ -214,7 +216,7 @@ export default function HomePage() {
             width="100%"
             maxWidth={CONTENT_MAXW}
           >
-            <Heading level={2}>Khóa học nổi bật</Heading>
+            <Heading level={2}>{headings.featured}</Heading>
             <NextLink href="/khoa-hoc">
               <Button label="Xem tất cả khóa học" variant="secondary" />
             </NextLink>
@@ -231,7 +233,7 @@ export default function HomePage() {
       <Section padding={HERO_PAD}>
         <VStack gap={PAGE_GAP} hAlign="center">
           <Heading level={2} justify="center">
-            Học viên nói gì về META ECOM UNI
+            {headings.testimonials}
           </Heading>
           <Grid columns={{minWidth: 380}} gap={6} maxWidth={CONTENT_MAXW}>
             {(testimonials as Testimonial[]).slice(0, 4).map((t) => (
@@ -320,24 +322,25 @@ export default function HomePage() {
         dividers={['top']}
       >
         <VStack gap={PAGE_GAP} hAlign="center">
-          <Heading level={2} justify="center" textWrap="balance">
-            {cta.heading}
-          </Heading>
-          <HStack gap={5} wrap="wrap" hAlign="center">
-            {((cta.proof?.items ?? []) as Proof[]).map((p) => (
-              <VStack key={p.label} gap={0} hAlign="center">
-                <Heading level={3} className="brand-gradient-text">
-                  {p.value}
-                </Heading>
-                <Text type="supporting" color="secondary" justify="center">
-                  {p.label}
-                </Text>
-              </VStack>
-            ))}
+          <VStack gap={2} maxWidth={820} hAlign="center">
+            <Heading level={2} justify="center" textWrap="balance">
+              {cta.heading}
+            </Heading>
+            <Text color="secondary" justify="center">
+              {cta.subcopy}
+            </Text>
+          </VStack>
+          <HStack gap={2} wrap="wrap" hAlign="center">
+            <NextLink href={cta.primary.href}>
+              <Button label={cta.primary.label} variant="primary" size="lg" />
+            </NextLink>
+            <Button
+              label={cta.secondary.label}
+              variant="secondary"
+              size="lg"
+              href={cta.secondary.href}
+            />
           </HStack>
-          <NextLink href="/khoa-hoc">
-            <Button label="Bắt đầu học ngay" variant="secondary" size="lg" />
-          </NextLink>
         </VStack>
       </Section>
     </VStack>

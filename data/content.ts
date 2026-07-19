@@ -23,6 +23,8 @@ export const about = raw.about;
 export const enterprise = raw.enterprise;
 export const contact = raw.contact;
 export const ticker = raw.ticker;
+export const newsletter = raw.newsletter;
+export const socials = raw.socials;
 
 /**
  * Images the legacy markup pointed at that 404 on the asset host resolve to
@@ -41,7 +43,10 @@ const MISSING = new Set([
   'images/default-course.avif',
 ]);
 
-export function img(src: string | null | undefined, fallback?: string | null): string | null {
+export function img(
+  src: string | null | undefined,
+  fallback?: string | null,
+): string | null {
   if (!src) return fallback ?? null;
   if (src.startsWith('http')) return src;
   if (MISSING.has(src)) return fallback ?? null;

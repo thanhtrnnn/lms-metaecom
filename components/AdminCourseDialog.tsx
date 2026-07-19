@@ -32,10 +32,9 @@ import {FORM_GAP} from '@/lib/layout';
  */
 const categoryOptions: {value: CourseCategory; label: string}[] = [
   {value: 'livestream', label: 'Chiến lược Livestream'},
-  {value: 'tiktok', label: 'Xây kênh TikTok'},
-  {value: 'content-ai', label: 'Tối ưu Content AI'},
-  {value: 'shopee', label: 'Shopee & Lazada'},
-  {value: 'combo', label: 'Combo ưu đãi'},
+  {value: 'tiktok', label: 'TikTok'},
+  {value: 'shopee', label: 'Shopee'},
+  {value: 'ecom-foundation', label: 'Ecom Foundation'},
 ];
 
 const categoryLabel = (slug: CourseCategory): string =>

@@ -30,27 +30,22 @@ export const nav: NavItem[] = [
       {
         label: 'Chiến lược Livestream',
         href: '/khoa-hoc?filter=livestream',
-        description: 'Chốt đơn tự động, livestream chuyển đổi cao',
+        description: 'Livestream A.I, chuyển đổi cao',
       },
       {
-        label: 'Tối ưu Content AI',
-        href: '/khoa-hoc?filter=content-ai',
-        description: 'Ứng dụng AI vào sản xuất nội dung',
-      },
-      {
-        label: 'Xây kênh TikTok',
+        label: 'TikTok',
         href: '/khoa-hoc?filter=tiktok',
-        description: 'Từ con số 0 tới KOL/KOC',
+        description: 'Xây kênh và bán hàng TikTok Shop',
       },
       {
-        label: 'Shopee & Lazada',
+        label: 'Shopee',
         href: '/khoa-hoc?filter=shopee',
         description: 'Bán hàng sàn thương mại điện tử',
       },
       {
-        label: 'Combo ưu đãi',
-        href: '/khoa-hoc?filter=combo',
-        description: 'Bộ khóa học tiết kiệm hơn',
+        label: 'Ecom Foundation',
+        href: '/khoa-hoc?filter=ecom-foundation',
+        description: 'Nền tảng sự nghiệp Ecom',
       },
     ],
   },
@@ -90,9 +85,9 @@ export const footerColumns = [
     heading: 'Khóa học',
     links: [
       {label: 'Chiến lược Livestream', href: '/khoa-hoc?filter=livestream'},
-      {label: 'Tối ưu Content AI', href: '/khoa-hoc?filter=content-ai'},
-      {label: 'Xây kênh TikTok', href: '/khoa-hoc?filter=tiktok'},
-      {label: 'Shopee & Lazada', href: '/khoa-hoc?filter=shopee'},
+      {label: 'TikTok', href: '/khoa-hoc?filter=tiktok'},
+      {label: 'Shopee', href: '/khoa-hoc?filter=shopee'},
+      {label: 'Ecom Foundation', href: '/khoa-hoc?filter=ecom-foundation'},
     ],
   },
   {
