@@ -1,23 +1,20 @@
 /**
- * Creative Theme — "META ECOM UNI" brand skin
+ * META ECOM UNI brand theme (slug: "metaecom").
  *
- * Extends the neutral grayscale spine (so all the careful OKLCH categorical
- * palette + status/banner/badge logic carries over unchanged) and rebrands it
- * with a vivid violet→indigo brand accent for a modern e-learning feel.
+ * The single source of truth for the site's look. Extends the thin `neutral`
+ * base (its OKLCH categorical palette + status/banner/badge machinery carry
+ * over unchanged) and owns ALL branding on top: the warm-orange accent, tinted
+ * canvas, generous 6px spacing ladder, rounded radii, layered brand shadows,
+ * and — the piece that makes control sizing consistent — the `--size-element-*`
+ * control-height tokens (see the tokens block). See docs/THEME.md.
  *
  * Design intent:
- *   - Centered, editorial landing page (max-width column, generous breathing
- *     room) rather than edge-to-edge.
- *   - Whole-website light + dark via the same [light, dark] tuple system the
- *     neutral theme uses — dark mode is a first-class surface, not an
- *     afterthought.
- *   - "Creative" flair: larger radii, softer layered shadows, a brand accent
- *     that doubles as a gradient anchor (--color-accent / --color-accent-2),
- *     and a tinted body canvas so sections feel like cards floating on a
- *     colored mist.
+ *   - Centered, editorial layout with generous breathing room.
+ *   - First-class light + dark via the [light, dark] tuple system.
+ *   - Warm-orange brand accent (#EA580C) that doubles as a gradient anchor with
+ *     --brand-2 (defined in app/site.css), on a soft tinted body canvas.
  *
- * Everything below only overrides what we want to change; the neutral theme
- * fills in the rest.
+ * Everything below only overrides what differs from the neutral base.
  */
 
 import {defineTheme, defineSyntaxTheme} from '@astryxdesign/core/theme';
@@ -36,8 +33,8 @@ const BRAND_DARK = '#FB923C';
  * Creative syntax palette — lift the neutral syntax stops onto the brand hue
  * family (orange keyword/type, rose attribute) so code blocks match.
  */
-const creativeSyntax = defineSyntaxTheme({
-  name: 'xds-creative',
+const metaecomSyntax = defineSyntaxTheme({
+  name: 'xds-metaecom',
   tokens: {
     keyword: [BRAND, '#fdba74'],
     string: ['#047857', '#6ee7b7'],
@@ -56,8 +53,8 @@ const creativeSyntax = defineSyntaxTheme({
   },
 });
 
-export const creativeTheme = defineTheme({
-  name: 'creative',
+export const metaecomTheme = defineTheme({
+  name: 'metaecom',
   extends: neutralTheme,
 
   // Keep Be Vietnam Pro (Vietnamese coverage) — inherited from neutral via
@@ -83,10 +80,10 @@ export const creativeTheme = defineTheme({
     },
   },
 
-  // Slightly more languid motion to match the softer, floaty creative feel.
+  // Slightly more languid motion to match the softer, floaty editorial feel.
   motion: {fast: 150, medium: 360, slow: 820, ratio: 0.72},
 
-  syntax: creativeSyntax,
+  syntax: metaecomSyntax,
 
   tokens: {
     // =========================================================================
@@ -165,7 +162,17 @@ export const creativeTheme = defineTheme({
     '--spacing-12': '84px',
 
     // =========================================================================
-    // Radius — friendlier, larger radii for the creative, soft "matcha" feel.
+    // Control heights — the piece that makes buttons/inputs/selects size
+    // consistently. Astryx controls read their height from --size-element-*
+    // (Astryx defaults 28/32/36px are cramped against the widened 6px spacing
+    // above). Comfortable 36/40/44 matches the shipped matcha brand theme.
+    // =========================================================================
+    '--size-element-sm': '36px',
+    '--size-element-md': '40px',
+    '--size-element-lg': '44px',
+
+    // =========================================================================
+    // Radius — friendlier, larger radii for the soft, editorial feel.
     // =========================================================================
     '--radius-none': '0.25rem',
     '--radius-inner': '0.625rem',

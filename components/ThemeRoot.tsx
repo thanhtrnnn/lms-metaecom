@@ -1,7 +1,7 @@
 'use client';
 
 import {Theme} from '@astryxdesign/core/theme';
-import {creativeTheme} from '@/theme/creative';
+import {metaecomTheme} from '@/theme/metaecom';
 import {useThemeMode} from '@/lib/stores';
 
 /**
@@ -15,7 +15,7 @@ import {useThemeMode} from '@/lib/stores';
 export function ThemeRoot({children}: {children: React.ReactNode}) {
   const {mode} = useThemeMode();
   return (
-    <Theme theme={creativeTheme} mode={mode}>
+    <Theme theme={metaecomTheme} mode={mode}>
       {children}
     </Theme>
   );

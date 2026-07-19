@@ -6,7 +6,7 @@ import {Theme} from '@astryxdesign/core/theme';
 // reset lands in @layer reset, component styles in @layer astryx-base.
 import '@astryxdesign/core/reset.css';
 import '@astryxdesign/core/astryx.css';
-import '../theme/creative.css';
+import '../theme/metaecom.css';
 import './site.css';
 
 import {ThemeRoot} from '@/components/ThemeRoot';

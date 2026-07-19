@@ -23,9 +23,9 @@
   filter: none;
 }
 
-/* Secondary brand stop for gradient composition (warm coral/rose), kept in
- * sync with BRAND_2 / BRAND_2_DARK in theme/creativeTheme.ts. Defined here
- * (not as an Astryx token) so the gradient surfaces below can reference it. */
+/* Secondary brand stop for gradient composition (warm coral/rose), the partner
+ * to the metaecom accent (theme/metaecomTheme.ts). Defined here (not as an
+ * Astryx token) so the gradient surfaces below can reference it. */
 :root {
   --brand-2: light-dark(#F43F5E, #FB7185);
 }
