@@ -132,40 +132,51 @@ export const neutralTheme = defineTheme({
     //
     // All values use the OKLCH Neutral tonal palette (chroma=0).
     // =========================================================================
-    '--color-background-surface': ['#ffffff', '#262626'],
-    '--color-background-body':    ['#f1f1f1', '#1b1b1b'],
-    '--color-background-card':    ['#ffffff', '#1b1b1b'],
-    '--color-background-popover': ['#ffffff', '#1b1b1b'],
-    '--color-background-muted':   ['#f1f1f1', '#1b1b1b'],
+    // Curated WARM palette: sand/cream body on a warm-stone spine (not gray),
+    // white cards floating on it in light mode; a warm near-black canvas in
+    // dark mode with cards lifting via a slightly warmer tone + shadow.
+    '--color-background-surface': ['#ffffff', '#241e16'],
+    '--color-background-body':    ['#f6f1e9', '#17140f'],
+    '--color-background-card':    ['#ffffff', '#201b14'],
+    '--color-background-popover': ['#ffffff', '#201b14'],
+    '--color-background-muted':   ['#efe7da', '#1e1912'],
 
-    // Accent + neutral surface tints (sit alongside backgrounds)
-    '--color-accent':       ['#262626', '#ebebeb'],
-    '--color-accent-muted': ['#f1f1f1', '#262626'],
-    '--color-neutral':      ['#0000000F', '#FFFFFF1A'],
+    // Accent = the META ECOM UNI brand orange (#F7941D heritage, tuned to
+    // #E07B1A so a dark label clears AA on it). Dark mode lifts to a lighter
+    // orange for the same on-accent contrast.
+    '--color-accent':       ['#e07b1a', '#f7a94d'],
+    '--color-accent-muted': ['#f7ecdd', '#f7a94d24'],
+    '--color-neutral':      ['#3a2c1a0f', '#FFFFFF1A'],
 
     // Overlays (modal scrims, hover/pressed tints)
     '--color-overlay':         ['#00000080', '#000000CC'],
     '--color-overlay-hover':   ['#0000000D', '#FFFFFF0D'],
     '--color-overlay-pressed': ['#0000001A', '#FFFFFF1A'],
 
-    // Text
-    '--color-text-primary':   ['#171717', '#fafafa'],
-    '--color-text-secondary': ['#737373', '#a3a3a3'],
-    '--color-text-disabled':  ['#a3a3a3', '#525252'],
-    '--color-text-accent':    ['#262626', '#ebebeb'],
+    // Text — warm-stone neutrals. text-accent is a DEEPER burnt orange in
+    // light mode (#a8540f, ~4.7:1 on the cream body) because the fill orange
+    // #e07b1a is too light to use as body text; dark mode reuses the light
+    // orange, which clears 9:1 on the dark canvas.
+    '--color-text-primary':   ['#1f1a14', '#f5efe6'],
+    '--color-text-secondary': ['#6b6152', '#b8ae9d'],
+    '--color-text-disabled':  ['#a99e8b', '#5c5346'],
+    '--color-text-accent':    ['#a8540f', '#f7a94d'],
     '--color-on-dark':    '#ffffff',
-    '--color-on-light':   '#171717',
-    // Contrast: neutral accent is near-black (L) / near-white (D)
-    '--color-on-accent':  ['#ffffff', '#171717'],
+    '--color-on-light':   '#1f1a14',
+    // On-accent: a dark label on the bright orange fill in BOTH modes
+    // (#231a0e clears ~5.6:1 light / ~8:1 dark). White on this orange would
+    // only hit ~3:1 and fail AA for a button label.
+    '--color-on-accent':  '#231a0e',
     '--color-on-success': ['#ffffff', '#171717'],
     '--color-on-error':   ['#ffffff', '#171717'],
     '--color-on-warning': '#171717',
 
-    // Icon
-    '--color-icon-accent':    ['#262626', '#ebebeb'],
-    '--color-icon-primary':   ['#171717', '#fafafa'],
-    '--color-icon-secondary': ['#737373', '#a3a3a3'],
-    '--color-icon-disabled':  ['#a3a3a3', '#525252'],
+    // Icon — accent icons match the AA text-accent stop so they stay legible
+    // on the body; the rest track the warm neutral text ramp.
+    '--color-icon-accent':    ['#a8540f', '#f7a94d'],
+    '--color-icon-primary':   ['#1f1a14', '#f5efe6'],
+    '--color-icon-secondary': ['#6b6152', '#b8ae9d'],
+    '--color-icon-disabled':  ['#a99e8b', '#5c5346'],
 
     // Status / Sentiment — dark mode follows the issue #2150 rubric:
     //
@@ -201,14 +212,14 @@ export const neutralTheme = defineTheme({
     '--color-error-muted': ['#facecb', '#ff9e973D'],
     '--color-warning-muted': ['#f8da9d', '#deb4333D'],
 
-    // Border
-    '--color-border': ['#ebebeb', '#FFFFFF1A'],
-    '--color-border-emphasized': ['#d4d4d4', '#525252'],
+    // Border — warm hairlines that read against cream, not gray.
+    '--color-border': ['#e7decf', '#FFFFFF14'],
+    '--color-border-emphasized': ['#d8cdba', '#5c5346'],
 
     // Effects
-    '--color-skeleton': ['#ebebeb', '#525252'],
-    '--color-shadow': ['#0000001A', '#0000004D'],
-    '--color-tint-hover': ['black', 'white'],
+    '--color-skeleton': ['#eae1d2', '#5c5346'],
+    '--color-shadow': ['#2a1e0f1A', '#0000004D'],
+    '--color-tint-hover': ['#3a2c1a', 'white'],
 
     // =========================================================================
     // Categorical — light mode uses pastel surfaces + dark colored text;
@@ -325,14 +336,36 @@ export const neutralTheme = defineTheme({
     '--color-text-gray': ['#262626', '#e5e5e5'],
 
     // =========================================================================
-    // Radius — slightly larger than default (kept as-is)
+    // Radius — curated "balanced modern". Rounder than the stock neutral so it
+    // reads friendly for a storefront, but deliberately NOT as round as matcha
+    // (whose containers/pages are 18/42px). Reference: astryx issue #918.
     // =========================================================================
-    '--radius-none': '0.25rem',
-    '--radius-inner': '0.375rem',
-    '--radius-element': '0.625rem',
-    '--radius-container': '0.75rem',
-    '--radius-page': '1.75rem',
+    '--radius-none': '4px',
+    '--radius-inner': '6px',      // inputs, small chips
+    '--radius-element': '10px',   // buttons, badges
+    '--radius-container': '16px', // cards, panels
+    '--radius-page': '28px',      // hero, large sections
     '--radius-full': '9999px',
+
+    // =========================================================================
+    // Spacing — matcha's generous 6px base (step 4 = 24px vs the stock ~16px),
+    // so the whole UI breathes more. This is the "more spacing" ask; adopted
+    // wholesale from @astryxdesign/theme-matcha's scale.
+    // =========================================================================
+    '--spacing-0-5': '3px',
+    '--spacing-1': '6px',
+    '--spacing-1-5': '9px',
+    '--spacing-2': '12px',
+    '--spacing-3': '18px',
+    '--spacing-4': '24px',
+    '--spacing-5': '30px',
+    '--spacing-6': '36px',
+    '--spacing-7': '42px',
+    '--spacing-8': '48px',
+    '--spacing-9': '54px',
+    '--spacing-10': '60px',
+    '--spacing-11': '66px',
+    '--spacing-12': '72px',
 
     // =========================================================================
     // Shadows
