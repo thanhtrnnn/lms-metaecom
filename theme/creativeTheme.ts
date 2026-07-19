@@ -143,13 +143,35 @@ export const creativeTheme = defineTheme({
     '--color-tint-hover': ['#EA580C', '#FB923C'],
 
     // =========================================================================
-    // Radius — friendlier, larger radii for the creative, soft feel.
+    // Spacing — "matcha" airier ladder. The default scale is a tight 4px step
+    // (0→48px). We widen every step so sections, cards and stacks breathe like
+    // an editorial/matcha default theme, while keeping the curated radius /
+    // border / palette below intact. Steps roughly ×1.5 over default.
+    // =========================================================================
+    '--spacing-0': '0px',
+    '--spacing-0-5': '3px',
+    '--spacing-1': '6px',
+    '--spacing-1-5': '9px',
+    '--spacing-2': '12px',
+    '--spacing-3': '18px',
+    '--spacing-4': '24px',
+    '--spacing-5': '30px',
+    '--spacing-6': '36px',
+    '--spacing-7': '42px',
+    '--spacing-8': '48px',
+    '--spacing-9': '54px',
+    '--spacing-10': '60px',
+    '--spacing-11': '72px',
+    '--spacing-12': '84px',
+
+    // =========================================================================
+    // Radius — friendlier, larger radii for the creative, soft "matcha" feel.
     // =========================================================================
     '--radius-none': '0.25rem',
-    '--radius-inner': '0.5rem',
-    '--radius-element': '0.875rem',
-    '--radius-container': '1.25rem',
-    '--radius-page': '2.25rem',
+    '--radius-inner': '0.625rem',
+    '--radius-element': '1rem',
+    '--radius-container': '1.5rem',
+    '--radius-page': '2.5rem',
     '--radius-full': '9999px',
 
     // =========================================================================
@@ -248,6 +270,7 @@ export const creativeTheme = defineTheme({
         borderRadius: 'var(--radius-container)',
         borderColor: 'var(--color-border)',
         boxShadow: 'var(--shadow-low)',
+        padding: 'var(--spacing-5)',
       },
     },
 
@@ -255,6 +278,9 @@ export const creativeTheme = defineTheme({
     // Section — keep generous padding; muted sections get a faint brand wash.
     // =========================================================================
     section: {
+      base: {
+        padding: 'var(--spacing-8)',
+      },
       'variant:muted': {
         backgroundColor: 'var(--color-background-muted)',
       },
