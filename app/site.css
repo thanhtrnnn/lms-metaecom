@@ -107,6 +107,33 @@
   }
 }
 
+/* Partner-carousel chip: the 12 production logos are mixed white-bg JPEGs and
+ * transparent PNGs. A white rounded chip normalizes them (JPEG white edges
+ * disappear; transparent PNGs get a clean backing) so the whole row reads
+ * consistently in light AND dark. Black-and-white via grayscale; a hover
+ * restores color for a subtle bit of life. */
+.partner-chip {
+  background: #ffffff;
+  border-radius: var(--radius-element);
+  box-shadow: var(--shadow-low);
+  padding: var(--spacing-3);
+}
+.partner-chip img {
+  filter: grayscale(1);
+  opacity: 0.85;
+  transition: filter var(--duration-medium) var(--ease-standard),
+    opacity var(--duration-medium) var(--ease-standard);
+}
+.partner-chip:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .partner-chip img {
+    transition: none;
+  }
+}
+
 /* Auth split-screen: the two panels fill the viewport height on desktop; when
  * the Grid stacks them on narrow screens each panel sizes to its content. */
 .auth-split {

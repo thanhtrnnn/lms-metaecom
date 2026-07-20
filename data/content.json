@@ -1352,5 +1352,59 @@
       "platform": "zalo",
       "href": "https://www.tiktok.com/link/v2?aid=1988&lang=vi-VN&scene=bio_url&target=https%3A%2F%2Fzalo.me%2Fg%2F7zf1gtmpfvlnul6chlnh"
     }
-  ]
+  ],
+  "partners": {
+    "_source": "meu-edu-nv.vercel.app homepage partner grid, synced 2026-07-20",
+    "title": "70+ doanh nghiệp hàng đầu đã hợp tác",
+    "logos": [
+      {
+        "src": "/images/partners/bac-si-cung.jpg",
+        "alt": "BÁC SĨ CUNG"
+      },
+      {
+        "src": "/images/partners/cay-leo-design.jpg",
+        "alt": "CAY LEO DESIGN"
+      },
+      {
+        "src": "/images/partners/gl-beauty.jpg",
+        "alt": "GL BEAUTY"
+      },
+      {
+        "src": "/images/partners/liugems.jpg",
+        "alt": "LIUGEMS"
+      },
+      {
+        "src": "/images/partners/menow.jpg",
+        "alt": "MENOW"
+      },
+      {
+        "src": "/images/partners/michi-baby.jpg",
+        "alt": "MICHI BABY"
+      },
+      {
+        "src": "/images/partners/nerman.jpg",
+        "alt": "NERMAN"
+      },
+      {
+        "src": "/images/partners/sao-thai-duong.png",
+        "alt": "SAO THÁI DƯƠNG"
+      },
+      {
+        "src": "/images/partners/sexy-look.png",
+        "alt": "SEXY LOOK"
+      },
+      {
+        "src": "/images/partners/sunhouse.jpg",
+        "alt": "SUNHOUSE"
+      },
+      {
+        "src": "/images/partners/the-bad-god.jpg",
+        "alt": "THE BAD GOD"
+      },
+      {
+        "src": "/images/partners/the-gioi-me-bim-sua.jpg",
+        "alt": "THẾ GIỚI MẸ BỈM SỮA"
+      }
+    ]
+  }
 }

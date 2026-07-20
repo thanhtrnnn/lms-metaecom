@@ -24,6 +24,7 @@ export const enterprise = raw.enterprise;
 export const contact = raw.contact;
 export const newsletter = raw.newsletter;
 export const socials = raw.socials;
+export const partners = raw.partners;
 
 /**
  * Images the legacy markup pointed at that 404 on the asset host resolve to

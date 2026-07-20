@@ -17,8 +17,9 @@ import {Building2, Bot, Megaphone, GraduationCap} from 'lucide-react';
 
 import {CardGrid} from '@/components/layout/CardGrid';
 import {FeaturedCoursesCarousel} from '@/components/FeaturedCoursesCarousel';
+import {PartnerCarousel} from '@/components/PartnerCarousel';
 import {seedCourses} from '@/data/courses';
-import {home, testimonials, blog, enterprise, img} from '@/data/content';
+import {home, testimonials, blog, partners, img} from '@/data/content';
 import {CARD_PAD, CONTENT_MAXW, HERO_PAD, PAGE_GAP} from '@/lib/layout';
 
 // The carousel exists to show breadth, so it gets every active course rather
@@ -43,11 +44,6 @@ type Article = {
   image?: string | null;
   date?: string | null;
 };
-type PartnerLogo = {
-  src?: string | null;
-  fallback?: string | null;
-  name?: string | null;
-};
 
 /**
  * Landing composition: each band is a different layout family so the page
@@ -60,7 +56,6 @@ export default function HomePage() {
   const headings = home.sectionHeadings;
   const solutions = home.solutions;
   const cta = home.bottomCta;
-  const partnerLogos = (enterprise.trustLogos?.logos ?? []) as PartnerLogo[];
 
   return (
     <VStack gap={0} className="home-shell">
@@ -124,34 +119,20 @@ export default function HomePage() {
         </VStack>
       </Section>
 
-      {/* Trust strip — the legacy index had a partner strip; this restores it
-          with the real brand logos already ported for the enterprise page.
-          Logos only, neutralized to one tone (.partner-logo). */}
-      {partnerLogos.length ? (
-        <Section padding={4} variant="transparent">
-          <VStack gap={3} hAlign="center">
-            <Text type="supporting" color="secondary" justify="center">
-              {enterprise.trustLogos?.title}
-            </Text>
-            <HStack gap={6} wrap="wrap" hAlign="center" vAlign="center">
-              {partnerLogos.map((l, i) => {
-                const src = img(l.src, l.fallback);
-                return src ? (
-                  <Image
-                    key={i}
-                    src={src}
-                    alt={l.name ?? ''}
-                    width={110}
-                    height={28}
-                    className="partner-logo"
-                    style={{height: 24, width: 'auto', objectFit: 'contain'}}
-                  />
-                ) : null;
-              })}
-            </HStack>
+      {/* Partner carousel — the production "70+ doanh nghiệp" wall as a
+          black-and-white scroll-snap carousel. */}
+      <Section padding={HERO_PAD} variant="transparent">
+        <VStack gap={PAGE_GAP} hAlign="center">
+          <VStack maxWidth={720} hAlign="center">
+            <Heading level={2} textWrap="balance" justify="center">
+              {partners.title}
+            </Heading>
           </VStack>
-        </Section>
-      ) : null}
+          <VStack width="100%" maxWidth={CONTENT_MAXW}>
+            <PartnerCarousel />
+          </VStack>
+        </VStack>
+      </Section>
 
       {/* Proof — the production stats band (20,000+ / 50+ / 15+ / 4.8★),
           numbers only, no heading. */}

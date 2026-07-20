@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import NextLink from 'next/link';
 import type {Metadata} from 'next';
 import {Section} from '@astryxdesign/core/Section';
@@ -11,8 +10,9 @@ import {Button} from '@astryxdesign/core/Button';
 import {Badge} from '@astryxdesign/core/Badge';
 import {Breadcrumbs, BreadcrumbItem} from '@astryxdesign/core/Breadcrumbs';
 import {CardGrid} from '@/components/layout/CardGrid';
+import {PartnerCarousel} from '@/components/PartnerCarousel';
 import {CONTENT_MAXW, CARD_PAD, HERO_PAD, PAGE_GAP} from '@/lib/layout';
-import {enterprise, img} from '@/data/content';
+import {enterprise, partners} from '@/data/content';
 
 export const metadata: Metadata = {title: 'Đào tạo doanh nghiệp'};
 
@@ -20,11 +20,6 @@ type Block = {
   title: string;
   desc?: string | null;
   description?: string | null;
-};
-type Logo = {
-  src?: string | null;
-  fallback?: string | null;
-  name?: string | null;
 };
 type CaseStudy = {
   client?: string | null;
@@ -42,7 +37,6 @@ type CaseStudy = {
  */
 export default function Page() {
   const blocks = (enterprise.solutions?.blocks ?? []) as Block[];
-  const logos = (enterprise.trustLogos?.logos ?? []) as Logo[];
   const cases = (enterprise.caseStudies?.items ?? []) as CaseStudy[];
 
   return (
@@ -75,32 +69,17 @@ export default function Page() {
         </VStack>
       </Section>
 
-      {/* Trust strip — same quiet treatment as the landing. */}
-      {logos.length ? (
-        <Section padding={4} variant="transparent">
-          <VStack gap={3} hAlign="center">
-            <Text type="supporting" color="secondary" justify="center">
-              {enterprise.trustLogos?.title}
-            </Text>
-            <HStack gap={6} wrap="wrap" hAlign="center" vAlign="center">
-              {logos.map((l, i) => {
-                const src = img(l.src, l.fallback);
-                return src ? (
-                  <Image
-                    key={i}
-                    src={src}
-                    alt={l.name ?? ''}
-                    width={110}
-                    height={28}
-                    className="partner-logo"
-                    style={{height: 24, width: 'auto', objectFit: 'contain'}}
-                  />
-                ) : null;
-              })}
-            </HStack>
+      {/* Partner carousel — the real "70+ doanh nghiệp" logos, black & white. */}
+      <Section padding={4} variant="transparent">
+        <VStack gap={3} hAlign="center">
+          <Text type="supporting" color="secondary" justify="center">
+            {partners.title}
+          </Text>
+          <VStack width="100%" maxWidth={CONTENT_MAXW}>
+            <PartnerCarousel />
           </VStack>
-        </Section>
-      ) : null}
+        </VStack>
+      </Section>
 
       {/* Service packages */}
       <Section padding={HERO_PAD} variant="muted" dividers={['top']}>
